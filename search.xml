@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F10%2F04%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[html标签的使用]]></title>
+    <url>%2F2019%2F10%2F02%2Fhtml%E6%A0%87%E7%AD%BE%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[html标签的使用超链接标签链接资源&lt;a href=&quot;链接到资源的路径&quot;&gt; 显示在页面上的内容 &lt;/a&gt;href: 链接的资源的地址target: 设置打开的方式，默认是当前页面打开 _self: 在当前页面打开 _blank: 在一个新窗口打开当超链接不需要到任何的地址，在href里面加# 定位资源如果想要定位资源，定义一个位置&lt;a name=&quot;top&quot;&gt; 顶部 &lt;/a&gt;回到这个位置&lt;a href=&quot;#top&quot;&gt;回到顶部&lt;/a&gt;引入一个标签pre: 原样输出 表格标签&lt;table&gt;&lt;/table&gt; :表示表格的范围border：表格线的粗细度bordercolor： 表格线颜色cellspacing：单元格之间的距离withth：表格的宽度heigth：表格的高度&lt;tr&gt;&lt;/tr&gt;：表示一行设置对齐方式align：left center right&lt;td&gt;&lt;/td&gt;：表示一个单元格操作技巧:首先数有多少行，每行有多少个单元格 表单标签&lt;form&gt;&lt;/form&gt;：表单标签的范围输入项：可以输入内容或者选择内容的部分 -大部分的输入项 使用&lt;input type=&quot;输入项的类型&quot;/&gt; 普通输入项：&lt;input type=&quot;text&quot;/&gt; 密码输入项：&lt;input type=&quot;password&quot;/&gt; 单选输入项：&lt;input type=&quot;radio&quot;/&gt; 在里面需要属性 name name的属性值必须要相同 复选输入项：&lt;input type=&quot;checkbox&quot;/&gt; 在里面需要属性 name name的属性值必须要相同 文件输入项: &lt;input type=&quot;file&quot;/&gt; 下拉输入项：&lt;select name=&quot;birth&quot;&gt; &lt;option value=&quot;0&quot;&gt;选择年份&lt;/option&gt; &lt;option value=&quot;1992&quot;&gt;1992&lt;/option&gt; &lt;option value=&quot;1993&quot;&gt;1993&lt;/option&gt;&lt;/select&gt; 文本域: `&lt;textarea cols=&quot;10&quot; rows=&quot;40&quot;&gt;&lt;/textarea&gt;` cols：多少列 rows：多少行 `&lt;input type=&quot;file&quot;/&gt;`]]></content>
+      <categories>
+        <category>html</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Markdown的基本用法]]></title>
+    <url>%2F2019%2F07%2F30%2FMarkdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[Markdown的基本用法tagstags是标签，可以在tags：后面加标签。例如： - 导航 //就会有导航标签 - 分享 //就会有分享标签 标题#一个#加个空格是一级标题##两个#加个空格是二级标题###三个#加个空格是三级标题 categoriescategories是分类，可以在categories： 后面加分类。例如： categories: PAT乙级就会有PAT乙级标签 列表- 列表名就会出现列表例如： - 列表一就会显示：。列表一 链接[链接名字](链接地址)例如：[PAT乙级](https://pintia.cn/problem-sets/994805260223102976/problems/type/7)就会显示PAT乙级链接，通过点击PAT乙级链接就可以到PAT乙级网站 插入图片![图片名](链接地址)就会显示图片例如：![美女图片](https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1564494317057&amp;di=8c6aaf9a225e374ce10a89a7266bb688&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201302%2F04%2F20130204093707_dPZSV.thumb.700_0.png)就会出现美女图片 字体*字*就会显示斜的”字”例如：字**字**字就会被加粗例如：字是不是被加粗了呢 引用代码一个引号+代码+一个引号，这是引用单行的代码三个引号+多行的代码+三个引号，这是引用多行的代码 一行直线---三个-***三个*例如： 引用别人的文章&gt; 引用哪个人的文章就会显示哪个人文章的字 我的文章是引用某个人的]]></content>
+      <categories>
+        <category>Markdown的基本用法</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[福尔摩斯的约会]]></title>
+    <url>%2F2018%2F04%2F05%2F%E7%A6%8F%E7%A6%8F%E5%B0%94%E6%91%A9%E6%96%AF%E7%9A%84%E7%BA%A6%E4%BC%9A%2F</url>
+    <content type="text"><![CDATA[题目：题目链接大侦探福尔摩斯接到一张奇怪的字条：“我们约会吧！ 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&amp;hgsfdk d&amp;Hyscvnm”。大侦探很快就明白了，字条上奇怪的乱码实际上就是约会的时间“星期四 14:04”，因为前面两字符串中第1对相同的大写英文字母（大小写有区分）是第4个字母’D’，代表星期四；第2对相同的字符是’E’，那是第5个英文字母，代表一天里的第14个钟头（于是一天的0点到23点由数字0到9、以及大写字母A到N表示）；后面两字符串第1对相同的英文字母’s’出现在第4个位置（从0开始计数）上，代表第4分钟。现给定两对字符串，请帮助福尔摩斯解码得到约会的时间。输入格式：输入在4行中分别给出4个非空、不包含空格、且长度不超过60的字符串。输出格式：在一行中输出约会的时间，格式为“DAY HH:MM”，其中“DAY”是某星期的3字符缩写，即MON表示星期一，TUE表示星期二，WED表示星期三，THU表示星期四，FRI表示星期五，SAT表示星期六，SUN表示星期日。题目输入保证每个测试存在唯一解。输入样例：3485djDkxh4hhGE2984akDfkkkkggEdsbs&amp;hgsfdkd&amp;Hyscvnm输出样例：THU 14:04 代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#include&lt;stdio.h&gt;#include&lt;stdbool.h&gt;#include&lt;string.h&gt;int main(void)&#123; char day[7][7]= &#123;&quot;MON&quot;,&quot;TUE&quot;,&quot;WED&quot;,&quot;THU&quot;,&quot;FRI&quot;,&quot;SAT&quot;,&quot;SUN&quot;&#125;; char time[25]= &#123;&apos;0&apos;,&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;,&apos;6&apos;,&apos;7&apos;,&apos;8&apos;,&apos;9&apos;,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;,&apos;E&apos;,&apos;F&apos;,&apos;G&apos;,&apos;H&apos;,&apos;I&apos;,&apos;J&apos;,&apos;K&apos;,&apos;L&apos;,&apos;M&apos;,&apos;N&apos;&#125;; char str1[100],str2[100],str3[100],str4[100]; scanf(&quot;%s&quot;,str1); scanf(&quot;%s&quot;,str2); scanf(&quot;%s&quot;,str3); scanf(&quot;%s&quot;,str4); int len1,len2,len3,len4,i; len1=strlen(str1); len2=strlen(str2); len3=strlen(str3); len4=strlen(str4); char D,T; int M=0,j; bool flag=false; for(i=0; i&lt;len1&amp;&amp;i&lt;len2; i++) &#123; if(str1[i]&gt;=&apos;A&apos;&amp;&amp;str1[i]&lt;=&apos;G&apos;) &#123; if(str1[i]==str2[i]) &#123; D=str2[i]; flag=true; j=i; break; &#125; &#125; &#125; for(i=j+1; i&lt;len1&amp;&amp;i&lt;len2; i++) &#123; if(str1[i]&gt;=&apos;A&apos;&amp;&amp;str1[i]&lt;=&apos;N&apos;||str1[i]&gt;=&apos;0&apos;&amp;&amp;str1[i]&lt;=&apos;9&apos;) &#123; if(str1[i]==str2[i]&amp;&amp;flag==true) &#123; T=str2[i]; break; &#125; &#125; &#125; for(i=0; i&lt;len3&amp;&amp;i&lt;len4; i++) &#123; if(str3[i]&gt;=&apos;A&apos;&amp;&amp;str3[i]&lt;=&apos;Z&apos;||str3[i]&gt;=&apos;a&apos;&amp;&amp;str3[i]&lt;=&apos;z&apos;) &#123; if(str3[i]==str4[i]) &#123; M=i; break; &#125; &#125; &#125; int s=0; while(s+&apos;A&apos;!=D) &#123; s++; &#125; printf(&quot;%s &quot;,day[s]); for(i=0; i&lt;=23; i++) &#123; if(T==time[i]) &#123; printf(&quot;%02d&quot;,i); break; &#125; &#125; printf(&quot;:%02d&quot;,M); return 0;&#125; 分析：1.前面两字符串中第1对相同的大写英文字母（因为代表星期一到星期天），所以范围是AG；2.前面两字符串中字符的范围是由数字0到9、以及大写字母A到N表示，自己想当然的以为是09或az或AZ，如果是小写字幕的话，把他的ASCII码减去32，得到大写字母，这种想法导致错误的答案3.后面两字符串中字符的范围是az或者AZ]]></content>
+      <categories>
+        <category>PAT乙级练习</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+</search>
