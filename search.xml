@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[git常见指令操作]]></title>
+    <url>%2F2019%2F11%2F29%2Fgit%E5%B8%B8%E8%A7%81%E6%8C%87%E4%BB%A4%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[Git常见指令操作查看属于哪个分支的指令git branch: 星号所指的是就是当前的分支 创建一个新分支,并切换到新分支上git checkout -b user:新建了一个user分支（-b user），并切换到user分支上 检查当前分支下文件的状态git status命令查看当前分支下文件的状态 把这些文件都添加到暂存区git add .然后再检查文件状态git status 把当前分支提交到仓库中git commit -m &quot;提交消息&quot; 把本地分支推送到云端进行保存git push -u origin user:把本地的分支推送到云端的origin仓库，以user分支进行保存 把其他分支合并到主分支中1.git branch:查看当前的分支2.git checkout master:切换到主分支3.git branch:查看当前的分支4.git merge user:把user分支合并到主分支 把本地master分支的代码推送到云端git push 提交到云端完成！ 创建新的分支git checkout -b rights:创建rights分支 把新创建的分支提交到云端git push -u origin rights]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[四数之和]]></title>
     <url>%2F2019%2F10%2F28%2F%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C%2F</url>
     <content type="text"><![CDATA[题目:题目链接给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。 注意： 答案中不可以包含重复的四元组。 示例： 给定数组 nums = [1, 0, -1, 0, -2, 2]，和 target = 0。 满足要求的四元组集合为：[ [-1, 0, 0, 1], [-2, -1, 1, 2], [-2, 0, 0, 2]] 解题思路1.首先对数组进行从小到大排序2.使用四个指针，i=0，j=i+1，low=j+1，high=nums.length-1，判断nums[i]+nums[j]+nums[low]+nums[high]与目标数target大小？如果小于target，则low++，如果大于，则high–，如果相等，则把这个四个数存起来，low++，high–，直到low不小于high时，这时j++，指针j从左往右遍历，直到指针遍历到数组的最后一个数时，i++。即i在最外面循环，里面嵌套着循环j，j循环里面嵌套这low和high这两个指针的循环。3.要注意，重复元素，如果下次遍历的元素和这次的元素相等，则跳过这次循坏。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] nums, int target) &#123; List&lt;List&lt;Integer&gt;&gt; list=new ArrayList(); Arrays.sort(nums); if(nums.length&lt;4) return list; for(int i=0; i&lt;nums.length-3; i++) &#123; if(i&gt;0&amp;&amp;nums[i]==nums[i-1])//去重 continue; for(int j=i+1; j&lt;nums.length-2; j++ ) &#123; if(j-1&gt;i&amp;&amp;nums[j]==nums[j-1])//去重 continue; int low=j+1; int high=nums.length-1; while(low&lt;high) &#123; if(nums[i]+nums[j]+nums[low]+nums[high]==target) &#123; List&lt;Integer&gt;sublist=new ArrayList(); sublist.add(nums[i]); sublist.add(nums[j]); sublist.add(nums[low]); sublist.add(nums[high]); list.add(sublist); while(low+1&lt;high&amp;&amp;nums[low]==nums[low+1]) &#123; low+=1; &#125; while(high-1&gt;low&amp;&amp;nums[high]==nums[high-1]) &#123; high-=1; &#125; low++; high--; &#125; else if(nums[i]+nums[j]+nums[low]+nums[high]&lt;target) &#123; // if(low+2&lt;high&amp;&amp;nums[low]==nums[low+1])//自己想复杂了！！！！ // &#123; // while(low+2&lt;high&amp;&amp;nums[low]==nums[low+1]) // &#123; // low+=2; // &#125; // &#125; // else low++; &#125; else if(nums[i]+nums[j]+nums[low]+nums[high]&gt;target) &#123; // if(high-2&gt;low&amp;&amp;nums[high]==nums[high-1]) // &#123; // while(high-2&gt;low&amp;&amp;nums[high]==nums[high-1]) // &#123; // high-=2; // &#125; // &#125; // else high--; &#125; &#125; &#125; &#125; return list; &#125;&#125;]]></content>
