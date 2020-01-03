@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux的基本使用]]></title>
+    <url>%2F2020%2F01%2F03%2FLinux%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[Linux的基本命令1.pwd命令显示当前的目录 2.ls显示当前目录的所有文件夹 2.1 ls -l显示当前目录的所有文件，文件以垂直展示出来，即列表的形式 2.2 ls -a这会显示隐藏文件的 2.3 ls -l -h以k的单位展示出来（文件大小） 2.4 ls通配符2.4.1 **代表一个或者多个符号 ls *.txt 只想找txt格式的文件 2.4.2 ？？只代表一个字符 ls ？？.odt 查找只有两个字符的文件夹,以odt结尾的文件 2.4.3 []ls [1234].odt 查找第一个字符从1，2，3，4中任一个字符开头的odt文件。 ls [1-4].odt的意思是一样的 3.cd在cd后面添加要去的文件目录，例如：cd Desktop，意思就是到Desktop文件，注意cd只能打开文件夹 3.1 cd .cd .表示当前目录 3.2 cd .. cd ..表示上一层目录 3.3 cd ~cd ~ 表示回到跟路径 3.4 绝对路径和相对路径cd /开头是绝对路径 3.5 cd -cd -回到上一次操作的目录 4 touch命令touch text.txt表示创建一个text.txt文件 5 mkdir命令mkdir xiaokeai 会创建一个xiaokeai文件 5.1 创建隐藏文件mkdir .xiaokeai 会创建一个隐藏文件夹 6 rm命令6.1 删除文件rm xiaokeai 会删除xiaokeai文件 6.2 删除文件夹rm -d xiaokeai 会删除xiaokeai文件夹，只能删除空的文件夹 rm -r xiaokeai 会删除xiaokeai文件夹（文件不为空也会删除） 7 移动mv test.txt aa 表示把test.txt文件移动到aa文件夹中 移动不仅可以移动文件，也可以移动文件夹 8 复制cp test.txt xiaokeai 会把test.txt复制到xiaokeai的文件夹中]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[git常见指令操作]]></title>
     <url>%2F2019%2F11%2F29%2Fgit%E5%B8%B8%E8%A7%81%E6%8C%87%E4%BB%A4%E6%93%8D%E4%BD%9C%2F</url>
     <content type="text"><![CDATA[Git常见指令操作查看属于哪个分支的指令git branch: 星号所指的是就是当前的分支 创建一个新分支,并切换到新分支上git checkout -b user:新建了一个user分支（-b user），并切换到user分支上 检查当前分支下文件的状态git status命令查看当前分支下文件的状态 把这些文件都添加到暂存区git add .然后再检查文件状态git status 把当前分支提交到仓库中git commit -m &quot;提交消息&quot; 把本地分支推送到云端进行保存git push -u origin user:把本地的分支推送到云端的origin仓库，以user分支进行保存 把其他分支合并到主分支中1.git branch:查看当前的分支2.git checkout master:切换到主分支3.git branch:查看当前的分支4.git merge user:把user分支合并到主分支 把本地master分支的代码推送到云端git push 提交到云端完成！ 创建新的分支git checkout -b rights:创建rights分支 把新创建的分支提交到云端git push -u origin rights]]></content>
