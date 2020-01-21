@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[反转链表]]></title>
+    <url>%2F2020%2F01%2F21%2F%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[反转链表题目反转链表题目链接 反转一个单链表。 示例: 12输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL 解题思路遍历链表，并新建一个链表，每遍历一个数字，就把这个数用头插法插在第一位置。 1234567891011121314151617181920212223/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public ListNode reverseList(ListNode head) &#123; ListNode list=new ListNode(-1);//这个链表的头指针 ListNode pl=list.next;//这个链表的第二个节点 ListNode p=head; while(p!=null) &#123; list.next=new ListNode(p.val);//每遍历一个节点就把它放到链表的第一个位置 list.next.next=pl; pl=list.next; p=p.next; &#125; return list.next; &#125;&#125; 遍历完成后，链表就反转完成。 12345678解题方法二:递归反转链表ListNode reverse(ListNode head) &#123; if (head.next == null) return head; ListNode last = reverse(head.next); head.next.next = head; head.next = null; return last;&#125; 这篇文章讲解递归反转链表讲的比较好 反转链表题目进阶反转链表II 反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。 说明:1 ≤ m ≤ n ≤ 链表长度。 示例: 12输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4输出: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL 解题思路刚学完递归反转链表，我想过用递归去解这道题，自己还是毫无思路，看别人用递归的解法也看得有点发懵，还是觉得用常规方法好 第一步，找到反转位置的前一个位置p 第二步，将m到n的节点全部反转 第三步p的下一个指针指向反转链表的开始节点，反转链表的末尾节点的下一个指针指向原链表的第n+1的节点 123456789101112131415161718192021222324252627282930313233343536/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public ListNode reverseBetween(ListNode head, int m, int n) &#123; //第一步，找到反转位置的前一个位置p //第二步，将m到n的节点全部反转 //第三步p的下一个指针指向反转链表的开始节点，反转链表的末尾节点的下一个指针指向原 //链表的第n+1的节点 ListNode Nl=new ListNode(0); Nl.next=head; ListNode p=Nl; for(int i=1; i&lt;m; i++)//找到开始反转位置的前一个位置 &#123; p=p.next; &#125; ListNode ph=p.next; ListNode pre=null;//pre指向反转链表的首节点 ListNode last=null;//last指向第n+1个节点 for(int i=m; i&lt;=n; i++)//将第m个节点到n个节点全部反转 &#123; last=ph.next; ph.next=pre; pre=ph; ph=last; &#125; p.next.next=last;//反转链表的末尾节点的下一个指针指向第n+1个节点 p.next=pre;//前一段链表的末尾节点的下一个指针指向反转链表的头节点 return Nl.next; &#125;&#125;]]></content>
+      <tags>
+        <tag>做题笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java高并发秒杀项目]]></title>
+    <url>%2F2020%2F01%2F08%2FJava%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E9%A1%B9%E7%9B%AE%2F</url>
+    <content type="text"><![CDATA[1.创建项目和依赖1.1maven命令创建web骨架项目1mvn archetype:create -DgroupId=org.seckill -DartifactId=seckill -DarchetypeArtifactId=maven-archetype-webapp]]></content>
+      <tags>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Docker学习笔记]]></title>
     <url>%2F2020%2F01%2F06%2FDock%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[1.Docker是什么？Docker是一个开源的应用容器引擎：Docker支持将软件编译成一个镜像，然后在镜像中各种软件做好配置，将镜像发布出去，其他人可以直接使用这个镜像。 2.Docker相关的概念docker主机（Host）：安装了Docker程序的机器，Docker直接安装在操作系统之上。 docker客户端（Client）：连接docker主机进行操作。 docker仓库（Registry）：用来保存各种打包好的软件镜像。 docker镜像（Images）：软件打包好的镜像，放在docker仓库中。 docker容器（Container）：镜像启动后的实例称为一个容器，容器是独立运行的应用。 3.使用Docker的步骤一 安装Docker 二 去Docker仓库找到这个软件对应的镜像 三 使用Docker运行这个镜像，这个镜像就会生成一个Docker容器 4.容器的操作1234567891.搜索镜像docker search tomcat2.拉取镜像docker pull tomcat3.根据镜像启动容器docker run --name mytomcat -d tomcat：latest其中mytomcat是自己给tomcat的别名4.查看运行中的容器docker ps]]></content>
+    <content type="text"><![CDATA[1.Docker是什么？Docker是一个开源的应用容器引擎：Docker支持将软件编译成一个镜像，然后在镜像中各种软件做好配置，将镜像发布出去，其他人可以直接使用这个镜像。 2.Docker相关的概念docker主机（Host）：安装了Docker程序的机器，Docker直接安装在操作系统之上。 docker客户端（Client）：连接docker主机进行操作。 docker仓库（Registry）：用来保存各种打包好的软件镜像。 docker镜像（Images）：软件打包好的镜像，放在docker仓库中。 docker容器（Container）：镜像启动后的实例称为一个容器，容器是独立运行的应用。 3.使用Docker的步骤一 安装Docker 二 去Docker仓库找到这个软件对应的镜像 三 使用Docker运行这个镜像，这个镜像就会生成一个Docker容器 4.容器的操作12345678910111213141516171819201.搜索镜像docker search tomcat2.拉取镜像docker pull tomcat3.根据镜像启动容器docker run --name mytomcat -d tomcat：latest其中mytomcat是自己给tomcat的别名4.查看运行中的容器docker ps5.停止运行的容器docker stop （容器id）6.查看所有的容器docker ps -a7.启动一个做了端口映射的tomcatdocker run --name mytomcat -d -p 8888:8080 tomcat-d：后台运行-p：将主机的端口映射到容器的一个端口主机端口：容器内部的端口可以一个镜像，运行多个容器]]></content>
       <tags>
         <tag>笔记</tag>
       </tags>
