@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[重排链表]]></title>
+    <url>%2F2020%2F01%2F23%2F%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 给定一个单链表 L：L0→L1→…→Ln-1→Ln ，将其重新排列后变为： L0→Ln→L1→Ln-1→L2→Ln-2→… 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 示例 1: 1给定链表 1-&gt;2-&gt;3-&gt;4, 重新排列为 1-&gt;4-&gt;2-&gt;3. 示例 2: 1给定链表 1-&gt;2-&gt;3-&gt;4-&gt;5, 重新排列为 1-&gt;5-&gt;2-&gt;4-&gt;3. 解题思路把元素存储在线性表中，然后在头尾中分别取元素就行了 List的用法 12345678910111213141516171819202122232425262728293031323334/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public void reorderList(ListNode head) &#123; if(head==null) return; List&lt;ListNode&gt; li=new ArrayList&lt;ListNode&gt;(); ListNode p=head; while(p!=null) &#123; li.add(p); p=p.next; &#125; int i=0; int j=li.size()-1; while(i&lt;j) &#123; li.get(i).next=li.get(j); i++; // 比如偶数个，例如2个 if(i==j) break; li.get(j).next=li.get(i); j--; &#125; li.get(i).next=null; &#125;&#125;]]></content>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[环形链表II]]></title>
     <url>%2F2020%2F01%2F23%2F%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。 说明：不允许修改给定的链表。 示例 1： 123输入：head = [3,2,0,-4], pos = 1输出：tail connects to node index 1解释：链表中有一个环，其尾部连接到第二个节点。 示例 2： 123输入：head = [1,2], pos = 0输出：tail connects to node index 0解释：链表中有一个环，其尾部连接到第一个节点。 示例 3： 123输入：head = [1], pos = -1输出：no cycle解释：链表中没有环。 解题思路这道题用set很好解决，但是set的用法不是很清楚.这篇文章讲set讲得很详细 这道题主要用了add()方法，向集合中添加元素，contains()方法，判断集合中是否包含某一个元素。 思路：遍历整个链表，并把每一个节点加入到set集合中，每加入一个，就判断以前是否加入过，如果有加入过，则这个链表是有环的，如果一直遍历到链表的结尾，即节点为空时，也没有重复元素，则这个链表是无环的。 代码12345678910111213141516171819202122232425262728/** * Definition for singly-linked list. * class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; * val = x; * next = null; * &#125; * &#125; */public class Solution &#123; public ListNode detectCycle(ListNode head) &#123; Set &lt;ListNode&gt; list = new HashSet &lt;ListNode&gt; (); ListNode p=head; while(p!=null) &#123; if(!list.contains(p)) &#123; list.add(p); &#125; else return p; p=p.next; &#125; return null; &#125;&#125;]]></content>
