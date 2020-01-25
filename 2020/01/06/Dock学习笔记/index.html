@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1.Docker是什么？Docker是一个开源的应用容器引擎：Docker支持将软件编译成一个镜像，然后在镜像中各种软件做好配置，将镜像发布出去，其他人可以直接使用这个镜像。 2.Docker相关的概念docker主机（Host）：安装了Docker程序的机器，Docker直接安装在操作系统之上。 docker客户端（Client）：连接docker主机进行操作。 docker仓库（Registr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-08T14:43:34.865Z">
+<meta property="og:updated_time" content="2020-01-25T08:34:41.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker学习笔记">
 <meta name="twitter:description" content="1.Docker是什么？Docker是一个开源的应用容器引擎：Docker支持将软件编译成一个镜像，然后在镜像中各种软件做好配置，将镜像发布出去，其他人可以直接使用这个镜像。 2.Docker相关的概念docker主机（Host）：安装了Docker程序的机器，Docker直接安装在操作系统之上。 docker客户端（Client）：连接docker主机进行操作。 docker仓库（Registr">
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  367
+                  413
                 </span>
               
 
@@ -412,6 +412,9 @@
 <p>二 去Docker仓库找到这个软件对应的镜像</p>
 <p>三 使用Docker运行这个镜像，这个镜像就会生成一个Docker容器</p>
 <h2 id="4-容器的操作"><a href="#4-容器的操作" class="headerlink" title="4.容器的操作"></a>4.容器的操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.搜索镜像</span><br><span class="line">docker search tomcat</span><br><span class="line"><span class="number">2</span>.拉取镜像</span><br><span class="line">docker pull tomcat</span><br><span class="line"><span class="number">3</span>.根据镜像启动容器</span><br><span class="line">docker run --name mytomcat -d tomcat：latest</span><br><span class="line">其中mytomcat是自己给tomcat的别名</span><br><span class="line"><span class="number">4</span>.查看运行中的容器</span><br><span class="line">docker ps</span><br><span class="line"><span class="number">5</span>.停止运行的容器</span><br><span class="line">docker stop （容器id）</span><br><span class="line"><span class="number">6</span>.查看所有的容器</span><br><span class="line">docker ps -a</span><br><span class="line"><span class="number">7</span>.启动一个做了端口映射的tomcat</span><br><span class="line">docker run --name mytomcat -d -p <span class="number">8888</span>:<span class="number">8080</span> tomcat</span><br><span class="line">-d：后台运行</span><br><span class="line">-p：将主机的端口映射到容器的一个端口</span><br><span class="line">主机端口：容器内部的端口</span><br><span class="line"></span><br><span class="line">可以一个镜像，运行多个容器</span><br></pre></td></tr></table></figure>
+
+<p>安装MySql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">首先要以root方式运行</span><br><span class="line">sudo -i</span><br><span class="line">然后查看有哪些镜像</span><br><span class="line">docker images</span><br><span class="line">运行MySql</span><br><span class="line"> docker run -p 3306:3306 --name mysql101 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.5</span><br><span class="line">就可以用Navicat连接了</span><br></pre></td></tr></table></figure>
 
 
       
