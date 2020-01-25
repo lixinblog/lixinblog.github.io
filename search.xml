@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[147.对链表进行插入排序]]></title>
+    <url>%2F2020%2F01%2F25%2F147-%E5%AF%B9%E9%93%BE%E8%A1%A8%E8%BF%9B%E8%A1%8C%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 对链表进行插入排序 解题思路这道的思路真的很简单，但是实际动手起来很容易出错，主要是指针有点小错误就会一直卡住。链表问题，自己做了这么多，一直很容易出现指针越界，这个问题就卡了昨天一下午，一定要先判断指针是否越界！！！ 1if(ph.val&gt;=p.val&amp;&amp;p.next.val&gt;ph.val&amp;&amp;p.next!=null) 1if(p.next!=null&amp;&amp;ph.val&gt;=p.val&amp;&amp;p.next.val&gt;ph.val)//插入链表中间 这两条命令是有区别的，在leetcode中，上面那条代码会出现指针越界问题，下面这条代码就不会出现指针越界问题 最后附上自己的代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public ListNode insertionSortList(ListNode head) &#123; if(head==null||head.next==null) return head; ListNode p=head;//操作指针 ListNode ph=head.next;//从数据中获取元素 ListNode ph_next=ph.next;//用来指向输入数据的后面一个元素 head.next=null;//形成新的链表 while(ph!=null) &#123; while(p!=null) &#123; if(p.next!=null&amp;&amp;ph.val&gt;=p.val&amp;&amp;p.next.val&gt;ph.val)//插入链表中间 &#123; ph.next=p.next; p.next=ph; ph=ph_next;//ph指向新的数据 p=head;//p重新指向头节点 break; &#125; else if(ph.val&lt;p.val&amp;&amp;p==head)//插入到链表头部 &#123; head=ph; ph.next=p; ph=ph_next;//ph指向新的数据 p=head;//p重新指向头节点 break; &#125; else if(ph.val&gt;=p.val&amp;&amp;p.next==null)//插入到链表的末尾 &#123; ph.next=p.next; p.next=ph; ph=ph_next;//ph指向新的数据 p=head;//p重新指向头节点 break; &#125; else p=p.next; &#125; if(ph_next!=null) ph_next=ph_next.next; else break; &#125; return head; &#125;&#125;]]></content>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[重排链表]]></title>
     <url>%2F2020%2F01%2F23%2F%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 给定一个单链表 L：L0→L1→…→Ln-1→Ln ，将其重新排列后变为： L0→Ln→L1→Ln-1→L2→Ln-2→… 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 示例 1: 1给定链表 1-&gt;2-&gt;3-&gt;4, 重新排列为 1-&gt;4-&gt;2-&gt;3. 示例 2: 1给定链表 1-&gt;2-&gt;3-&gt;4-&gt;5, 重新排列为 1-&gt;5-&gt;2-&gt;4-&gt;3. 解题思路把元素存储在线性表中，然后在头尾中分别取元素就行了 List的用法 12345678910111213141516171819202122232425262728293031323334/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public void reorderList(ListNode head) &#123; if(head==null) return; List&lt;ListNode&gt; li=new ArrayList&lt;ListNode&gt;(); ListNode p=head; while(p!=null) &#123; li.add(p); p=p.next; &#125; int i=0; int j=li.size()-1; while(i&lt;j) &#123; li.get(i).next=li.get(j); i++; // 比如偶数个，例如2个 if(i==j) break; li.get(j).next=li.get(i); j--; &#125; li.get(i).next=null; &#125;&#125;]]></content>
