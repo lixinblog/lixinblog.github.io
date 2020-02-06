@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[从上往下打印二叉树]]></title>
+    <url>%2F2020%2F02%2F06%2F%E4%BB%8E%E4%B8%8A%E5%BE%80%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 从上往下打印出二叉树的每个节点，同层节点从左至右打印。 解题思路这道题就是二叉树的层序遍历，用队列来完成即可，先进先出，只是忘记了队列的相关操作，做这道题来巩固一下队列的基本操作： offer（添加队尾元素）、peek（访问队头元素）、poll（访问队头元素并移除） 1234567891011121314151617181920212223242526272829303132333435import java.util.ArrayList;import java.util.Queue;import java.util.LinkedList;/**public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;*/public class Solution &#123; public ArrayList&lt;Integer&gt; PrintFromTopToBottom(TreeNode root) &#123; Queue &lt;TreeNode&gt; queue =new LinkedList &lt;TreeNode&gt; (); ArrayList &lt;Integer&gt; list=new ArrayList &lt;Integer&gt; (); if(root==null)//如果树为空，则返回空的ArrayList，而不是null return list; queue.offer(root); while(queue.isEmpty()==false) &#123; TreeNode temp=queue.poll(); list.add(temp.val); if(temp.left!=null) queue.offer(temp.left); if(temp.right!=null) queue.offer(temp.right); &#125; return list; &#125;&#125; 注意点12Queue &lt;TreeNode&gt; queue = new LinkedList &lt;TreeNode&gt;();而不是Queue &lt;TreeNode&gt; queue = new Queue &lt;TreeNode&gt;(); 还要导入相关的包 如果数是空树，返回的是空的ArrayList，而不是空指针！]]></content>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[栈的压入、弹出序列]]></title>
+    <url>%2F2020%2F02%2F06%2F%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否可能为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如序列1,2,3,4,5是某栈的压入顺序，序列4,5,3,2,1是该压栈序列对应的一个弹出序列，但4,3,5,1,2就不可能是该压栈序列的弹出序列。（注意：这两个序列的长度是相等的） 解题思路参考了别人的解题思路，我咋就没想到呢，新建一个栈，第一个序列依次进栈，每一次进栈，栈顶元素都要比较和序列二对应元素的值，如果相等，则出栈，循环结束后，如果栈中元素为空，则返回true 1234567891011121314151617181920import java.util.ArrayList;import java.util.Stack;//记得导入相关的包public class Solution &#123; public boolean IsPopOrder(int [] pushA,int [] popA) &#123; if(pushA.length==0||popA.length==0||pushA.length!=popA.length) return false; Stack &lt;Integer&gt; stack=new Stack &lt;Integer&gt; (); int j=0; for(int i=0; i&lt;pushA.length; i++) &#123; stack.push(pushA[i]); while(stack.isEmpty()==false&amp;&amp;stack.peek()==popA[j]) &#123; stack.pop(); j++; &#125; &#125; return stack.isEmpty();//判断栈是否为空 &#125;&#125;]]></content>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[包含min函数的栈]]></title>
     <url>%2F2020%2F02%2F06%2F%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。 解题思路用两个栈来完成，一个栈记录元素，另一个栈用来记录栈中所含最小元素，每一次元素的入栈和出栈，都要更新对应最小元素栈中的值。例如一个元素入栈，如果这个元素小于最小元素栈中的值，则要更新最小元素栈中的值，否则最小元素栈中的值保持不变。 123456789101112131415161718192021222324252627282930313233import java.util.Stack;public class Solution &#123; Stack &lt;Integer&gt; Total=new Stack &lt;&gt; ();//记录所有的元素 Stack &lt;Integer&gt; Little=new Stack &lt;&gt; ();//栈顶记录当前的最小元素 public void push(int node) &#123; Total.push(node); if(Little.empty()) Little.push(node); else&#123; if(node&lt;Little.peek())//如果这个元素小于栈中的最小元素 &#123; Little.push(node); &#125; else&#123;//如果这个元素大于栈中最小元素，则最小元素栈进栈的还是最小元素栈中栈顶的元素 Little.push(Little.peek());//Little.peek()只取栈顶的元素值，但是不出栈 &#125; &#125; &#125; public void pop() &#123; Total.pop(); Little.pop(); &#125; public int top() &#123; return Little.peek(); &#125; public int min() &#123; return Little.peek(); &#125;&#125;]]></content>
