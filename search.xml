@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[包含min函数的栈]]></title>
+    <url>%2F2020%2F02%2F06%2F%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。 解题思路用两个栈来完成，一个栈记录元素，另一个栈用来记录栈中所含最小元素，每一次元素的入栈和出栈，都要更新对应最小元素栈中的值。例如一个元素入栈，如果这个元素小于最小元素栈中的值，则要更新最小元素栈中的值，否则最小元素栈中的值保持不变。 123456789101112131415161718192021222324252627282930313233import java.util.Stack;public class Solution &#123; Stack &lt;Integer&gt; Total=new Stack &lt;&gt; ();//记录所有的元素 Stack &lt;Integer&gt; Little=new Stack &lt;&gt; ();//栈顶记录当前的最小元素 public void push(int node) &#123; Total.push(node); if(Little.empty()) Little.push(node); else&#123; if(node&lt;Little.peek())//如果这个元素小于栈中的最小元素 &#123; Little.push(node); &#125; else&#123;//如果这个元素大于栈中最小元素，则最小元素栈进栈的还是最小元素栈中栈顶的元素 Little.push(Little.peek());//Little.peek()只取栈顶的元素值，但是不出栈 &#125; &#125; &#125; public void pop() &#123; Total.pop(); Little.pop(); &#125; public int top() &#123; return Little.peek(); &#125; public int min() &#123; return Little.peek(); &#125;&#125;]]></content>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[顺时针打印矩阵]]></title>
     <url>%2F2020%2F02%2F06%2F%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E6%8C%87%E9%92%88%2F</url>
     <content type="text"><![CDATA[顺时针打印矩阵题目描述题目链接 输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10. 解题思路主要是控制数组的访问方向，首先是向右遍历，然后向下遍历，向左遍历，向上遍历，可以用一个数组来完成。 12345int cout=0;int [] dx=&#123;0,1,0,-1&#125;;//行变化int [] dy=&#123;1,0,-1,0&#125;;//列变化//当需要改变方向时，可以通过改变cout的值来完成//例如向右遍历时，cout=0,对应的dx[cout]=0，dy[cout]=1 还有是需要一个二维数组来标记这个数是否被访问过，未被访问过则这个数组的对应数记录为false，访问过则记录对应数为ture，则可以完成矩阵的顺时针的遍历，逆时针同样可以完成遍历 代码: 12345678910111213141516171819202122232425262728293031323334353637import java.util.ArrayList;public class Solution &#123; public ArrayList&lt;Integer&gt; printMatrix(int [][] matrix) &#123; int lie=matrix[0].length; int hang=matrix.length; ArrayList&lt;Integer&gt; list=new ArrayList&lt;&gt;(); int [] dx=&#123;0,1,0,-1&#125;;//行变化 int [] dy=&#123;1,0,-1,0&#125;;//列变化 int cout=0;//用来控制方向 int x=0;//当前行 int y=0;//当前列 boolean [][] visit=new boolean[hang][lie]; for(int i=0; i&lt;hang*lie; i++) &#123; if(x&gt;=0&amp;&amp;x&lt;hang&amp;&amp;y&gt;=0&amp;&amp;y&lt;lie&amp;&amp;visit[x][y]==false)//在矩阵内且没有访问过 &#123; visit[x][y]=true; list.add(matrix[x][y]); &#125; int tx=x+dx[cout];//新的临时x坐标 int ty=y+dy[cout];//新的临时y坐标 if(tx&lt;0||tx&gt;=hang||ty&lt;0||ty&gt;=lie||visit[tx][ty]==true)//矩阵坐标越界或者已经访问过 &#123; cout++; cout=(cout)%4; x=x+dx[cout]; y=y+dy[cout]; &#125; else//正常坐标 &#123; x=tx; y=ty; &#125; &#125; return list; &#125;&#125;]]></content>
