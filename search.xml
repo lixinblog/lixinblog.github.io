@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[二叉搜索树与双向链表]]></title>
+    <url>%2F2020%2F02%2F07%2F%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。 思路用中序遍历的思想，再把修改相应的指针 12345678910111213141516171819202122232425262728293031323334353637383940414243444546import java.util.Stack;/**public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;*/public class Solution &#123; public TreeNode Convert(TreeNode pRootOfTree) &#123; Stack &lt;TreeNode&gt; stack =new Stack &lt;TreeNode&gt; (); TreeNode p=pRootOfTree; TreeNode head=null;//新的双向链表的头节点 TreeNode pre=null;//新的双向链表的尾节点 boolean flag=true;//用来建立链表的首节点 while(stack.isEmpty()==false||p!=null) &#123; while(p!=null) &#123; stack.push(p); p=p.left; &#125; p=stack.pop(); if(flag==true) &#123; head=p; pre=p; flag=false; &#125; else &#123; pre.right=p; p.left=pre; pre=p; &#125; p=p.right; &#125; return head; &#125;&#125;]]></content>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[二叉树中和为某一值的路径]]></title>
     <url>%2F2020%2F02%2F07%2F%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 输入一颗二叉树的跟节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。 思路二叉树的遍历，如果遍历后的和为目标值，则把这串数保存起来，用递归解法很简单。 1234567891011121314151617181920212223242526272829303132333435363738394041424344import java.util.ArrayList;/**public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;*/public class Solution &#123; public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindPath(TreeNode root,int target) &#123; ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list=new ArrayList&lt;ArrayList&lt;Integer&gt;&gt;(); ArrayList&lt;Integer&gt; sublist=new ArrayList&lt;Integer&gt; (); if(root==null) return list; findpath(list,sublist,root,target); return list; &#125; public void findpath(ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list,ArrayList&lt;Integer&gt; sublist,TreeNode root,int target) &#123; sublist.add(root.val); if(root.left==null&amp;&amp;root.right==null)//叶子节点 &#123; if(root.val==target) &#123; list.add(sublist); &#125; return; &#125; //分别遍历左右子树，如果有符合条件的就加入到list中 //每当遍历新的子树，就新建ArrayList来保存,以便于将符合条件的数组加入到list中 ArrayList &lt;Integer&gt; newlist=new ArrayList&lt;Integer&gt; (); newlist.addAll(sublist); if(root.left!=null) findpath(list,newlist,root.left,target-root.val); if(root.right!=null) findpath(list,sublist,root.right,target-root.val); &#125;&#125;]]></content>
