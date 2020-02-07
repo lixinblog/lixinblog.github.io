@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[二叉树中和为某一值的路径]]></title>
+    <url>%2F2020%2F02%2F07%2F%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 输入一颗二叉树的跟节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。 思路二叉树的遍历，如果遍历后的和为目标值，则把这串数保存起来，用递归解法很简单。 1234567891011121314151617181920212223242526272829303132333435363738394041424344import java.util.ArrayList;/**public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;*/public class Solution &#123; public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindPath(TreeNode root,int target) &#123; ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list=new ArrayList&lt;ArrayList&lt;Integer&gt;&gt;(); ArrayList&lt;Integer&gt; sublist=new ArrayList&lt;Integer&gt; (); if(root==null) return list; findpath(list,sublist,root,target); return list; &#125; public void findpath(ArrayList&lt;ArrayList&lt;Integer&gt;&gt; list,ArrayList&lt;Integer&gt; sublist,TreeNode root,int target) &#123; sublist.add(root.val); if(root.left==null&amp;&amp;root.right==null)//叶子节点 &#123; if(root.val==target) &#123; list.add(sublist); &#125; return; &#125; //分别遍历左右子树，如果有符合条件的就加入到list中 //每当遍历新的子树，就新建ArrayList来保存,以便于将符合条件的数组加入到list中 ArrayList &lt;Integer&gt; newlist=new ArrayList&lt;Integer&gt; (); newlist.addAll(sublist); if(root.left!=null) findpath(list,newlist,root.left,target-root.val); if(root.right!=null) findpath(list,sublist,root.right,target-root.val); &#125;&#125;]]></content>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[二叉搜索树的后序遍历序列]]></title>
     <url>%2F2020%2F02%2F06%2F%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。 解题思路什么叫做二叉搜索数，即左子树小于根节点，左子树大于根节点，每一个子树也满足这个条件。 这道题采用分治的方法，数组序列的最后一个节点就是根节点，根据二叉搜索树的后序遍历，小于根节点的数就是左子树，大于根节点的数就是右子树，然后再分别判断左子树和右子树是否满足二叉搜索树的后续遍历。 123456789101112131415161718192021222324252627public class Solution &#123; public boolean VerifySquenceOfBST(int [] sequence) &#123; if(sequence.length&lt;=0)//数组为空就是不符合后序遍历 return false; return judgeBSF(sequence,0,sequence.length-1); &#125; public boolean judgeBSF(int [] sequence,int start,int end) &#123; if(start&gt;=end) return true; int i=start; int val=sequence[end];//根节点的值 while(sequence[i]&lt;val)//循环截止时i-1的值，就是左子树根节点的下标 &#123; i++; &#125; int j=i; while(j&lt;end) &#123; j++; if(sequence[j]&lt;val)//如果右子树的值小于根节点的值，这个就不符合后序遍历 return false; &#125; //判断左子树和右子树是否符合二叉搜索树的后序遍历 return judgeBSF(sequence,start,i-1)&amp;&amp;judgeBSF(sequence,i,end-1); &#125;&#125;]]></content>
