@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="题目描述题目链接 对链表进行插入排序 解题思路这道的思路真的很简单，但是实际动手起来很容易出错，主要是指针有点小错误就会一直卡住。链表问题，自己做了这么多，一直很容易出现指针越界，这个问题就卡了昨天一下午，一定要先判断指针是否越界！！！ 1if(ph.val&amp;gt;=p.val&amp;amp;&amp;amp;p.next.val&amp;gt;ph.val&amp;amp;&amp;amp;p.next!=null)  1if(p.">
+<meta name="description" content="AQS是AbstractQueuedSynchronizer的简称:使用Node实现FIFO队列，可以用于构建锁或者其他同步装置的基础框架 利用了一个int类型表示状态 使用方法是继承 字类通过继承并通过实现它的方法管理其状态(require和release)的方法操作状态 可以同时实现排它锁和共享锁模式(独占，共享)">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="147.对链表进行插入排序">
-<meta property="og:url" content="http://yoursite.com/2020/01/25/147-对链表进行插入排序/index.html">
+<meta property="og:title" content="AQS">
+<meta property="og:url" content="http://yoursite.com/2020/02/17/AQS/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述题目链接 对链表进行插入排序 解题思路这道的思路真的很简单，但是实际动手起来很容易出错，主要是指针有点小错误就会一直卡住。链表问题，自己做了这么多，一直很容易出现指针越界，这个问题就卡了昨天一下午，一定要先判断指针是否越界！！！ 1if(ph.val&amp;gt;=p.val&amp;amp;&amp;amp;p.next.val&amp;gt;ph.val&amp;amp;&amp;amp;p.next!=null)  1if(p.">
+<meta property="og:description" content="AQS是AbstractQueuedSynchronizer的简称:使用Node实现FIFO队列，可以用于构建锁或者其他同步装置的基础框架 利用了一个int类型表示状态 使用方法是继承 字类通过继承并通过实现它的方法管理其状态(require和release)的方法操作状态 可以同时实现排它锁和共享锁模式(独占，共享)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-25T02:40:26.357Z">
+<meta property="og:updated_time" content="2020-02-17T16:32:57.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="147.对链表进行插入排序">
-<meta name="twitter:description" content="题目描述题目链接 对链表进行插入排序 解题思路这道的思路真的很简单，但是实际动手起来很容易出错，主要是指针有点小错误就会一直卡住。链表问题，自己做了这么多，一直很容易出现指针越界，这个问题就卡了昨天一下午，一定要先判断指针是否越界！！！ 1if(ph.val&amp;gt;=p.val&amp;amp;&amp;amp;p.next.val&amp;gt;ph.val&amp;amp;&amp;amp;p.next!=null)  1if(p.">
+<meta name="twitter:title" content="AQS">
+<meta name="twitter:description" content="AQS是AbstractQueuedSynchronizer的简称:使用Node实现FIFO队列，可以用于构建锁或者其他同步装置的基础框架 利用了一个int类型表示状态 使用方法是继承 字类通过继承并通过实现它的方法管理其状态(require和release)的方法操作状态 可以同时实现排它锁和共享锁模式(独占，共享)">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/01/25/147-对链表进行插入排序/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/17/AQS/">
 
 
 
 
 
-  <title>147.对链表进行插入排序 | Hexo</title>
+  <title>AQS | Hexo</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/25/147-对链表进行插入排序/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/17/AQS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lixin">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">147.对链表进行插入排序</h1>
+          <h1 class="post-title" itemprop="name headline">AQS</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-25T10:33:12+08:00">
-                2020-01-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-17T15:39:08+08:00">
+                2020-02-17
               </time>
             
 
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  464
+                  99
                 </span>
               
 
@@ -381,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -402,17 +402,11 @@
       
 
       
-        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p><a href="https://leetcode-cn.com/problems/insertion-sort-list/" target="_blank" rel="noopener">题目链接</a></p>
-<p>对链表进行插入排序</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这道的思路真的很简单，但是实际动手起来很容易出错，主要是指针有点小错误就会一直卡住。链表问题，自己做了这么多，一直很容易出现指针越界，这个问题就卡了昨天一下午，一定要先判断指针是否越界！！！</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(ph.val&gt;=p.val&amp;&amp;p.next.val&gt;ph.val&amp;&amp;p.next!=<span class="keyword">null</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(p.next!=<span class="keyword">null</span>&amp;&amp;ph.val&gt;=p.val&amp;&amp;p.next.val&gt;ph.val)<span class="comment">//插入链表中间</span></span><br></pre></td></tr></table></figure>
-
-<p>这两条命令是有区别的，在leetcode中，上面那条代码会出现指针越界问题，下面这条代码就不会出现指针越界问题</p>
-<p>最后附上自己的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">insertionSortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="keyword">null</span>||head.next==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">        ListNode p=head;<span class="comment">//操作指针</span></span><br><span class="line">        ListNode ph=head.next;<span class="comment">//从数据中获取元素</span></span><br><span class="line">        ListNode ph_next=ph.next;<span class="comment">//用来指向输入数据的后面一个元素</span></span><br><span class="line">        head.next=<span class="keyword">null</span>;<span class="comment">//形成新的链表</span></span><br><span class="line">        <span class="keyword">while</span>(ph!=<span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span>(p!=<span class="keyword">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(p.next!=<span class="keyword">null</span>&amp;&amp;ph.val&gt;=p.val&amp;&amp;p.next.val&gt;ph.val)<span class="comment">//插入链表中间</span></span><br><span class="line">                &#123;</span><br><span class="line">                    ph.next=p.next;</span><br><span class="line">                    p.next=ph;</span><br><span class="line">                    ph=ph_next;<span class="comment">//ph指向新的数据</span></span><br><span class="line">                    p=head;<span class="comment">//p重新指向头节点</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(ph.val&lt;p.val&amp;&amp;p==head)<span class="comment">//插入到链表头部</span></span><br><span class="line">                &#123;</span><br><span class="line">                    head=ph;</span><br><span class="line">                    ph.next=p;</span><br><span class="line">                    ph=ph_next;<span class="comment">//ph指向新的数据</span></span><br><span class="line">                    p=head;<span class="comment">//p重新指向头节点</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(ph.val&gt;=p.val&amp;&amp;p.next==<span class="keyword">null</span>)<span class="comment">//插入到链表的末尾</span></span><br><span class="line">                &#123;</span><br><span class="line">                    ph.next=p.next;</span><br><span class="line">                    p.next=ph;</span><br><span class="line">                    ph=ph_next;<span class="comment">//ph指向新的数据</span></span><br><span class="line">                    p=head;<span class="comment">//p重新指向头节点</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                p=p.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(ph_next!=<span class="keyword">null</span>)</span><br><span class="line">            ph_next=ph_next.next;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h2 id="AQS是AbstractQueuedSynchronizer的简称"><a href="#AQS是AbstractQueuedSynchronizer的简称" class="headerlink" title="AQS是AbstractQueuedSynchronizer的简称:"></a>AQS是AbstractQueuedSynchronizer的简称:</h2><p>使用Node实现FIFO队列，可以用于构建锁或者其他同步装置的基础框架</p>
+<p>利用了一个int类型表示状态</p>
+<p>使用方法是继承</p>
+<p>字类通过继承并通过实现它的方法管理其状态(require和release)的方法操作状态</p>
+<p>可以同时实现排它锁和共享锁模式(独占，共享)</p>
 
       
     </div>
@@ -472,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/23/重排链表/" rel="next" title="重排链表">
-                <i class="fa fa-chevron-left"></i> 重排链表
+              <a href="/2020/02/07/二叉搜索树与双向链表/" rel="next" title="二叉搜索树与双向链表">
+                <i class="fa fa-chevron-left"></i> 二叉搜索树与双向链表
               </a>
             
           </div>
@@ -482,8 +476,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/02/06/顺时针打印指针/" rel="prev" title="顺时针打印矩阵">
-                顺时针打印矩阵 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/18/字符串的排列/" rel="prev" title="字符串的排列">
+                字符串的排列 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -665,7 +659,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AQS是AbstractQueuedSynchronizer的简称"><span class="nav-number">1.</span> <span class="nav-text">AQS是AbstractQueuedSynchronizer的简称:</span></a></li></ol></div>
             
 
           </div>

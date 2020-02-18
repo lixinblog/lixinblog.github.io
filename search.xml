@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[字符串的排列]]></title>
+    <url>%2F2020%2F02%2F18%2F%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。 输入描述：1输入一个字符串,长度不超过9(可能有字符重复),字符只包括大小写字母。 解题思路多谢大佬的解题思路 这道题用TreeSet很好解决，又可以去重，又自动排序，但是不能用。。。只能用ArrayList 例如abc可以字母a分别与a，b，c交换得到a,(b,c)和b,(a,c)和c,(a,b) a,(b,c)的子集(b,c)继续进行这样的操作，b与b,c交换,得到b,(c)和c,(b), (c)中c与c自己交换的，(b)中b与b自己交换.a,(b,c)的全排列就得到了，同理可以得到b,(a,c)和c,(a,b)的全排列,最后得到a,b,c的全排列。 下面是大佬思路的精髓： 假如有重复值呢？ 由于全排列就是从第一个数字起，每个数分别与它后面的数字交换，我们先尝试加个这样的判断——如果一个数与后面的数字相同那么这两个数就不交换了。 例如abb，第一个数与后面两个数交换得bab，bba。然后abb中第二个数和第三个数相同，就不用交换了。 但是对bab，第二个数和第三个数不 同，则需要交换，得到bba。 由于这里的bba和开始第一个数与第三个数交换的结果相同了，因此这个方法不行。 换种思维，对abb，第一个数a与第二个数b交换得到bab，然后考虑第一个数与第三个数交换，此时由于第三个数等于第二个数(代码中用HashSet)，所以第一个数就不再用与第三个数交换了。再考虑bab，它的第二个数与第三个数交换可以解决bba。此时全排列生成完毕！代码123456789101112131415161718192021222324252627282930313233343536373839404142import java.util.ArrayList;import java.util.Collections;import java.util.Set;import java.util.HashSet;public class Solution &#123; public ArrayList&lt;String&gt; Permutation(String str) &#123; ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;(); if(str.length()!=0) &#123; //str.toCharArray()是将String类型转化成Char型数组 permutationhelp(str.toCharArray(),0,list); Collections.sort(list); &#125; return list; &#125; public void permutationhelp(char [] chars,int i,ArrayList&lt;String&gt; list) &#123; //已经递归到字符数组末尾了，是递归的结束条件 if(i==chars.length-1)//字符数组的长度为chars.length,字符串的长度为chars.length() &#123; list.add(String.valueOf(chars));//String.valueOf(chars)将chars数组转化成字符串 return; &#125; Set&lt;Character&gt; charset=new HashSet&lt;Character&gt; ();//记录字符，将来要和遍历的字符作比较，这里面没有交换 for(int j=i; j&lt;chars.length; j++) &#123; if(i==j||charset.contains(chars[j])==false) &#123; charset.add(chars[j]); swapij(chars,i,j);//将对应位置的字符对换 permutationhelp(chars,i+1,list); swapij(chars,j,i); &#125; &#125; &#125; public void swapij(char [] chars,int i,int j) &#123; char temp=chars[i]; chars[i]=chars[j]; chars[j]=temp; &#125;&#125;]]></content>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[AQS]]></title>
+    <url>%2F2020%2F02%2F17%2FAQS%2F</url>
+    <content type="text"><![CDATA[AQS是AbstractQueuedSynchronizer的简称:使用Node实现FIFO队列，可以用于构建锁或者其他同步装置的基础框架 利用了一个int类型表示状态 使用方法是继承 字类通过继承并通过实现它的方法管理其状态(require和release)的方法操作状态 可以同时实现排它锁和共享锁模式(独占，共享)]]></content>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[二叉搜索树与双向链表]]></title>
     <url>%2F2020%2F02%2F07%2F%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。 思路用中序遍历的思想，再把修改相应的指针 12345678910111213141516171819202122232425262728293031323334353637383940414243444546import java.util.Stack;/**public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;*/public class Solution &#123; public TreeNode Convert(TreeNode pRootOfTree) &#123; Stack &lt;TreeNode&gt; stack =new Stack &lt;TreeNode&gt; (); TreeNode p=pRootOfTree; TreeNode head=null;//新的双向链表的头节点 TreeNode pre=null;//新的双向链表的尾节点 boolean flag=true;//用来建立链表的首节点 while(stack.isEmpty()==false||p!=null) &#123; while(p!=null) &#123; stack.push(p); p=p.left; &#125; p=stack.pop(); if(flag==true) &#123; head=p; pre=p; flag=false; &#125; else &#123; pre.right=p; p.left=pre; pre=p; &#125; p=p.right; &#125; return head; &#125;&#125;]]></content>
