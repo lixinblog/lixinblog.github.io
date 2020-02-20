@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[二叉树的深度]]></title>
+    <url>%2F2020%2F02%2F20%2F%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。 解题思路知道这道题要用递归，自己却不知道如何下手，还是自己做的题太少了，自己太菜了，要多加练习 123456789101112131415161718192021222324252627/**public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;*/public class Solution &#123; public int TreeDepth(TreeNode root) &#123; if(root==null) return 0; int leftdeep=TreeDepth(root.left); int rightdeep=TreeDepth(root.right); int result; if(leftdeep&gt;rightdeep) result=1+leftdeep; else result=1+rightdeep; return result; &#125;&#125;]]></content>
+      <tags>
+        <tag>剑指offer笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数组中的逆序对]]></title>
+    <url>%2F2020%2F02%2F20%2F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007 输入描述： 123456789题目保证输入的数组中没有的相同的数字数据范围： 对于%50的数据,size&lt;=10^4 对于%75的数据,size&lt;=10^5 对于%100的数据,size&lt;=2*10^5 示例1 1234输入1,2,3,4,5,6,7,0输出7 解题思路别人解题思路 简而言之，就是先把数组分隔成子数组，先统计出子数组内部的逆序对的数目，然后再统计出两个相邻子数组之间的逆序对的数目。在统计逆序对的过程中，还需要对数组进行排序。 123456789101112131415161718192021222324252627282930313233343536373839404142434445public class Solution &#123; int cout=0; public int InversePairs(int [] array) &#123; mergesort(array,0,array.length-1); return cout; &#125; public void mergesort(int [] array,int start,int end) &#123; if(start&gt;=end) return; int mid=(start+end)/2; mergesort(array,start,mid); mergesort(array,mid+1,end); mergesortone(array,start,mid,end); &#125; public void mergesortone(int [] array,int start,int mid,int end) &#123; int [] temp=new int [end-start+1];//开一个数组保存排序后的数组 int i=start,j=mid+1,k=0; while(i&lt;=mid&amp;&amp;j&lt;=end) &#123; if(array[i]&lt;=array[j])//不能构成逆序对 &#123; temp[k++]=array[i++]; &#125; else//能构成逆序对 &#123; temp[k++]=array[j++]; cout=(cout+mid+1-i)%1000000007;//前一半数组中元素的个数 &#125; &#125; while(i&lt;=mid)//前一半数组中剩余的个数 &#123; temp[k++]=array[i++]; &#125; while(j&lt;=end)//后一半数组中剩余的个数 &#123; temp[k++]=array[j++]; &#125; for(int f=0; f&lt;k; f++)//把排好序的数组赋给array数组 &#123; array[start+f]=temp[f]; &#125; &#125;&#125;]]></content>
+      <tags>
+        <tag>剑指offer笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[丑数]]></title>
     <url>%2F2020%2F02%2F20%2F%E4%B8%91%E6%95%B0%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 把只包含质因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含质因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。 解题思路1×2=2，1×3=3，2×2=4, 1×5=5，2×3=6，。。。。。 用三个指针分别纪录质数2，3，5，当乘以对应的质数时，对应的指针加一，开一个大的数组记录对应丑数。 1234567891011121314151617181920public class Solution &#123; public int GetUglyNumber_Solution(int index) &#123; if(index&lt;=0) return 0; int p1=0,p2=0,p3=0; int [] result=new int [index]; result[0]=1; for(int i=1; i&lt;index; i++) &#123; result[i]=Math.min(result[p1]*2,Math.min(result[p2]*3,result[p3]*5)); if(result[i]==result[p1]*2) p1++; if(result[i]==result[p2]*3) p2++; if(result[i]==result[p3]*5) p3++; &#125; return result[index-1]; &#125;&#125;]]></content>
