@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[丑数]]></title>
+    <url>%2F2020%2F02%2F20%2F%E4%B8%91%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 把只包含质因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含质因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。 解题思路1×2=2，1×3=3，2×2=4, 1×5=5，2×3=6，。。。。。 用三个指针分别纪录质数2，3，5，当乘以对应的质数时，对应的指针加一，开一个大的数组记录对应丑数。 1234567891011121314151617181920public class Solution &#123; public int GetUglyNumber_Solution(int index) &#123; if(index&lt;=0) return 0; int p1=0,p2=0,p3=0; int [] result=new int [index]; result[0]=1; for(int i=1; i&lt;index; i++) &#123; result[i]=Math.min(result[p1]*2,Math.min(result[p2]*3,result[p3]*5)); if(result[i]==result[p1]*2) p1++; if(result[i]==result[p2]*3) p2++; if(result[i]==result[p3]*5) p3++; &#125; return result[index-1]; &#125;&#125;]]></content>
+      <tags>
+        <tag>剑指offer笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[把数组排成最小的数]]></title>
+    <url>%2F2020%2F02%2F20%2F%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。 解题思路自己拿到这道题，想了一会儿，完全一点思路也没有，看了别人的解题思路后，理解如下：这道题主要是对字符串进行排序，将字符串s1和s2进行拼接，如果s1+s2大于s2+s1，则s2应该排在s1的前面。 1234567891011121314151617181920212223242526272829import java.util.ArrayList; public class Solution &#123; public String PrintMinNumber(int [] numbers) &#123; String str=new String(""); int len =numbers.length; if(len==0) return ""; for(int i=0; i&lt;len; i++)//用冒泡排序 &#123; for(int j=i+1; j&lt;len; j++) &#123; int sum1=Integer.valueOf(numbers[i]+""+numbers[j]); int sum2=Integer.valueOf(numbers[j]+""+numbers[i]); if(sum1&gt;sum2) &#123; int temp=numbers[i]; numbers[i]=numbers[j]; numbers[j]=temp; &#125; &#125; &#125; for(int i=0; i&lt;len; i++) &#123; str+=numbers[i]; &#125; return str; &#125;&#125;]]></content>
+      <tags>
+        <tag>剑指offer笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[整数中1出现的次数（从1到n整数中1出现的次数）]]></title>
+    <url>%2F2020%2F02%2F19%2F%E6%95%B4%E6%95%B0%E4%B8%AD1%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0%EF%BC%88%E4%BB%8E1%E5%88%B0n%E6%95%B4%E6%95%B0%E4%B8%AD1%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 求出113的整数中1出现的次数,并算出1001300的整数中1出现的次数？为此他特别数了一下1~13中包含1的数字有1、10、11、12、13因此共出现6次,但是对于后面问题他就没辙了。ACMer希望你们帮帮他,并把问题更加普遍化,可以很快的求出任意非负整数区间中1出现的次数（从1 到 n 中1出现的次数）。 解题思路一从1到n，每个数都判断个位，十位，百位，千位。。。中的1的个数，加起来，累加后得到结果 代码12345678910111213141516171819202122public class Solution &#123; public int NumberOf1Between1AndN_Solution(int n) &#123; int cout=0; for(int i=1; i&lt;=n; i++) &#123; cout+=judge(i); &#125; return cout; &#125; public int judge(int n) &#123; int s=0; do&#123; int di=n%10; if(di==1) s++; n=n/10; &#125;while(n!=0); return s; &#125;&#125;]]></content>
+      <tags>
+        <tag>剑指offfer笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[连续子数组的最大和]]></title>
+    <url>%2F2020%2F02%2F19%2F%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？(子向量的长度至少是1) 解题思路复习动态规划，连续子数组的最大和是通过遍历数组，通过比较当前最大子序列和与当前数的和是否大于当前最大子序列和，如果大于，则当前最大子序列和更新这两个数的和，如果当前最大子序列和当前数的和小于当前遍历的这个数，最大子列和为当前这个数。 代码12345678910111213141516171819202122public class Solution &#123; public int FindGreatestSumOfSubArray(int[] array) &#123; int len=array.length; int [] dp=new int [len]; dp[0]=array[0]; int max=array[0]; for(int i=1; i&lt;len ; i++) &#123; if(array[i]+dp[i-1]&gt;array[i])//如果这个数加上最大连续子列和大于这个数，则更新最大连续子序列和 &#123; dp[i]=array[i]+dp[i-1]; &#125; else if(array[i]+dp[i-1]&lt;array[i])//最大子序列和加上这个数小于这个数，则最大连续子序列和就是这个数 &#123; dp[i]=array[i]; &#125; if(dp[i]&gt;max) max=dp[i]; &#125; return max; &#125;&#125;]]></content>
+      <tags>
+        <tag>剑指offer笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数组中出现次数超过一半的数字]]></title>
+    <url>%2F2020%2F02%2F19%2F%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。 解题思路记录第一个数，这个数出现的次数为1，遍历数组，如果和这个数相等，对应的次数加一，不相等，对应的次数减一，如果对应次数减到零，则重新记录新的数，遍历完数组，如果这个数在数组中的次数超过一半，记录的数就是这个数。 代码12345678910111213141516171819202122232425262728293031323334public class Solution &#123; public int MoreThanHalfNum_Solution(int [] array) &#123; int len=array.length; int cout=1; int temp=array[0]; for(int i=1; i&lt;len; i++) &#123; if(array[i]==temp) &#123; cout++; &#125; else if(array[i]!=temp) &#123; cout--; if(cout==0) &#123; temp=array[i]; cout=1; &#125; &#125; &#125; int s=0; for(int i=0; i&lt;len; i++)//判断找到的数是否真的是出现次数超过一半的数 &#123; if(temp==array[i]) &#123; s++; &#125; &#125; return s&gt;len/2?temp:0; &#125;&#125;]]></content>
+      <tags>
+        <tag>剑指offer笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[字符串的排列]]></title>
     <url>%2F2020%2F02%2F18%2F%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。 输入描述：1输入一个字符串,长度不超过9(可能有字符重复),字符只包括大小写字母。 解题思路多谢大佬的解题思路 这道题用TreeSet很好解决，又可以去重，又自动排序，但是不能用。。。只能用ArrayList 例如abc可以字母a分别与a，b，c交换得到a,(b,c)和b,(a,c)和c,(a,b) a,(b,c)的子集(b,c)继续进行这样的操作，b与b,c交换,得到b,(c)和c,(b), (c)中c与c自己交换的，(b)中b与b自己交换.a,(b,c)的全排列就得到了，同理可以得到b,(a,c)和c,(a,b)的全排列,最后得到a,b,c的全排列。 下面是大佬思路的精髓： 假如有重复值呢？ 由于全排列就是从第一个数字起，每个数分别与它后面的数字交换，我们先尝试加个这样的判断——如果一个数与后面的数字相同那么这两个数就不交换了。 例如abb，第一个数与后面两个数交换得bab，bba。然后abb中第二个数和第三个数相同，就不用交换了。 但是对bab，第二个数和第三个数不 同，则需要交换，得到bba。 由于这里的bba和开始第一个数与第三个数交换的结果相同了，因此这个方法不行。 换种思维，对abb，第一个数a与第二个数b交换得到bab，然后考虑第一个数与第三个数交换，此时由于第三个数等于第二个数(代码中用HashSet)，所以第一个数就不再用与第三个数交换了。再考虑bab，它的第二个数与第三个数交换可以解决bba。此时全排列生成完毕！代码123456789101112131415161718192021222324252627282930313233343536373839404142import java.util.ArrayList;import java.util.Collections;import java.util.Set;import java.util.HashSet;public class Solution &#123; public ArrayList&lt;String&gt; Permutation(String str) &#123; ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;(); if(str.length()!=0) &#123; //str.toCharArray()是将String类型转化成Char型数组 permutationhelp(str.toCharArray(),0,list); Collections.sort(list); &#125; return list; &#125; public void permutationhelp(char [] chars,int i,ArrayList&lt;String&gt; list) &#123; //已经递归到字符数组末尾了，是递归的结束条件 if(i==chars.length-1)//字符数组的长度为chars.length,字符串的长度为chars.length() &#123; list.add(String.valueOf(chars));//String.valueOf(chars)将chars数组转化成字符串 return; &#125; Set&lt;Character&gt; charset=new HashSet&lt;Character&gt; ();//记录字符，将来要和遍历的字符作比较，这里面没有交换 for(int j=i; j&lt;chars.length; j++) &#123; if(i==j||charset.contains(chars[j])==false) &#123; charset.add(chars[j]); swapij(chars,i,j);//将对应位置的字符对换 permutationhelp(chars,i+1,list); swapij(chars,j,i); &#125; &#125; &#125; public void swapij(char [] chars,int i,int j) &#123; char temp=chars[i]; chars[i]=chars[j]; chars[j]=temp; &#125;&#125;]]></content>
