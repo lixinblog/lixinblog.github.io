@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[数组中只出现一次的数字]]></title>
+    <url>%2F2020%2F02%2F21%2F%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[平衡二叉树]]></title>
     <url>%2F2020%2F02%2F21%2F%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 输入一棵二叉树，判断该二叉树是否是平衡二叉树。 解题思路平衡二叉树就是左右子树的高度不超过1，二叉树的左右子树也是平衡二叉树 12345678910111213141516public class Solution &#123; public boolean IsBalanced_Solution(TreeNode root) &#123; return deeptree(root)!=-1; &#125; public int deeptree(TreeNode root) &#123; if(root==null) return 0; int left=deeptree(root.left); int right=deeptree(root.right); if(left&gt;right+1||right&gt;left+1||left==-1||right==-1)//如果左右子树的高度相差多于1，就返回-1，告诉这不是平衡二叉树 return -1; else return 1+(left&gt;right?left:right); &#125;&#125;]]></content>
