@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="剑指offer笔记,">
 
 
 
@@ -86,14 +86,18 @@
 
 
 
+<meta name="description" content="题目描述题目链接 一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。 解题思路我开始的思路是，开一个新的数组记录对应数出现的次数，例如a[s],如果s出现一次，a[s]就加一，但是这样出现的问题是，s如果等于很大的数，这个数组就不知道要开多大。 我就看了别人的解法，先对这个数组进行排序，开一栈，每遍历一个数，就要和栈顶的元素作比较，如果相等就出栈，如果不相">
+<meta name="keywords" content="剑指offer笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数组中只出现一次的数字">
 <meta property="og:url" content="http://yoursite.com/2020/02/21/数组中只出现一次的数字/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题目描述题目链接 一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。 解题思路我开始的思路是，开一个新的数组记录对应数出现的次数，例如a[s],如果s出现一次，a[s]就加一，但是这样出现的问题是，s如果等于很大的数，这个数组就不知道要开多大。 我就看了别人的解法，先对这个数组进行排序，开一栈，每遍历一个数，就要和栈顶的元素作比较，如果相等就出栈，如果不相">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-21T03:56:20.434Z">
+<meta property="og:updated_time" content="2020-02-21T04:11:07.407Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组中只出现一次的数字">
+<meta name="twitter:description" content="题目描述题目链接 一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。 解题思路我开始的思路是，开一个新的数组记录对应数出现的次数，例如a[s],如果s出现一次，a[s]就加一，但是这样出现的问题是，s如果等于很大的数，这个数组就不知道要开多大。 我就看了别人的解法，先对这个数组进行排序，开一栈，每遍历一个数，就要和栈顶的元素作比较，如果相等就出栈，如果不相">
 
 
 
@@ -361,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  354
                 </span>
               
 
@@ -398,7 +402,16 @@
       
 
       
-        
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/practice/e02fdb54d7524710a7d664d082bb7811?tpId=13&tqId=11193&tPage=2&rp=2&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking" target="_blank" rel="noopener">题目链接</a></p>
+<p>一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>我开始的思路是，开一个新的数组记录对应数出现的次数，例如a[s],如果s出现一次，a[s]就加一，但是这样出现的问题是，s如果等于很大的数，这个数组就不知道要开多大。</p>
+<p>我就看了别人的解法，先对这个数组进行排序，开一栈，每遍历一个数，就要和栈顶的元素作比较，如果相等就出栈，如果不相等就入栈，最后栈中剩下的元素就是我们需要的两个元素。</p>
+<p>其中自己不了解的知识点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line">Arrays.sort(array);<span class="comment">//是对array数组进行排序,需要导入Arrays包</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//num1,num2分别为长度为1的数组。传出参数</span></span><br><span class="line"><span class="comment">//将num1[0],num2[0]设置为返回结果</span></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">FindNumsAppearOnce</span><span class="params">(<span class="keyword">int</span> [] array,<span class="keyword">int</span> num1[] , <span class="keyword">int</span> num2[])</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len=array.length;</span><br><span class="line">        Arrays.sort(array);</span><br><span class="line">        Stack &lt;Integer&gt; stack=<span class="keyword">new</span> Stack&lt;Integer&gt; ();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(stack.empty()==<span class="keyword">true</span>||stack.peek()!=array[i])<span class="comment">//栈为空，或者栈顶元素和遍历元素不相等</span></span><br><span class="line">            &#123;</span><br><span class="line">                stack.push(array[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        num1[<span class="number">0</span>]=stack.pop();</span><br><span class="line">        num2[<span class="number">0</span>]=stack.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -442,6 +455,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/剑指offer笔记/" rel="tag"> <i class="fa fa-google"></i> 剑指offer笔记</a>
+          
+        </div>
+      
 
       
       
@@ -460,6 +479,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/21/和为S的连续正数序列/" rel="prev" title="和为S的连续正数序列">
+                和为S的连续正数序列 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -542,8 +565,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -560,7 +592,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -621,6 +653,22 @@ var jiathis_config={
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
