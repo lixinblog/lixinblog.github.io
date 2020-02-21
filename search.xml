@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[平衡二叉树]]></title>
+    <url>%2F2020%2F02%2F21%2F%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 输入一棵二叉树，判断该二叉树是否是平衡二叉树。 解题思路平衡二叉树就是左右子树的高度不超过1，二叉树的左右子树也是平衡二叉树 12345678910111213141516public class Solution &#123; public boolean IsBalanced_Solution(TreeNode root) &#123; return deeptree(root)!=-1; &#125; public int deeptree(TreeNode root) &#123; if(root==null) return 0; int left=deeptree(root.left); int right=deeptree(root.right); if(left&gt;right+1||right&gt;left+1||left==-1||right==-1)//如果左右子树的高度相差多于1，就返回-1，告诉这不是平衡二叉树 return -1; else return 1+(left&gt;right?left:right); &#125;&#125;]]></content>
+      <tags>
+        <tag>剑指offer笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[二叉树的深度]]></title>
     <url>%2F2020%2F02%2F20%2F%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。 解题思路知道这道题要用递归，自己却不知道如何下手，还是自己做的题太少了，自己太菜了，要多加练习 123456789101112131415161718192021222324252627/**public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;*/public class Solution &#123; public int TreeDepth(TreeNode root) &#123; if(root==null) return 0; int leftdeep=TreeDepth(root.left); int rightdeep=TreeDepth(root.right); int result; if(leftdeep&gt;rightdeep) result=1+leftdeep; else result=1+rightdeep; return result; &#125;&#125;]]></content>
