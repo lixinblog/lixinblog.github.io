@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[构建乘积数组]]></title>
+    <url>%2F2020%2F02%2F23%2F%E6%9E%84%E5%BB%BA%E4%B9%98%E7%A7%AF%E6%95%B0%E7%BB%84%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 给定一个数组A[0,1,…,n-1],请构建一个数组B[0,1,…,n-1],其中B中的元素B[i]=A[0]A[1]…A[i-1]*A[i+1]…*A[n-1]。不能使用除法。（注意：规定B[0] = A[1] * A[2] * … * A[n-1]，B[n-1] = A[0] * A[1] * … * A[n-2];） 解题思路 B0 1 A1 A2 … An-2 An-1 B1 A0 1 A2 … An-2 An-1 B2 A0 A1 1 … An-2 An-1 … A0 A1 … 1 An-2 An-1 Bn-2 A0 A1 A2 … 1 An-1 Bn-1 A0 A1 A2 A3 … 1 根据剑指offer书中的解法，可以把B[i]=A[0]×A[1]×…A[i-2]×A[i-1]×…A[n-1]看成A[0]×A[1]×…A[i-1]和A[i+1]×A[i+2]×…A[n-2]×A[n-1]两部分的乘积。因此，数组B可以用一个矩形来创建。在图中，B[i]为矩阵中第i行所有元素的乘积。 12345678910111213141516171819import java.util.ArrayList;public class Solution &#123; public int[] multiply(int[] A) &#123; int len =A.length; int [] B=new int [len]; B[0]=1; for(int i=1; i&lt;len; i++) &#123; B[i]=B[i-1]*A[i-1]; &#125; int temp=1; for(int i=len-1; i&gt;=0; i--) &#123; B[i]=temp*B[i]; temp=temp*A[i]; &#125; return B; &#125;&#125;]]></content>
+      <tags>
+        <tag>剑指offer笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[将字符串转换成整数]]></title>
     <url>%2F2020%2F02%2F22%2F%E5%B0%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B4%E6%95%B0%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 将一个字符串转换成一个整数，要求不能使用字符串转换整数的库函数。 数值为0或者字符串不是一个合法的数值则返回0 输入描述: 1输入一个字符串,包括数字字母符号,可以为空 输出描述: 1如果是合法的数值表达则返回该数字，否则返回0 示例1 输入 +2147483647 1a33123输出 2147483647 0 解题思路这道题主要的溢出的问题，很麻烦，看了这篇博客收获很大 -2147483648(最小值) 2147483647（最大值） 12overValue = isNegtive*value - INT_MAX/10 + (((isNegtive+1)/2 + digit &gt; 8) ? 1:0); overValue&gt;0时，数值将会越界，反之不会。 12345678910111213141516171819202122232425262728293031public class Solution &#123; public int StrToInt(String str) &#123; if(str.length()==0) return 0; char [] chars=str.toCharArray(); int sum=0,i=0; int flag=1;//0为正数，1为负数，3为非法字符 if(chars[0]=='+') &#123; flag=1; i=1; &#125; if(chars[0]=='-') &#123; flag=-1; i=1; &#125; for(int j=i; j&lt;chars.length; j++) &#123; int digit=chars[j]-'0'; //用来判断这次循环是否会溢出，大于0则溢出，小于零不溢出 int overvalue=sum*flag-Integer.MAX_VALUE/10+(((flag+1)/2+digit&gt;8)?1:0); if(overvalue&gt;0) return 0; if(digit&gt;9||digit&lt;0) return 0; sum=sum*10+digit*flag; &#125; return sum; &#125;&#125;]]></content>
