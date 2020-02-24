@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[链表中环的入口结点]]></title>
+    <url>%2F2020%2F02%2F24%2F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E7%BB%93%E7%82%B9%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。 解题思路自己动手无从下手，看了剑指offer书后，思路很清晰。 第一步：判断链表是否有环，建立两个指针p1，p2，p1每次走一步，p2每次走两步，如果两个指针相交，则这个链表是有环的，否则是无环的。 第二步：找出环中的节点数。在上一步的基础上，p2每次走一步，走到和p1相交的时候，走的步数就是环中的结点数。 第三步：判断环的入口。让p1和p2从新指向链表的头节点。p2先走环中的节点数步，然后两个指针再同时走，最后相交的结点就是环的入口。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263/* public class ListNode &#123; int val; ListNode next = null; ListNode(int val) &#123; this.val = val; &#125;&#125;*/public class Solution &#123; public ListNode EntryNodeOfLoop(ListNode pHead) &#123; if(pHead==null) return null; //首先判断链表是否有环 ListNode p1=pHead; ListNode p2=pHead; boolean flag=false; while(p1!=null&amp;&amp;p2!=null) &#123; if(p2.next!=null) &#123; p1=p1.next; p2=p2.next.next; &#125; else break; if(p1==p2) &#123; flag=true; break; &#125; &#125; int cout=1; p2=p2.next; if(flag==false) return null; else &#123; //找出环中的节点数 while(p2!=p1) &#123; p2=p2.next; cout++; &#125; &#125; //找出环的入口 p1=pHead; p2=pHead; for(int i=0; i&lt;cout; i++) &#123; p2=p2.next; &#125; while(p1!=p2) &#123; p1=p1.next; p2=p2.next; &#125; return p1; &#125;&#125;]]></content>
+      <tags>
+        <tag>剑指offer笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[字符流中第一个不重复的字符]]></title>
     <url>%2F2020%2F02%2F24%2F%E5%AD%97%E7%AC%A6%E6%B5%81%E4%B8%AD%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E7%AC%A6%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符”go”时，第一个只出现一次的字符是”g”。当从该字符流中读出前六个字符“google”时，第一个只出现一次的字符是”l”。 输出描述: 1如果当前字符流没有存在出现一次的字符，返回#字符。 解题思路开一个数组，记录对应字符出现的次数，如果字符出现的次数为1，则这个字符就入队。然后依次检验队列首部的字符，如果对应的字符只出现了一次，这个字符就是第一个只出现一次的字符（因为队列是先进先出），如果对应的字符出现了多次，则把这个字符移除队列。遍历完队列后，没有符合的字符，则返回#字符 1234567891011121314151617181920212223242526272829import java.util.Queue;import java.util.LinkedList;import java.lang.Character;public class Solution &#123; //Insert one char from stringstream int [] a=new int [256]; Queue&lt;Character&gt; queue = new LinkedList&lt;Character&gt;(); public void Insert(char ch) &#123; a[ch]++; if(a[ch]&lt;=1)//如果出现的次数为1，这个字符就入队 queue.add(ch); &#125; //return the first appearence once char in current stringstream public char FirstAppearingOnce() &#123; Character ch=null; char c=0; while((ch=queue.peek())!=null) &#123; c=ch.charValue(); if(a[c]==1)//如果只是出现一次，则返回这个字符 return c; else//如果成双出现，就把这个字符出队 queue.remove(); &#125; return '#';//上面的没返回，就返回# &#125;&#125;]]></content>
