@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode148-排序链表]]></title>
+    <url>%2F2020%2F03%2F02%2FLeetCode148-%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。 示例 1: 12输入: 4-&gt;2-&gt;1-&gt;3输出: 1-&gt;2-&gt;3-&gt;4 示例 2: 12输入: -1-&gt;5-&gt;3-&gt;4-&gt;0输出: -1-&gt;0-&gt;3-&gt;4-&gt;5 解题思路自己对归并排序原理还是理解的，但是对链表的归并排序没有写过，看了leetcode的题解后，自己写出了下面代码。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public ListNode sortList(ListNode head) &#123; if(head==null||head.next==null)//如果只有一个或者零个结点 return head; return HelpsortList(head); &#125; public ListNode HelpsortList(ListNode head) &#123; if(head==null||head.next==null)//如果字链表只有一个结点或者空链表，则返回字链表的头结点，这就是递归的出口 return head; ListNode slow=head,fast=head.next.next,l,r; while(fast!=null&amp;&amp;fast.next!=null)//将链表分成两半 &#123; slow=slow.next; fast=fast.next.next; &#125; //上面循环结束后，slow指针前一半链表的尾节点 l=HelpsortList(slow.next);//slow.next为右半链表的头结点,对右半边链表进行拆分 slow.next=null; r=HelpsortList(head); return mergesort(l,r);//对左右两边进行合并排序 &#125; public ListNode mergesort(ListNode l,ListNode r) &#123; ListNode head=new ListNode(-1); ListNode p=head; while(l!=null&amp;&amp;r!=null) &#123; if(l.val&lt;r.val) &#123; p.next=l; l=l.next; p=p.next; &#125; else &#123; p.next=r; r=r.next; p=p.next; &#125; &#125; if(l!=null) p.next=l; if(r!=null) p.next=r; return head.next;//返回真正的头节点 &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[剪绳子]]></title>
     <url>%2F2020%2F02%2F26%2F%E5%89%AA%E7%BB%B3%E5%AD%90%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 给你一根长度为n的绳子，请把绳子剪成整数长的m段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为k[0],k[1],…,k[m]。请问k[0]xk[1]x…xk[m]可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。 输入描述: 1输入一个数n，意义见题面。（2 &lt;= n &lt;= 60） 输出描述: 1输出答案。 解题思路用动态规划，当绳子长度为1时，最大乘积为0，当绳子长度为2时，最大乘积为1，当绳子长度为3时，最大乘积为2. 其余的用公式：f(n)=max(f(n-i)*f(i)),n≥i≥0 初始化：f(0)=0,f(1)=1,f(2)=2,f(3)=3; f(4)=f(2)*f(2)=4 f(5)=f(2)*f(3)=6 f(6)=f(3)*f(3)=9 f(7)=f(5)*f(2)=12 … 12345678910111213141516171819202122232425262728public class Solution &#123; public int cutRope(int target) &#123; if(target==1) return 0; if(target==2) return 1; if(target==3) return 2; int [] dp=new int[target+1]; dp[0]=0;//对应长度已经计算出来，这里初始化是为了下面的计算方便，长度大于等于4的计算 dp[1]=1; dp[2]=2; dp[3]=3; for(int i=4; i&lt;=target; i++) &#123; int maxs=0; for(int j=0; j&lt;=i/2; j++) &#123; if(maxs&lt;dp[j]*dp[i-j]) &#123; maxs=dp[j]*dp[i-j]; dp[i]=maxs; &#125; &#125; &#125; return dp[target]; &#125;&#125;]]></content>
