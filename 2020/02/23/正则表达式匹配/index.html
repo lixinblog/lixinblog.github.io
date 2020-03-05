@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="题目描述题目链接 请实现一个函数用来匹配包括’.’和’‘的正则表达式。模式中的字符’.’表示任意一个字符，而’‘表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式”a.a”和”abaca”匹配，但是与”aa.a”和”ab*a”均不匹配 解题思路感谢这位大佬提供的思路 匹配是指完全匹配，例如aaa和aa是不匹配的，字符串aaa和">
+<meta name="description" content="题目描述题目链接 1请实现一个函数用来匹配包括&amp;apos;.&amp;apos;和&amp;apos;*&amp;apos;的正则表达式。模式中的字符&amp;apos;.&amp;apos;表示任意一个字符，而&amp;apos;*&amp;apos;表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串&amp;quot;aaa&amp;quot;与模式&amp;quot;a.a&amp;quot;和&amp;quot;abaca&amp;qu">
 <meta name="keywords" content="剑指offer笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式匹配">
 <meta property="og:url" content="http://yoursite.com/2020/02/23/正则表达式匹配/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述题目链接 请实现一个函数用来匹配包括’.’和’‘的正则表达式。模式中的字符’.’表示任意一个字符，而’‘表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式”a.a”和”abaca”匹配，但是与”aa.a”和”ab*a”均不匹配 解题思路感谢这位大佬提供的思路 匹配是指完全匹配，例如aaa和aa是不匹配的，字符串aaa和">
+<meta property="og:description" content="题目描述题目链接 1请实现一个函数用来匹配包括&amp;apos;.&amp;apos;和&amp;apos;*&amp;apos;的正则表达式。模式中的字符&amp;apos;.&amp;apos;表示任意一个字符，而&amp;apos;*&amp;apos;表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串&amp;quot;aaa&amp;quot;与模式&amp;quot;a.a&amp;quot;和&amp;quot;abaca&amp;qu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-23T12:34:20.311Z">
+<meta property="og:updated_time" content="2020-03-05T02:29:03.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式匹配">
-<meta name="twitter:description" content="题目描述题目链接 请实现一个函数用来匹配包括’.’和’‘的正则表达式。模式中的字符’.’表示任意一个字符，而’‘表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式”a.a”和”abaca”匹配，但是与”aa.a”和”ab*a”均不匹配 解题思路感谢这位大佬提供的思路 匹配是指完全匹配，例如aaa和aa是不匹配的，字符串aaa和">
+<meta name="twitter:description" content="题目描述题目链接 1请实现一个函数用来匹配包括&amp;apos;.&amp;apos;和&amp;apos;*&amp;apos;的正则表达式。模式中的字符&amp;apos;.&amp;apos;表示任意一个字符，而&amp;apos;*&amp;apos;表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串&amp;quot;aaa&amp;quot;与模式&amp;quot;a.a&amp;quot;和&amp;quot;abaca&amp;qu">
 
 
 
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  630
+                  648
                 </span>
               
 
@@ -403,7 +403,8 @@
 
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/practice/45327ae22b7b413ea21df13ee7d6429c?tpId=13&tqId=11205&tPage=3&rp=3&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking" target="_blank" rel="noopener">题目链接</a></p>
-<p>请实现一个函数用来匹配包括’.’和’<em>‘的正则表达式。模式中的字符’.’表示任意一个字符，而’</em>‘表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式”a.a”和”ab<em>ac</em>a”匹配，但是与”aa.a”和”ab*a”均不匹配</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请实现一个函数用来匹配包括&apos;.&apos;和&apos;*&apos;的正则表达式。模式中的字符&apos;.&apos;表示任意一个字符，而&apos;*&apos;表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串&quot;aaa&quot;与模式&quot;a.a&quot;和&quot;abaca&quot;匹配，但是与&quot;aa.a&quot;和&quot;aba&quot;均不匹配</span><br></pre></td></tr></table></figure>
+
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><a href="https://www.cnblogs.com/liuzhen1995/p/10799234.html" target="_blank" rel="noopener">感谢这位大佬提供的思路</a></p>
 <p>匹配是指完全匹配，例如aaa和aa是不匹配的，字符串aaa和模式a.a匹配很容易理解</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aaa和ab*ac*a的匹配过程</span><br></pre></td></tr></table></figure>
