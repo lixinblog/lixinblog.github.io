@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode20-有效的括号]]></title>
+    <url>%2F2020%2F03%2F07%2FLeetCode20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%2F</url>
+    <content type="text"><![CDATA[题目描述自己想到了用栈去解决，但是就是不知道怎么写代码，自己真的太菜了。主要要判断读到的是左括号还是右括号，如果是左括号，则进栈，如果是右括号，则要判断栈顶的元素是否和这个符号是否匹配，匹配就把栈顶元素出栈，不匹配就返回false。 123456789101112131415161718192021222324252627282930class Solution &#123; Stack &lt;Character&gt; stack=new Stack&lt;&gt;(); public boolean isValid(String s) &#123; int len=s.length(); for(int i=0; i&lt;len; i++) &#123; if(s.charAt(i)=='('||s.charAt(i)=='['||s.charAt(i)=='&#123;') stack.push(s.charAt(i)); else &#123; char temp=s.charAt(i); if(!stack.isEmpty()) &#123; char stackout=stack.peek(); if(stackout=='('&amp;&amp;temp==')') stack.pop(); else if(stackout=='['&amp;&amp;temp==']') stack.pop(); else if(stackout=='&#123;'&amp;&amp;temp=='&#125;') stack.pop(); else return false; &#125; else return false; &#125; &#125; return stack.isEmpty(); &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode14-最长公共前缀]]></title>
     <url>%2F2020%2F03%2F07%2FLeetCode14-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回空字符串 “”。 示例 1: 输入: [“flower”,”flow”,”flight”]输出: “fl”示例 2: 输入: [“dog”,”racecar”,”car”]输出: “”解释: 输入不存在公共前缀。说明: 所有输入只包含小写字母 a-z 。 解题思路最长公共前缀就是在字符串中找到最短的字符串。例如最短的字符串为”abcd”,它的前缀有a，ab，abc，abcd。判断前缀是否是其他的字符串的最长公共前缀。 123456789101112131415161718192021222324252627282930313233343536class Solution &#123; public String longestCommonPrefix(String[] strs) &#123; if(strs.length==0) return ""; int minlen=strs[0].length(); String Minstr=strs[0]; for(int i=1; i&lt;strs.length; i++) &#123; if(strs[i].length()&lt;minlen) &#123; Minstr=strs[i]; minlen=strs[i].length(); &#125; &#125; int index=Minstr.length(); while(index&gt;0) &#123; String subs=Minstr.substring(0,index); boolean flag=true; for(int i=0; i&lt;strs.length; i++) &#123; if(strs[i].startsWith(subs)==false) &#123; flag=false; break; &#125; &#125; if(flag) &#123; break; &#125; index--; &#125; return Minstr.substring(0,index); &#125;&#125; 注意点123String [] str的长度为str.length;判断字符串str是否是"abc"开头str.startsWith("abc");是的话返回true，否则返回false]]></content>
