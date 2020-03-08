@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode28-实现strStr()]]></title>
+    <url>%2F2020%2F03%2F08%2FLeetCode28-%E5%AE%9E%E7%8E%B0strStr%2F</url>
+    <content type="text"><![CDATA[题目描述原题链接 实现 strStr() 函数。 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回 -1。 示例 1: 输入: haystack = “hello”, needle = “ll”输出: 2示例 2: 输入: haystack = “aaaaa”, needle = “bba”输出: -1说明: 当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。 对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。 解题思路一这是我开始的想法，用两层for循环，查找haystack中是否有needle的字串，但是这样做起来，有很多的条件，很容易出错，代码如下 12345678910111213141516171819202122232425262728class Solution &#123; public int strStr(String haystack, String needle) &#123; if(needle.length()==0||haystack.equals(needle)) return 0; if(needle.length()&gt;haystack.length()) return -1; int len=haystack.length(); for(int i=0; i&lt;len; i++) &#123; boolean flag=true; int j=0; for(j=0; j&lt;needle.length(); j++) &#123; //比较的下标超界或者对应的字符不相等 if((i+j)&gt;=len||needle.charAt(j)!=haystack.charAt(i+j)) &#123; flag=false; break; &#125; &#125; if(flag==true&amp;&amp;j==needle.length())//j遍历到了末尾 &#123; return i; &#125; &#125; return -1; &#125;&#125; 解题思路二采用双指针法 12345678910111213141516171819202122class Solution &#123; public int strStr(String haystack, String needle) &#123; if(needle.length()==0||haystack.equals(needle)) return 0; int i=0,j=0; while(i&lt;haystack.length()) &#123; if(haystack.charAt(i++)==needle.charAt(j)) &#123; j++; &#125; else &#123; i=i-j; j=0; &#125; if(j==needle.length()) return i-j; &#125; return -1; &#125;&#125; 做LeetCode注意点要先执行代码，然后再提交，不然修改的代码，直接提交，提交的还是之前的代码。]]></content>
+      <tags>
+        <tag>LeetCode笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode20-有效的括号]]></title>
     <url>%2F2020%2F03%2F07%2FLeetCode20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%2F</url>
     <content type="text"><![CDATA[题目描述自己想到了用栈去解决，但是就是不知道怎么写代码，自己真的太菜了。主要要判断读到的是左括号还是右括号，如果是左括号，则进栈，如果是右括号，则要判断栈顶的元素是否和这个符号是否匹配，匹配就把栈顶元素出栈，不匹配就返回false。 123456789101112131415161718192021222324252627282930class Solution &#123; Stack &lt;Character&gt; stack=new Stack&lt;&gt;(); public boolean isValid(String s) &#123; int len=s.length(); for(int i=0; i&lt;len; i++) &#123; if(s.charAt(i)=='('||s.charAt(i)=='['||s.charAt(i)=='&#123;') stack.push(s.charAt(i)); else &#123; char temp=s.charAt(i); if(!stack.isEmpty()) &#123; char stackout=stack.peek(); if(stackout=='('&amp;&amp;temp==')') stack.pop(); else if(stackout=='['&amp;&amp;temp==']') stack.pop(); else if(stackout=='&#123;'&amp;&amp;temp=='&#125;') stack.pop(); else return false; &#125; else return false; &#125; &#125; return stack.isEmpty(); &#125;&#125;]]></content>
