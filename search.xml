@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode58-最后一个单词的长度]]></title>
+    <url>%2F2020%2F03%2F08%2FLeetCode58-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 给定一个仅包含大小写字母和空格 ‘ ‘ 的字符串 s，返回其最后一个单词的长度。如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。 如果不存在最后一个单词，请返回 0 。 说明：一个单词是指仅由字母组成、不包含任何空格字符的 最大子字符串。 示例: 12输入: &quot;Hello World&quot;输出: 5 解题思路从前往后解这道题不好解，但是从后往前遍历，比较好解决。 第一种：”Hello World”这种从后往前遍历，遍历到空格为止，最后一个单词的长度为5。 第二种：”Hello World “先跳过最后一个空格，记录第一个不为” “的下标，然后继续往前遍历，遍历到空格为止，记录这个下标，最后一个单词的长度就是这两个下标相减。 123456789101112131415class Solution &#123; public int lengthOfLastWord(String s) &#123; if(s.length()==0) return 0; int end=s.length()-1; while(end&gt;=0&amp;&amp;s.charAt(end)==' ') end--; int start=end; while(start&gt;=0&amp;&amp;s.charAt(start)!=' ') &#123; start--; &#125; return end-start; &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode28-实现strStr()]]></title>
     <url>%2F2020%2F03%2F08%2FLeetCode28-%E5%AE%9E%E7%8E%B0strStr%2F</url>
     <content type="text"><![CDATA[题目描述原题链接 实现 strStr() 函数。 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回 -1。 示例 1: 输入: haystack = “hello”, needle = “ll”输出: 2示例 2: 输入: haystack = “aaaaa”, needle = “bba”输出: -1说明: 当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。 对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。 解题思路一这是我开始的想法，用两层for循环，查找haystack中是否有needle的字串，但是这样做起来，有很多的条件，很容易出错，代码如下 12345678910111213141516171819202122232425262728class Solution &#123; public int strStr(String haystack, String needle) &#123; if(needle.length()==0||haystack.equals(needle)) return 0; if(needle.length()&gt;haystack.length()) return -1; int len=haystack.length(); for(int i=0; i&lt;len; i++) &#123; boolean flag=true; int j=0; for(j=0; j&lt;needle.length(); j++) &#123; //比较的下标超界或者对应的字符不相等 if((i+j)&gt;=len||needle.charAt(j)!=haystack.charAt(i+j)) &#123; flag=false; break; &#125; &#125; if(flag==true&amp;&amp;j==needle.length())//j遍历到了末尾 &#123; return i; &#125; &#125; return -1; &#125;&#125; 解题思路二采用双指针法 12345678910111213141516171819202122class Solution &#123; public int strStr(String haystack, String needle) &#123; if(needle.length()==0||haystack.equals(needle)) return 0; int i=0,j=0; while(i&lt;haystack.length()) &#123; if(haystack.charAt(i++)==needle.charAt(j)) &#123; j++; &#125; else &#123; i=i-j; j=0; &#125; if(j==needle.length()) return i-j; &#125; return -1; &#125;&#125; 做LeetCode注意点要先执行代码，然后再提交，不然修改的代码，直接提交，提交的还是之前的代码。]]></content>
