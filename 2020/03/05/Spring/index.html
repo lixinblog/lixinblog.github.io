@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="1.框架：高度抽取可重用代码的一种设计，高度的通用性。 2.Spring框架容器（可以管理所有的组件（类））框架； 核心关注：IOC和AOP；">
+<meta name="description" content="1.框架：高度抽取可重用代码的一种设计，高度的通用性。 2.Spring框架容器（可以管理所有的组件（类））框架； 核心关注：IOC和AOP； 2.1 IOCIOC:控制反转的缩写，把创建对象的权利交给框架，是框架的重要特征，并非面对对象编程的重要术语。 明确ioc的作用： ​    削剪计算机程序的耦合，即解除我们代码中的依赖关系。 1234ApplicationContext的三个常用实现类：">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring">
 <meta property="og:url" content="http://yoursite.com/2020/03/05/Spring/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.框架：高度抽取可重用代码的一种设计，高度的通用性。 2.Spring框架容器（可以管理所有的组件（类））框架； 核心关注：IOC和AOP；">
+<meta property="og:description" content="1.框架：高度抽取可重用代码的一种设计，高度的通用性。 2.Spring框架容器（可以管理所有的组件（类））框架； 核心关注：IOC和AOP； 2.1 IOCIOC:控制反转的缩写，把创建对象的权利交给框架，是框架的重要特征，并非面对对象编程的重要术语。 明确ioc的作用： ​    削剪计算机程序的耦合，即解除我们代码中的依赖关系。 1234ApplicationContext的三个常用实现类：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-05T16:01:19.375Z">
+<meta property="og:updated_time" content="2020-03-10T09:06:45.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring">
-<meta name="twitter:description" content="1.框架：高度抽取可重用代码的一种设计，高度的通用性。 2.Spring框架容器（可以管理所有的组件（类））框架； 核心关注：IOC和AOP；">
+<meta name="twitter:description" content="1.框架：高度抽取可重用代码的一种设计，高度的通用性。 2.Spring框架容器（可以管理所有的组件（类））框架； 核心关注：IOC和AOP； 2.1 IOCIOC:控制反转的缩写，把创建对象的权利交给框架，是框架的重要特征，并非面对对象编程的重要术语。 明确ioc的作用： ​    削剪计算机程序的耦合，即解除我们代码中的依赖关系。 1234ApplicationContext的三个常用实现类：">
 
 
 
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  47
+                  751
                 </span>
               
 
@@ -381,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -405,6 +405,34 @@
         <h2 id="1-框架："><a href="#1-框架：" class="headerlink" title="1.框架："></a>1.框架：</h2><p>高度抽取可重用代码的一种设计，高度的通用性。</p>
 <h2 id="2-Spring框架"><a href="#2-Spring框架" class="headerlink" title="2.Spring框架"></a>2.Spring框架</h2><p>容器（可以管理所有的组件（类））框架；</p>
 <p>核心关注：IOC和AOP；</p>
+<h3 id="2-1-IOC"><a href="#2-1-IOC" class="headerlink" title="2.1 IOC"></a>2.1 IOC</h3><p>IOC:控制反转的缩写，把创建对象的权利交给框架，是框架的重要特征，并非面对对象编程的重要术语。</p>
+<p>明确ioc的作用：</p>
+<p>​    削剪计算机程序的耦合，即解除我们代码中的依赖关系。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext的三个常用实现类：</span><br><span class="line">     ClassPathXmlApplicationContext,它可以加载类路径下的配置文件，要求配置文件必须在类路径下，不在的话，加载不了</span><br><span class="line">     FileSystemXmlApplicationContext,它可以加载磁盘任意文件(必须有访问权限)</span><br><span class="line">     AnnotationConfigApplicationContext,它是用于读取注解创建容器的。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">核心容器的两个接口引出的问题</span><br><span class="line">ApplicationContext:单例对象适用，在实际开发采用此接口</span><br><span class="line">				它在构建核心容器时，创建对象采取的策略是采用立即加载的方式。也就是说，只要一读取完配置文件马上就创建文件中配置的对象。</span><br><span class="line">BeanFactory:多例对象适用</span><br><span class="line">			它在构建核心容器时，创建对象采取的策略是采用延迟加载的方式。也就是说，什么时候根据id获取对象了，什么时候才真正的创建对象。</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-创建bean的三种方式"><a href="#3-创建bean的三种方式" class="headerlink" title="3.创建bean的三种方式"></a>3.创建bean的三种方式</h2><p>第一种方式，使用默认构造函数创建</p>
+<p>   在spring的配置文件中使用bean标签，配以id和class属性之后，且没有其他属性和标签时。</p>
+<p>采用的就是默认构造函数创建bean对象，此时如果类中没有默认构造函数，则对象无法创建.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id="accountService" class="service.Impl.AccountServiceImpl"&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> service.IAccountService;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 账户业务层实现类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountServiceImpl</span> <span class="keyword">implements</span> <span class="title">IAccountService</span> </span>&#123;</span><br><span class="line"><span class="comment">//    private IAccountDao accountDao =(IAccountDao) BeanFactory.getBean("accountDao");</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AccountServiceImpl</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"对象创建了"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveAccount</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"service中的saveAccount执行了。。。"</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IAccountService</span> </span>&#123;</span><br><span class="line"><span class="comment">//    模拟保存</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">saveAccount</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> UI;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"><span class="keyword">import</span> service.IAccountService;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 模拟表现层，调用业务层</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">client</span> </span>&#123;</span><br><span class="line"><span class="comment">//    获取spring的ioc容器，并根据id获取对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        获取核心容器对象</span></span><br><span class="line">        ApplicationContext ac=<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"bean.xml"</span>);</span><br><span class="line"><span class="comment">//        根据id获取对象</span></span><br><span class="line">        IAccountService as=(IAccountService) ac.getBean(<span class="string">"accountService"</span>);</span><br><span class="line">        <span class="comment">//IAccountService as=new AccountServiceImpl();</span></span><br><span class="line">        <span class="comment">//IAccountService as=(IAccountService) BeanFactory.getBean("accountService");</span></span><br><span class="line">        as.saveAccount();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    第二种方式，使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入spring容器.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id="instanceFactory" class="factory.InstanceFactory"&gt;&lt;/bean&gt;</span><br><span class="line">&lt;bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InstanceFactory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> IAccountService <span class="title">getAccountService</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AccountServiceImpl();</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  第三种方式，使用工厂中的静态方法创建对象(使用某个类中的静态方法创建对象，并存入spring容器.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id="accountService" class="factory.StaticFactory" factory-method="getAccountService"&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticFactory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  IAccountService <span class="title">getAccountService</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AccountServiceImpl();</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -657,7 +685,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-框架："><span class="nav-number">1.</span> <span class="nav-text">1.框架：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Spring框架"><span class="nav-number">2.</span> <span class="nav-text">2.Spring框架</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-框架："><span class="nav-number">1.</span> <span class="nav-text">1.框架：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Spring框架"><span class="nav-number">2.</span> <span class="nav-text">2.Spring框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-IOC"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 IOC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-创建bean的三种方式"><span class="nav-number">3.</span> <span class="nav-text">3.创建bean的三种方式</span></a></li></ol></div>
             
 
           </div>
