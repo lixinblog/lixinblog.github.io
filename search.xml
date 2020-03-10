@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode443-压缩字符串]]></title>
+    <url>%2F2020%2F03%2F10%2FLeetCode443-%E5%8E%8B%E7%BC%A9%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 给定一组字符，使用原地算法将其压缩。 压缩后的长度必须始终小于或等于原数组长度。 数组的每个元素应该是长度为1 的字符（不是 int 整数类型）。 在完成原地修改输入数组后，返回数组的新长度。 示例 1： 输入：[“a”,”a”,”b”,”b”,”c”,”c”,”c”] 输出：返回6，输入数组的前6个字符应该是：[“a”,”2”,”b”,”2”,”c”,”3”] 说明：“aa”被”a2”替代。”bb”被”b2”替代。”ccc”被”c3”替代。示例 2： 输入：[“a”] 输出：返回1，输入数组的前1个字符应该是：[“a”] 说明：没有任何字符串被替代。示例 3： 输入：[“a”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”] 输出：返回4，输入数组的前4个字符应该是：[“a”,”b”,”1”,”2”]。 说明：由于字符”a”不重复，所以不会被压缩。”bbbbbbbbbbbb”被“b12”替代。注意每个数字在数组中都有它自己的位置。注意： 所有字符都有一个ASCII值在[35, 126]区间内。1 &lt;= len(chars) &lt;= 1000。 解题思路使用双指针法，start记录起始的下标，write记录写的坐标。如果遍历到字符串的末尾或者下一个字符和下标start记录的字符不同时，就要进行相应的记录。i-start+1为当前连续字符的长度，遍历结束后write的大小为字符的长度。 1234567891011121314151617181920212223class Solution &#123; public int compress(char[] chars) &#123; int len=chars.length; // 采用双指针法，简单明了 int start=0,write=0; for(int i=0; i&lt;len; i++) &#123; if(i+1==len||chars[i+1]!=chars[i])//下一个到字符串末尾或者和当前的字符不同时 &#123; chars[write++]=chars[i]; if(i&gt;start)//记录对应字符出现的次数 &#123; for(char c:String.valueOf(i-start+1).toCharArray()) &#123; chars[write++]=c; &#125; &#125; start=i+1; &#125; &#125; return write; &#125;&#125; 注意点12for(char c:String.valueOf(i-start+1).toCharArray());//把数字转换成字符数组，并进行遍历String.valueOf(i-start+1);//把数字转换成字符串，是valueOf函数]]></content>
+      <tags>
+        <tag>LeetCode笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode345-反转字符串中的元音字母]]></title>
     <url>%2F2020%2F03%2F09%2FLeetCode345-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 编写一个函数，以字符串作为输入，反转该字符串中的元音字母。 示例 1: 12输入: &quot;hello&quot;输出: &quot;holle&quot; 示例 2: 12输入: &quot;leetcode&quot;输出: &quot;leotcede&quot; 说明:元音字母不包含字母”y”。 解题思路开始把题目看错了，我以为是把i和len-i-1位置上的元音字母对调，然后我把0打错成o了，难怪搞了半天没搞出来！！ 12345678910111213141516171819202122232425262728293031323334353637383940class Solution &#123; String str="aeiou"; public String reverseVowels(String s) &#123; char [] sum=s.toCharArray(); int len=sum.length; int i=0,j=len-1; while(j&gt;i) &#123; if(!judges(sum[i])&amp;&amp;!judges(sum[j]))//两个都不是元音字母 &#123; i++; j--; &#125; else if(judges(sum[i])&amp;&amp;judges(sum[j]))//两个都是元音字母 &#123; char temp=sum[i]; sum[i]=sum[j]; sum[j]=temp; i++; j--; &#125; else if(!judges(sum[i])&amp;&amp;judges(sum[j]))//右边是元音字母 &#123; i++; &#125; else if(judges(sum[i])&amp;&amp;!judges(sum[j]))//左边是元音字母 &#123; j--; &#125; &#125; String newstr=new String(sum);//将char[]转换成String类型 return newstr; &#125; public boolean judges(char c) &#123; if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||c=='A'||c=='E'||c=='I'||c=='O'||c=='U') return true; return false; &#125;&#125;]]></content>
