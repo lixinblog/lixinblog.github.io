@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode459-重复的子字符串]]></title>
+    <url>%2F2020%2F03%2F11%2FLeetCode459-%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 给定一个非空的字符串，判断它是否可以由它的一个子串重复多次构成。给定的字符串只含有小写英文字母，并且长度不超过10000。 示例 1: 123输入: "abab"输出: True解释: 可由子字符串 "ab" 重复两次构成。 示例 2: 12输入: "aba"输出: False 示例 3: 123输入: "abcabcabcabc"输出: True解释: 可由子字符串 "abc" 重复四次构成。 (或者子字符串 "abcabc" 重复两次构成。) 解题思路参考了这篇文章 如果您的字符串S包含一个重复的子字符串，那么这意味着您可以多次“移位和换行”您的字符串，并使其与原始字符串匹配。例如:abcabc转变:cabcab改变两次:bcabca改变三次:abcabc 现在字符串和原字符串匹配了，所以可以得出结论存在重复的子串 为了避免这种无用的环绕，可以创建一个新的字符串str,它等于原来的字符串S再加上S自身，这样其实就包含了所有移动的字符串。 比如字符串：S = acd，那么str = S + S = acdacd acd移动的可能：dac、cda。其实都包含在了str中了。就像一个滑动窗口 一开始acd (acd) ，移动一次ac(dac)d,移动两次a(cda)cd。循环结束 所以可以直接判断str中去除首尾元素之后，是否包含自身元素。如果包含。则表明存在重复子串。 1234567class Solution &#123; public boolean repeatedSubstringPattern(String s) &#123; String str=s+s; int len=str.length(); return str.substring(1,len-1).contains(s); &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode443-压缩字符串]]></title>
     <url>%2F2020%2F03%2F10%2FLeetCode443-%E5%8E%8B%E7%BC%A9%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 给定一组字符，使用原地算法将其压缩。 压缩后的长度必须始终小于或等于原数组长度。 数组的每个元素应该是长度为1 的字符（不是 int 整数类型）。 在完成原地修改输入数组后，返回数组的新长度。 示例 1： 输入：[“a”,”a”,”b”,”b”,”c”,”c”,”c”] 输出：返回6，输入数组的前6个字符应该是：[“a”,”2”,”b”,”2”,”c”,”3”] 说明：“aa”被”a2”替代。”bb”被”b2”替代。”ccc”被”c3”替代。示例 2： 输入：[“a”] 输出：返回1，输入数组的前1个字符应该是：[“a”] 说明：没有任何字符串被替代。示例 3： 输入：[“a”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”] 输出：返回4，输入数组的前4个字符应该是：[“a”,”b”,”1”,”2”]。 说明：由于字符”a”不重复，所以不会被压缩。”bbbbbbbbbbbb”被“b12”替代。注意每个数字在数组中都有它自己的位置。注意： 所有字符都有一个ASCII值在[35, 126]区间内。1 &lt;= len(chars) &lt;= 1000。 解题思路使用双指针法，start记录起始的下标，write记录写的坐标。如果遍历到字符串的末尾或者下一个字符和下标start记录的字符不同时，就要进行相应的记录。i-start+1为当前连续字符的长度，遍历结束后write的大小为字符的长度。 1234567891011121314151617181920212223class Solution &#123; public int compress(char[] chars) &#123; int len=chars.length; // 采用双指针法，简单明了 int start=0,write=0; for(int i=0; i&lt;len; i++) &#123; if(i+1==len||chars[i+1]!=chars[i])//下一个到字符串末尾或者和当前的字符不同时 &#123; chars[write++]=chars[i]; if(i&gt;start)//记录对应字符出现的次数 &#123; for(char c:String.valueOf(i-start+1).toCharArray()) &#123; chars[write++]=c; &#125; &#125; start=i+1; &#125; &#125; return write; &#125;&#125; 注意点12for(char c:String.valueOf(i-start+1).toCharArray());//把数字转换成字符数组，并进行遍历String.valueOf(i-start+1);//把数字转换成字符串，是valueOf函数]]></content>
