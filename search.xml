@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode680-验证回文字符串II]]></title>
+    <url>%2F2020%2F03%2F12%2FLeetCode680-%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2II%2F</url>
+    <content type="text"><![CDATA[题目描述题目链接 给定一个非空字符串 s，最多删除一个字符。判断是否能成为回文字符串。 示例 1: 12输入: &quot;aba&quot;输出: True 示例 2: 123输入: &quot;abca&quot;输出: True解释: 你可以删除c字符。 注意: 字符串只包含从 a-z 的小写字母。字符串的最大长度是50000。 解题思路这道题自己又想复杂了，直接双指针法就行了，前指针i，后指针j，遇到不相等的字符i++或者j–，在后面的比较如果不相等，就返回false。 123456789101112131415161718192021222324252627282930313233//自己开始写的代码class Solution &#123; public boolean validPalindrome(String s) &#123; int i=0;//起始坐标 int j=s.length()-1;//末尾坐标 boolean flag=false; while(i&lt;j) &#123; if(s.charAt(i)!=s.charAt(j)&amp;&amp;s.charAt(i)==s.charAt(j-1)&amp;&amp;flag==false) &#123; j--; flag=true;//删除了一个字符 &#125; else if(s.charAt(i)!=s.charAt(j)&amp;&amp;s.charAt(i+1)==s.charAt(j)&amp;&amp;flag==false) &#123; i++; flag=true; &#125; else if(s.charAt(i)==s.charAt(j)) &#123; i++; j--; &#125; else if(s.charAt(i)!=s.charAt(j)&amp;&amp;flag==true)&#123;//不相等 break; &#125; &#125; if(i==j) return true; else return false; &#125;&#125; 正确代码1234567891011121314151617181920212223242526272829303132333435class Solution &#123; public boolean validPalindrome(String s) &#123; int i=0;//起始坐标 int j=s.length()-1;//末尾坐标 while(i&lt;j) &#123; if(s.charAt(i)!=s.charAt(j)) &#123; return judge(s,i+1,j)||judge(s,i,j-1); &#125; else &#123; i++; j--; &#125; &#125; return true; &#125; public boolean judge(String s,int i,int j) &#123; while(j&gt;i) &#123; if(s.charAt(i)!=s.charAt(j)) &#123; return false; &#125; else &#123; i++; j--; &#125; &#125; return true; &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode551-学生出勤记录I]]></title>
+    <url>%2F2020%2F03%2F11%2FLeetCode551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95I%2F</url>
+    <content type="text"><![CDATA[题目描述给定一个字符串来代表一个学生的出勤记录，这个记录仅包含以下三个字符： ‘A’ : Absent，缺勤‘L’ : Late，迟到‘P’ : Present，到场如果一个学生的出勤记录中不超过一个’A’(缺勤)并且不超过两个连续的’L’(迟到),那么这个学生会被奖赏。 你需要根据这个学生的出勤记录判断他是否会被奖赏。 示例 1: 12输入: &quot;PPALLP&quot;输出: True 示例 2: 12输入: &quot;PPALLL&quot;输出: False 接替思路这道题主要是理解题意，不超过两个连续的’L’(迟到),指LLL将不会被奖赏，但是LLALL将会被奖赏。 12345678910111213141516171819class Solution &#123; public boolean checkRecord(String s) &#123; int absent=0; int late=0;//记录是否有连续迟到 int present=0; for(int i=0; i&lt;s.length(); i++) &#123; if(s.charAt(i)=='A') absent++; else if(i+2&lt;s.length()&amp;&amp;s.charAt(i)=='L'&amp;&amp;s.charAt(i+1)=='L'&amp;&amp;s.charAt(i+2)=='L') late=1; else if(s.charAt(i)=='P') present++; &#125; if(absent&lt;=1&amp;&amp;late&lt;1) return true; return false; &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode521-最长特殊序列I]]></title>
     <url>%2F2020%2F03%2F11%2FLeetCode521-%E6%9C%80%E9%95%BF%E7%89%B9%E6%AE%8A%E5%BA%8F%E5%88%97I%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 给定两个字符串，你需要从这两个字符串中找出最长的特殊序列。最长特殊序列定义如下：该序列为某字符串独有的最长子序列（即不能是其他字符串的子序列）。 子序列可以通过删去字符串中的某些字符实现，但不能改变剩余字符的相对顺序。空序列为所有字符串的子序列，任何字符串为其自身的子序列。 输入为两个字符串，输出最长特殊序列的长度。如果不存在，则返回 -1。 示例 : 123输入: &quot;aba&quot;, &quot;cdc&quot;输出: 3解析: 最长特殊序列可为 &quot;aba&quot; (或 &quot;cdc&quot;) 说明: 两个字符串长度均小于100。字符串中的字符仅含有 ‘a’~’z’。 解题思路这道题自己想复杂了！如果两个字符串的长度不相等，则最长的子序列就是长的字符串，如果两个字符串的长度相等，内容相同，就返回-1，内容不相同，返回任何一个字符串即可。 12345678910class Solution &#123; public int findLUSlength(String a, String b) &#123; if(a.equals(b)) return -1; if(a.length()&gt;b.length()) return a.length(); else return b.length(); &#125;&#125;]]></content>
