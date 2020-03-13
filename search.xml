@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode43-字符串相乘]]></title>
+    <url>%2F2020%2F03%2F13%2FLeetCode43-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98%2F</url>
+    <content type="text"><![CDATA[题目描述原题链接 给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。 示例 1: 12输入: num1 = &quot;2&quot;, num2 = &quot;3&quot;输出: &quot;6&quot; 示例 2: 12输入: num1 = &quot;123&quot;, num2 = &quot;456&quot;输出: &quot;56088&quot; 说明： 1.num1 和 num2 的长度小于110。2.num1 和 num2 只包含数字 0-9。3.num1 和 num2 均不以零开头，除非是数字 0 本身。4.不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理。 解题思路即模拟两个数的乘法运算，num2的每一位与num1进行乘法后，最后加起来，就得到了结果。 12345678910111213141516171819202122232425262728293031323334353637383940class Solution &#123; public String multiply(String num1, String num2) &#123; if(num1.equals("0")||num2.equals("0")) return "0"; String res="0"; for(int i=num2.length()-1; i&gt;=0; i--) &#123; StringBuilder builder=new StringBuilder(); for(int j=0; j&lt;num2.length()-1-i;j++)//添零(模拟乘法) &#123; builder.append(0); &#125; int n2=num2.charAt(i)-'0'; int carry=0; for(int j=num1.length()-1; j&gt;=0||carry&gt;0; j--) &#123; int n1=j&lt;0?0:(num1.charAt(j)-'0'); int product=(n1*n2+carry)%10; builder.append(product); carry=(n1*n2+carry)/10; &#125; res=add(res,builder.reverse().toString()); &#125; return res; &#125; public String add(String str1,String str2) &#123; int carry=0; StringBuilder result=new StringBuilder(); for(int i=str1.length()-1,j=str2.length()-1;i&gt;=0||j&gt;=0||carry&gt;0;i--,j--) &#123; int s1=i&lt;0?0:(str1.charAt(i)-'0'); int s2=j&lt;0?0:(str2.charAt(j)-'0'); int sum=(s1+s2+carry)%10; result.append(sum); carry=(s1+s2+carry)/10; &#125; return result.reverse().toString(); &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode22-括号生成]]></title>
     <url>%2F2020%2F03%2F13%2FLeetCode22-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90%2F</url>
     <content type="text"><![CDATA[题目描述给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。 例如，给出 n *= *3，生成结果为： 1234567[ &quot;((()))&quot;, &quot;(()())&quot;, &quot;(())()&quot;, &quot;()(())&quot;, &quot;()()()&quot;] 解题思路感谢大佬的解题思路 采用深度遍历的方法，深度遍历的终止条件是左括号剩余数等于0并且右括号剩余数为0. 左括号剩余数要小于右括号剩余数。 左括号剩余数要大于0，右括号剩余数要大于0. 盗的图… 1234567891011121314151617181920212223class Solution &#123; public List&lt;String&gt; generateParenthesis(int n) &#123; List &lt;String&gt; list=new ArrayList&lt;String&gt;(); String str=""; int left=0,right=0; generatehelp(str,n,n,list); return list; &#125; public void generatehelp(String str,int left,int right,List&lt;String&gt; list) &#123; if(left==0&amp;&amp;right==0) &#123; list.add(str); return; &#125; if(left&gt;right)//如果左括号数小于右括号数，则不符合返回 return; if(left&gt;0) generatehelp(str+"(",left-1,right,list); if(right&gt;0) generatehelp(str+")",left,right-1,list); &#125;&#125;]]></content>
