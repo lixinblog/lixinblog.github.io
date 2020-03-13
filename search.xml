@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode22-括号生成]]></title>
+    <url>%2F2020%2F03%2F13%2FLeetCode22-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90%2F</url>
+    <content type="text"><![CDATA[题目描述给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。 例如，给出 n *= *3，生成结果为： 1234567[ &quot;((()))&quot;, &quot;(()())&quot;, &quot;(())()&quot;, &quot;()(())&quot;, &quot;()()()&quot;] 解题思路感谢大佬的解题思路 采用深度遍历的方法，深度遍历的终止条件是左括号剩余数等于0并且右括号剩余数为0. 左括号剩余数要小于右括号剩余数。 左括号剩余数要大于0，右括号剩余数要大于0. 盗的图… 1234567891011121314151617181920212223class Solution &#123; public List&lt;String&gt; generateParenthesis(int n) &#123; List &lt;String&gt; list=new ArrayList&lt;String&gt;(); String str=""; int left=0,right=0; generatehelp(str,n,n,list); return list; &#125; public void generatehelp(String str,int left,int right,List&lt;String&gt; list) &#123; if(left==0&amp;&amp;right==0) &#123; list.add(str); return; &#125; if(left&gt;right)//如果左括号数小于右括号数，则不符合返回 return; if(left&gt;0) generatehelp(str+"(",left-1,right,list); if(right&gt;0) generatehelp(str+")",left,right-1,list); &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode17-电话号码的字母组合]]></title>
     <url>%2F2020%2F03%2F12%2FLeetCode17-%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88%2F</url>
     <content type="text"><![CDATA[题目描述原题链接 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。 示例: 输入：”23”输出：[“ad”, “ae”, “af”, “bd”, “be”, “bf”, “cd”, “ce”, “cf”].说明:尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。 解题思路自己想到了用很多层的循环，但就是没想到用递归。 别人的解题思路 1234567891011121314151617181920212223242526class Solution &#123; List&lt;String&gt; list=new ArrayList&lt;String&gt;(); String [] str=&#123; "","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz" &#125;; public List&lt;String&gt; letterCombinations(String digits) &#123; if(digits.length()==0) return list; String s=""; combinationhelp(digits,0,s); return list; &#125; public void combinationhelp(String digits,int index,String s) &#123; if(index==digits.length())//递归终止条件 &#123; list.add(s); return; &#125; int number=digits.charAt(index)-'0'; for(int i=0; i&lt;str[number].length(); i++) &#123; combinationhelp(digits,index+1,s+str[number].charAt(i)); &#125; &#125;&#125;]]></content>
