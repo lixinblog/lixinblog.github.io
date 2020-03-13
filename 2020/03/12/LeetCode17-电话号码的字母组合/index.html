@@ -86,18 +86,20 @@
 
 
 
-<meta name="description" content="题目描述原题链接 实现 strStr() 函数。 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。 示例 1: 输入: haystack = “hello”, needle = “ll”输出: 2示例 2: 输入: haystack = “aaaaa”, needle">
+<meta name="description" content="题目描述原题链接 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。  示例: 输入：”23”输出：[“ad”, “ae”, “af”, “bd”, “be”, “bf”, “cd”, “ce”, “cf”].说明:尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。 解题思路自己想到了用很多层的">
 <meta name="keywords" content="LeetCode笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode28-实现strStr()">
-<meta property="og:url" content="http://yoursite.com/2020/03/08/LeetCode28-实现strStr/index.html">
+<meta property="og:title" content="LeetCode17-电话号码的字母组合">
+<meta property="og:url" content="http://yoursite.com/2020/03/12/LeetCode17-电话号码的字母组合/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述原题链接 实现 strStr() 函数。 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。 示例 1: 输入: haystack = “hello”, needle = “ll”输出: 2示例 2: 输入: haystack = “aaaaa”, needle">
+<meta property="og:description" content="题目描述原题链接 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。  示例: 输入：”23”输出：[“ad”, “ae”, “af”, “bd”, “be”, “bf”, “cd”, “ce”, “cf”].说明:尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。 解题思路自己想到了用很多层的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-08T03:29:52.987Z">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/original_images/17_telephone_keypad.png">
+<meta property="og:updated_time" content="2020-03-13T07:23:59.926Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode28-实现strStr()">
-<meta name="twitter:description" content="题目描述原题链接 实现 strStr() 函数。 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。 示例 1: 输入: haystack = “hello”, needle = “ll”输出: 2示例 2: 输入: haystack = “aaaaa”, needle">
+<meta name="twitter:title" content="LeetCode17-电话号码的字母组合">
+<meta name="twitter:description" content="题目描述原题链接 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。  示例: 输入：”23”输出：[“ad”, “ae”, “af”, “bd”, “be”, “bf”, “cd”, “ce”, “cf”].说明:尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。 解题思路自己想到了用很多层的">
+<meta name="twitter:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/original_images/17_telephone_keypad.png">
 
 
 
@@ -127,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/08/LeetCode28-实现strStr/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/12/LeetCode17-电话号码的字母组合/">
 
 
 
 
 
-  <title>LeetCode28-实现strStr() | Hexo</title>
+  <title>LeetCode17-电话号码的字母组合 | Hexo</title>
   
 
 
@@ -299,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/08/LeetCode28-实现strStr/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/12/LeetCode17-电话号码的字母组合/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lixin">
@@ -316,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode28-实现strStr()</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode17-电话号码的字母组合</h1>
         
 
         <div class="post-meta">
@@ -328,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-08T11:17:58+08:00">
-                2020-03-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-12T13:28:38+08:00">
+                2020-03-12
               </time>
             
 
@@ -365,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  430
+                  250
                 </span>
               
 
@@ -402,21 +404,16 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode-cn.com/problems/implement-strstr/" target="_blank" rel="noopener">原题链接</a></p>
-<p>实现 strStr() 函数。</p>
-<p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。</p>
-<p>示例 1:</p>
-<p>输入: haystack = “hello”, needle = “ll”<br>输出: 2<br>示例 2:</p>
-<p>输入: haystack = “aaaaa”, needle = “bba”<br>输出: -1<br>说明:</p>
-<p>当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
-<p>对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。</p>
-<h2 id="解题思路一"><a href="#解题思路一" class="headerlink" title="解题思路一"></a>解题思路一</h2><p>这是我开始的想法，用两层for循环，查找haystack中是否有needle的字串，但是这样做起来，有很多的条件，很容易出错，代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strStr</span><span class="params">(String haystack, String needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(needle.length()==<span class="number">0</span>||haystack.equals(needle))</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(needle.length()&gt;haystack.length())</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> len=haystack.length();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">boolean</span> flag=<span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;needle.length(); j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//比较的下标超界或者对应的字符不相等</span></span><br><span class="line">                <span class="keyword">if</span>((i+j)&gt;=len||needle.charAt(j)!=haystack.charAt(i+j))</span><br><span class="line">                &#123;</span><br><span class="line">                    flag=<span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag==<span class="keyword">true</span>&amp;&amp;j==needle.length())<span class="comment">//j遍历到了末尾</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">原题链接</a></p>
+<p>给定一个仅包含数字 <code>2-9</code> 的字符串，返回所有它能表示的字母组合。</p>
+<p>给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/original_images/17_telephone_keypad.png" alt="img"></p>
+<p>示例:</p>
+<p>输入：”23”<br>输出：[“ad”, “ae”, “af”, “bd”, “be”, “bf”, “cd”, “ce”, “cf”].<br>说明:<br>尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>自己想到了用很多层的循环，但就是没想到用递归。</p>
+<p><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/solution/tong-su-yi-dong-dong-hua-yan-shi-17-dian-hua-hao-m/" target="_blank" rel="noopener">别人的解题思路</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; list=<span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">    String [] str=&#123;</span><br><span class="line">        <span class="string">""</span>,<span class="string">""</span>,<span class="string">"abc"</span>,<span class="string">"def"</span>,<span class="string">"ghi"</span>,<span class="string">"jkl"</span>,<span class="string">"mno"</span>,<span class="string">"pqrs"</span>,<span class="string">"tuv"</span>,<span class="string">"wxyz"</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(digits.length()==<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">      String s=<span class="string">""</span>;</span><br><span class="line">      combinationhelp(digits,<span class="number">0</span>,s);</span><br><span class="line">      <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">combinationhelp</span><span class="params">(String digits,<span class="keyword">int</span> index,String s)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index==digits.length())<span class="comment">//递归终止条件</span></span><br><span class="line">        &#123;</span><br><span class="line">            list.add(s);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> number=digits.charAt(index)-<span class="string">'0'</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;str[number].length(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            combinationhelp(digits,index+<span class="number">1</span>,s+str[number].charAt(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="解题思路二"><a href="#解题思路二" class="headerlink" title="解题思路二"></a>解题思路二</h2><p>采用双指针法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strStr</span><span class="params">(String haystack, String needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(needle.length()==<span class="number">0</span>||haystack.equals(needle))</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;haystack.length())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(haystack.charAt(i++)==needle.charAt(j))</span><br><span class="line">            &#123;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                i=i-j;</span><br><span class="line">                j=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(j==needle.length())</span><br><span class="line">            <span class="keyword">return</span> i-j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="做LeetCode注意点"><a href="#做LeetCode注意点" class="headerlink" title="做LeetCode注意点"></a>做LeetCode注意点</h2><p>要先执行代码，然后再提交，不然修改的代码，直接提交，提交的还是之前的代码。</p>
 
       
     </div>
@@ -476,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/07/LeetCode20-有效的括号/" rel="next" title="LeetCode20-有效的括号">
-                <i class="fa fa-chevron-left"></i> LeetCode20-有效的括号
+              <a href="/2020/03/12/LeetCode12-整数转罗马数字/" rel="next" title="LeetCode12-整数转罗马数字">
+                <i class="fa fa-chevron-left"></i> LeetCode12-整数转罗马数字
               </a>
             
           </div>
@@ -485,10 +482,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/08/LeetCode58-最后一个单词的长度/" rel="prev" title="LeetCode58-最后一个单词的长度">
-                LeetCode58-最后一个单词的长度 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -669,7 +662,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路一"><span class="nav-number">2.</span> <span class="nav-text">解题思路一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路二"><span class="nav-number">3.</span> <span class="nav-text">解题思路二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#做LeetCode注意点"><span class="nav-number">4.</span> <span class="nav-text">做LeetCode注意点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li></ol></div>
             
 
           </div>
