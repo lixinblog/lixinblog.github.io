@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode1382-将二叉搜索树变平衡]]></title>
+    <url>%2F2020%2F03%2F16%2FLeetCode1382-%E5%B0%86%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E5%8F%98%E5%B9%B3%E8%A1%A1%2F</url>
+    <content type="text"><![CDATA[题目描述给你一棵二叉搜索树，请你返回一棵 平衡后 的二叉搜索树，新生成的树应该与原来的树有着相同的节点值。 如果一棵二叉搜索树中，每个节点的两棵子树高度差不超过 1 ，我们就称这棵二叉搜索树是 平衡的 。 如果有多种构造方法，请你返回任意一种。 示例： 123输入：root = [1,null,2,null,3,null,4,null,null]输出：[2,1,3,null,null,null,4]解释：这不是唯一的正确答案，[3,1,4,null,2,null,null] 也是一个可行的构造方案。 提示： 树节点的数目在 1 到 10^4 之间。 树节点的值互不相同，且在 1 到 10^5 之间。 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/balance-a-binary-search-tree著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。 解题思路这是3月15号的周赛题，自己还是太菜了，不会做，看了别人的解题思路后 先对二叉树进行中序遍历，再二分建树。 12345678910111213141516171819202122232425262728293031323334/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public TreeNode balanceBST(TreeNode root) &#123; List &lt;Integer&gt; list=new ArrayList&lt;Integer&gt;(); midorder(list,root);//进行中序遍历，并对应的数字放到list中 return build(list,0,list.size()-1);//二分建树 &#125; public void midorder(List&lt;Integer&gt; list,TreeNode root) &#123; if(root==null) return; midorder(list,root.left); list.add(root.val); midorder(list,root.right); &#125; public TreeNode build(List&lt;Integer&gt; list,int start,int end) &#123; if(start&gt;end) return null; int mid=(start+end)/2; TreeNode root=new TreeNode(list.get(mid)); root.left=build(list,start,mid-1); root.right=build(list,mid+1,end); return root; &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode周赛题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode300-最长上升子序列]]></title>
     <url>%2F2020%2F03%2F14%2FLeetCode300-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97%2F</url>
     <content type="text"><![CDATA[题目描述题目链接 给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 123输入: [10,9,2,5,3,7,101,18]输出: 4 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。 说明: 可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。 你算法的时间复杂度应该为 O(n2) 。 解题思路首先自己看清题目意思，不要题目都没看清就去看别人的解题思路。 这道题用动态规划，别人的解题思路 12345678910111213141516171819202122class Solution &#123; public int lengthOfLIS(int[] nums) &#123; int len=nums.length; if(len==0) return 0; int [] dp=new int[len]; Arrays.fill(dp,1);//给数组赋值 int res=0; for(int i=0; i&lt;len; i++) &#123; for(int j=0; j&lt;i; j++) &#123; if(nums[i]&gt;nums[j]) &#123; dp[i]=Math.max(dp[i],dp[j]+1); &#125; &#125; res=Math.max(res,dp[i]); &#125; return res; &#125;&#125;]]></content>
