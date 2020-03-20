@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="题目描述以 Unix 风格给出一个文件的绝对路径，你需要简化它。或者换句话说，将其转换为规范路径。 在 Unix 风格的文件系统中，一个点（.）表示当前目录本身；此外，两个点 （..） 表示将目录切换到上一级（指向父目录）；两者都可以是复杂相对路径的组成部分。更多信息请参阅：Linux / Unix中的绝对路径 vs 相对路径 请注意，返回的规范路径必须始终以斜杠 / 开头，并且两个目录名之间必须">
+<meta name="description" content="题目描述比较两个版本号 version1 *和 *version2。如果 *version1 *&amp;gt; *version2* 返回 1，如果 *version1 *&amp;lt; *version2* 返回 -1， 除此之外返回 0。 你可以假设版本字符串非空，并且只包含数字和 . 字符。  . 字符不代表小数点，而是用于分隔数字序列。 例如，2.5 不是“两个半”，也不是“差一半到三”，而是第二版中">
 <meta name="keywords" content="LeetCode字符串笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode71-简化路径">
-<meta property="og:url" content="http://yoursite.com/2020/03/16/LeetCode71-简化路径/index.html">
+<meta property="og:title" content="LeetCode165-比较版本号">
+<meta property="og:url" content="http://yoursite.com/2020/03/21/LeetCode165-比较版本号/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述以 Unix 风格给出一个文件的绝对路径，你需要简化它。或者换句话说，将其转换为规范路径。 在 Unix 风格的文件系统中，一个点（.）表示当前目录本身；此外，两个点 （..） 表示将目录切换到上一级（指向父目录）；两者都可以是复杂相对路径的组成部分。更多信息请参阅：Linux / Unix中的绝对路径 vs 相对路径 请注意，返回的规范路径必须始终以斜杠 / 开头，并且两个目录名之间必须">
+<meta property="og:description" content="题目描述比较两个版本号 version1 *和 *version2。如果 *version1 *&amp;gt; *version2* 返回 1，如果 *version1 *&amp;lt; *version2* 返回 -1， 除此之外返回 0。 你可以假设版本字符串非空，并且只包含数字和 . 字符。  . 字符不代表小数点，而是用于分隔数字序列。 例如，2.5 不是“两个半”，也不是“差一半到三”，而是第二版中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-16T15:13:36.290Z">
+<meta property="og:updated_time" content="2020-03-20T16:36:45.040Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode71-简化路径">
-<meta name="twitter:description" content="题目描述以 Unix 风格给出一个文件的绝对路径，你需要简化它。或者换句话说，将其转换为规范路径。 在 Unix 风格的文件系统中，一个点（.）表示当前目录本身；此外，两个点 （..） 表示将目录切换到上一级（指向父目录）；两者都可以是复杂相对路径的组成部分。更多信息请参阅：Linux / Unix中的绝对路径 vs 相对路径 请注意，返回的规范路径必须始终以斜杠 / 开头，并且两个目录名之间必须">
+<meta name="twitter:title" content="LeetCode165-比较版本号">
+<meta name="twitter:description" content="题目描述比较两个版本号 version1 *和 *version2。如果 *version1 *&amp;gt; *version2* 返回 1，如果 *version1 *&amp;lt; *version2* 返回 -1， 除此之外返回 0。 你可以假设版本字符串非空，并且只包含数字和 . 字符。  . 字符不代表小数点，而是用于分隔数字序列。 例如，2.5 不是“两个半”，也不是“差一半到三”，而是第二版中">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/16/LeetCode71-简化路径/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/21/LeetCode165-比较版本号/">
 
 
 
 
 
-  <title>LeetCode71-简化路径 | Hexo</title>
+  <title>LeetCode165-比较版本号 | Hexo</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/16/LeetCode71-简化路径/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/LeetCode165-比较版本号/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lixin">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode71-简化路径</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode165-比较版本号</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-16T22:44:26+08:00">
-                2020-03-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-21T00:25:34+08:00">
+                2020-03-21
               </time>
             
 
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  528
+                  494
                 </span>
               
 
@@ -402,32 +402,34 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>以 Unix 风格给出一个文件的绝对路径，你需要简化它。或者换句话说，将其转换为规范路径。</p>
-<p>在 Unix 风格的文件系统中，一个点（<code>.</code>）表示当前目录本身；此外，两个点 （<code>..</code>） 表示将目录切换到上一级（指向父目录）；两者都可以是复杂相对路径的组成部分。更多信息请参阅：Linux / Unix中的绝对路径 vs 相对路径</p>
-<p>请注意，返回的规范路径必须始终以斜杠 / 开头，并且两个目录名之间必须只有一个斜杠 <code>/</code>。最后一个目录名（如果存在）不能以 <code>/</code> 结尾。此外，规范路径必须是表示绝对路径的最短字符串。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;/home/&quot;</span><br><span class="line">输出：&quot;/home&quot;</span><br><span class="line">解释：注意，最后一个目录名后面没有斜杠。</span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>比较两个版本号 <em>version1 *和 *version2</em>。<br>如果 <code>*version1 *&gt; *version2*</code> 返回 <code>1</code>，如果 <code>*version1 *&lt; *version2*</code> 返回 <code>-1</code>， 除此之外返回 <code>0</code>。</p>
+<p>你可以假设版本字符串非空，并且只包含数字和 <code>.</code> 字符。</p>
+<p> <code>.</code> 字符不代表小数点，而是用于分隔数字序列。</p>
+<p>例如，<code>2.5</code> 不是“两个半”，也不是“差一半到三”，而是第二版中的第五个小版本。</p>
+<p>你可以假设版本号的每一级的默认修订版号为 <code>0</code>。例如，版本号 <code>3.4</code> 的第一级（大版本）和第二级（小版本）修订号分别为 <code>3</code> 和 <code>4</code>。其第三级和第四级修订号均为 <code>0</code>。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: version1 = &quot;0.1&quot;, version2 = &quot;1.1&quot;</span><br><span class="line">输出: -1</span><br></pre></td></tr></table></figure>
 
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;/../&quot;</span><br><span class="line">输出：&quot;/&quot;</span><br><span class="line">解释：从根目录向上一级是不可行的，因为根是你可以到达的最高级。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: version1 = &quot;1.0.1&quot;, version2 = &quot;1&quot;</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
 
-<p><strong>示例 3：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;/home//foo/&quot;</span><br><span class="line">输出：&quot;/home/foo&quot;</span><br><span class="line">解释：在规范路径中，多个连续斜杠需要用一个斜杠替换。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: version1 = &quot;7.5.2.4&quot;, version2 = &quot;7.5.3&quot;</span><br><span class="line">输出: -1</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 4：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;/a/./b/../../c/&quot;</span><br><span class="line">输出：&quot;/c&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：version1 = &quot;1.01&quot;, version2 = &quot;1.001&quot;</span><br><span class="line">输出：0</span><br><span class="line">解释：忽略前导零，“01” 和 “001” 表示相同的数字 “1”。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 5：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;/a/../../b/../c//.//&quot;</span><br><span class="line">输出：&quot;/c&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：version1 = &quot;1.0&quot;, version2 = &quot;1.0.0&quot;</span><br><span class="line">输出：0</span><br><span class="line">解释：version1 没有第三级修订号，这意味着它的第三级修订号默认为 “0”。</span><br></pre></td></tr></table></figure>
 
-<p><strong>示例 6：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;/a//b////c/d//././/..&quot;</span><br><span class="line">输出：&quot;/a/b/c&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ol>
+<li>版本字符串由以点 （<code>.</code>） 分隔的数字字符串组成。这个数字字符串<strong>可能</strong>有前导零。</li>
+<li>版本字符串不以点开始或结束，并且其中不会有两个连续的点。</li>
+</ol>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s.split(&quot;\\.&quot;);//. 在正则里有特殊含义，所以我们需要进行转义。</span><br><span class="line">Integer.parseInt(s);//可以把字符串转成整数</span><br></pre></td></tr></table></figure>
 
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><a href="https://leetcode-cn.com/problems/simplify-path/solution/java-yi-dong-yi-jie-xiao-lu-gao-by-spirit-9-18/" target="_blank" rel="noopener">看了StackOverflow的解题思路</a>，才知道这道题用栈解题十分容易，把字符串用<code>/</code>分成字符数组</p>
-<p>如果字符数组是<code>..</code>,并且栈不为空，则出栈</p>
-<p>如果字符数组不是<code>&quot;.&quot;</code>,<code>&quot;..&quot;</code>,<code>&quot;&quot;</code>,则进栈</p>
-<p>遍历结束后，如果栈为空，则返回<code>/</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">simplifyPath</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">        Stack &lt;String&gt; stack=<span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        String [] str=path.split(<span class="string">"/"</span>);</span><br><span class="line">        <span class="keyword">for</span>(String s:str)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!stack.isEmpty()&amp;&amp;s.equals(<span class="string">".."</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!s.equals(<span class="string">"."</span>)&amp;&amp;!s.equals(<span class="string">".."</span>)&amp;&amp;!s.equals(<span class="string">""</span>))</span><br><span class="line">            stack.push(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(stack.isEmpty())</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"/"</span>;</span><br><span class="line">        StringBuilder builder=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;stack.size(); i++)<span class="comment">//注意是从栈底到栈顶</span></span><br><span class="line">        &#123;</span><br><span class="line">            builder.append(<span class="string">"/"</span>+stack.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> builder.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareVersion</span><span class="params">(String version1, String version2)</span> </span>&#123;</span><br><span class="line">        String [] num1=version1.split(<span class="string">"\\."</span>);</span><br><span class="line">        String [] num2=version2.split(<span class="string">"\\."</span>);</span><br><span class="line">        <span class="keyword">int</span> len1=num1.length;</span><br><span class="line">        <span class="keyword">int</span> len2=num2.length;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;len1||j&lt;len2)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> s1=i&gt;=len1?<span class="number">0</span>:Integer.parseInt(num1[i]);</span><br><span class="line">            <span class="keyword">int</span> s2=j&gt;=len2?<span class="number">0</span>:Integer.parseInt(num2[i]);</span><br><span class="line">            <span class="keyword">if</span>(s1&gt;s2)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(s1&lt;s2)</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -488,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/16/LeetCode49-字母异位词分组/" rel="next" title="LeetCode49-字母异位词分组">
-                <i class="fa fa-chevron-left"></i> LeetCode49-字母异位词分组
+              <a href="/2020/03/20/LeetCode151-翻转字符串里的单词/" rel="next" title="LeetCode151-翻转字符串里的单词">
+                <i class="fa fa-chevron-left"></i> LeetCode151-翻转字符串里的单词
               </a>
             
           </div>
@@ -497,10 +499,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/17/LeetCode91-解码方法/" rel="prev" title="LeetCode91-解码方法">
-                LeetCode91-解码方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

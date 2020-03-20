@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode165-比较版本号]]></title>
+    <url>%2F2020%2F03%2F21%2FLeetCode165-%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7%2F</url>
+    <content type="text"><![CDATA[题目描述比较两个版本号 version1 *和 *version2。如果 *version1 *&gt; *version2* 返回 1，如果 *version1 *&lt; *version2* 返回 -1， 除此之外返回 0。 你可以假设版本字符串非空，并且只包含数字和 . 字符。 . 字符不代表小数点，而是用于分隔数字序列。 例如，2.5 不是“两个半”，也不是“差一半到三”，而是第二版中的第五个小版本。 你可以假设版本号的每一级的默认修订版号为 0。例如，版本号 3.4 的第一级（大版本）和第二级（小版本）修订号分别为 3 和 4。其第三级和第四级修订号均为 0。 示例 1: 12输入: version1 = &quot;0.1&quot;, version2 = &quot;1.1&quot;输出: -1 示例 2: 12输入: version1 = &quot;1.0.1&quot;, version2 = &quot;1&quot;输出: 1 示例 3: 12输入: version1 = &quot;7.5.2.4&quot;, version2 = &quot;7.5.3&quot;输出: -1 示例 4： 123输入：version1 = &quot;1.01&quot;, version2 = &quot;1.001&quot;输出：0解释：忽略前导零，“01” 和 “001” 表示相同的数字 “1”。 示例 5： 123输入：version1 = &quot;1.0&quot;, version2 = &quot;1.0.0&quot;输出：0解释：version1 没有第三级修订号，这意味着它的第三级修订号默认为 “0”。 提示： 版本字符串由以点 （.） 分隔的数字字符串组成。这个数字字符串可能有前导零。 版本字符串不以点开始或结束，并且其中不会有两个连续的点。 解题思路12s.split(&quot;\\.&quot;);//. 在正则里有特殊含义，所以我们需要进行转义。Integer.parseInt(s);//可以把字符串转成整数 123456789101112131415161718192021class Solution &#123; public int compareVersion(String version1, String version2) &#123; String [] num1=version1.split("\\."); String [] num2=version2.split("\\."); int len1=num1.length; int len2=num2.length; int i=0,j=0; while(i&lt;len1||j&lt;len2) &#123; int s1=i&gt;=len1?0:Integer.parseInt(num1[i]); int s2=j&gt;=len2?0:Integer.parseInt(num2[i]); if(s1&gt;s2) return 1; if(s1&lt;s2) return -1; i++; j++; &#125; return 0; &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode字符串笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode151-翻转字符串里的单词]]></title>
     <url>%2F2020%2F03%2F20%2FLeetCode151-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D%2F</url>
     <content type="text"><![CDATA[题目描述给定一个字符串，逐个翻转字符串中的每个单词。 示例 1： 12输入: &quot;the sky is blue&quot;输出: &quot;blue is sky the&quot; 示例 2： 123输入: &quot; hello world! &quot;输出: &quot;world! hello&quot;解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 示例 3： 123输入: &quot;a good example&quot;输出: &quot;example good a&quot;解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。 说明： 无空格字符构成一个单词。 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。 解题思路trim函数可以去掉字符串首部和尾部的空格，还有s.split(&quot; &quot;)会把&quot;a good example&quot;空格后面的空格变成空字符数组，这个要注意一下。 12345678910111213class Solution &#123; public String reverseWords(String s) &#123; String [] str=s.trim().split(" ");//trim函数去掉字符串首部和尾部的空格，然后按照空格划分成字符数组 int len=str.length; StringBuilder builder=new StringBuilder(); for(int i=len-1; i&gt;=0; i--) &#123; if(!str[i].equals(""))//空格后面的空格会变成空字符数组 builder.append(str[i]+" "); &#125; return builder.toString().trim(); &#125;&#125;]]></content>
