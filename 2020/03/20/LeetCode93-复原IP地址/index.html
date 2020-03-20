@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode笔记,">
+  <meta name="keywords" content="LeetCode回溯法笔记,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="题目描述题目链接 给定一组字符，使用原地算法将其压缩。 压缩后的长度必须始终小于或等于原数组长度。 数组的每个元素应该是长度为1 的字符（不是 int 整数类型）。 在完成原地修改输入数组后，返回数组的新长度。  示例 1： 输入：[“a”,”a”,”b”,”b”,”c”,”c”,”c”] 输出：返回6，输入数组的前6个字符应该是：[“a”,”2”,”b”,”2”,”c”,”3”] 说明：“aa”">
-<meta name="keywords" content="LeetCode笔记">
+<meta name="description" content="题目描述给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。 示例: 12输入: &amp;quot;25525511135&amp;quot;输出: [&amp;quot;255.255.11.135&amp;quot;, &amp;quot;255.255.111.35&amp;quot;]  解题思路看了liweiwei1419的解法，讲得很容易理解，我回溯法这方面还要加强锻炼。 123456789101112131415">
+<meta name="keywords" content="LeetCode回溯法笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode443-压缩字符串">
-<meta property="og:url" content="http://yoursite.com/2020/03/10/LeetCode443-压缩字符串/index.html">
+<meta property="og:title" content="LeetCode93-复原IP地址">
+<meta property="og:url" content="http://yoursite.com/2020/03/20/LeetCode93-复原IP地址/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述题目链接 给定一组字符，使用原地算法将其压缩。 压缩后的长度必须始终小于或等于原数组长度。 数组的每个元素应该是长度为1 的字符（不是 int 整数类型）。 在完成原地修改输入数组后，返回数组的新长度。  示例 1： 输入：[“a”,”a”,”b”,”b”,”c”,”c”,”c”] 输出：返回6，输入数组的前6个字符应该是：[“a”,”2”,”b”,”2”,”c”,”3”] 说明：“aa”">
+<meta property="og:description" content="题目描述给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。 示例: 12输入: &amp;quot;25525511135&amp;quot;输出: [&amp;quot;255.255.11.135&amp;quot;, &amp;quot;255.255.111.35&amp;quot;]  解题思路看了liweiwei1419的解法，讲得很容易理解，我回溯法这方面还要加强锻炼。 123456789101112131415">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-10T09:34:01.851Z">
+<meta property="og:updated_time" content="2020-03-20T07:09:57.689Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode443-压缩字符串">
-<meta name="twitter:description" content="题目描述题目链接 给定一组字符，使用原地算法将其压缩。 压缩后的长度必须始终小于或等于原数组长度。 数组的每个元素应该是长度为1 的字符（不是 int 整数类型）。 在完成原地修改输入数组后，返回数组的新长度。  示例 1： 输入：[“a”,”a”,”b”,”b”,”c”,”c”,”c”] 输出：返回6，输入数组的前6个字符应该是：[“a”,”2”,”b”,”2”,”c”,”3”] 说明：“aa”">
+<meta name="twitter:title" content="LeetCode93-复原IP地址">
+<meta name="twitter:description" content="题目描述给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。 示例: 12输入: &amp;quot;25525511135&amp;quot;输出: [&amp;quot;255.255.11.135&amp;quot;, &amp;quot;255.255.111.35&amp;quot;]  解题思路看了liweiwei1419的解法，讲得很容易理解，我回溯法这方面还要加强锻炼。 123456789101112131415">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/10/LeetCode443-压缩字符串/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/20/LeetCode93-复原IP地址/">
 
 
 
 
 
-  <title>LeetCode443-压缩字符串 | Hexo</title>
+  <title>LeetCode93-复原IP地址 | Hexo</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/10/LeetCode443-压缩字符串/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/20/LeetCode93-复原IP地址/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lixin">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode443-压缩字符串</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode93-复原IP地址</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-10T17:21:59+08:00">
-                2020-03-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T15:05:50+08:00">
+                2020-03-20
               </time>
             
 
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  530
+                  417
                 </span>
               
 
@@ -402,26 +402,12 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode-cn.com/problems/string-compression/" target="_blank" rel="noopener">题目链接</a></p>
-<p>给定一组字符，使用原地算法将其压缩。</p>
-<p>压缩后的长度必须始终小于或等于原数组长度。</p>
-<p>数组的每个元素应该是长度为1 的字符（不是 int 整数类型）。</p>
-<p>在完成原地修改输入数组后，返回数组的新长度。 </p>
-<p>示例 1：</p>
-<p>输入：<br>[“a”,”a”,”b”,”b”,”c”,”c”,”c”]</p>
-<p>输出：<br>返回6，输入数组的前6个字符应该是：[“a”,”2”,”b”,”2”,”c”,”3”]</p>
-<p>说明：<br>“aa”被”a2”替代。”bb”被”b2”替代。”ccc”被”c3”替代。<br>示例 2：</p>
-<p>输入：<br>[“a”]</p>
-<p>输出：<br>返回1，输入数组的前1个字符应该是：[“a”]</p>
-<p>说明：<br>没有任何字符串被替代。<br>示例 3：</p>
-<p>输入：<br>[“a”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”,”b”]</p>
-<p>输出：<br>返回4，输入数组的前4个字符应该是：[“a”,”b”,”1”,”2”]。</p>
-<p>说明：<br>由于字符”a”不重复，所以不会被压缩。”bbbbbbbbbbbb”被“b12”替代。<br>注意每个数字在数组中都有它自己的位置。<br>注意：</p>
-<p>所有字符都有一个ASCII值在[35, 126]区间内。<br>1 &lt;= len(chars) &lt;= 1000。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>使用双指针法，start记录起始的下标，write记录写的坐标。如果遍历到字符串的末尾或者下一个字符和下标start记录的字符不同时，就要进行相应的记录。i-start+1为当前连续字符的长度，遍历结束后write的大小为字符的长度。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compress</span><span class="params">(<span class="keyword">char</span>[] chars)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len=chars.length;</span><br><span class="line">        <span class="comment">// 采用双指针法，简单明了</span></span><br><span class="line">        <span class="keyword">int</span> start=<span class="number">0</span>,write=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i+<span class="number">1</span>==len||chars[i+<span class="number">1</span>]!=chars[i])<span class="comment">//下一个到字符串末尾或者和当前的字符不同时</span></span><br><span class="line">            &#123;</span><br><span class="line">                chars[write++]=chars[i];</span><br><span class="line">                <span class="keyword">if</span>(i&gt;start)<span class="comment">//记录对应字符出现的次数</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">char</span> c:String.valueOf(i-start+<span class="number">1</span>).toCharArray())</span><br><span class="line">                    &#123;</span><br><span class="line">                        chars[write++]=c;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                start=i+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> write;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;25525511135&quot;</span><br><span class="line">输出: [&quot;255.255.11.135&quot;, &quot;255.255.111.35&quot;]</span><br></pre></td></tr></table></figure>
 
-<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">char</span> c:String.valueOf(i-start+<span class="number">1</span>).toCharArray());<span class="comment">//把数字转换成字符数组，并进行遍历</span></span><br><span class="line">String.valueOf(i-start+<span class="number">1</span>);<span class="comment">//把数字转换成字符串，是valueOf函数</span></span><br></pre></td></tr></table></figure>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><a href="https://leetcode-cn.com/problems/restore-ip-addresses/solution/hui-su-suan-fa-hua-tu-fen-xi-jian-zhi-tiao-jian-by/" target="_blank" rel="noopener">看了liweiwei1419的解法</a>，讲得很容易理解，我回溯法这方面还要加强锻炼。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">restoreIpAddresses</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len=s.length();</span><br><span class="line">        List&lt;String&gt; list=<span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//保存最终结果</span></span><br><span class="line">        <span class="keyword">if</span>(len&lt;<span class="number">4</span>||len&gt;<span class="number">12</span>)<span class="comment">//字符串的长度小于4或者大于12，不可能有符合的ip地址</span></span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">        <span class="keyword">int</span> splittime=<span class="number">0</span>;</span><br><span class="line">        Deque&lt;String&gt; path=<span class="keyword">new</span> ArrayDeque&lt;&gt;(<span class="number">4</span>);<span class="comment">//保存符合的子路径，例如255，11，111</span></span><br><span class="line">        helprestoreIpAddresses(s,list,path,len,<span class="number">0</span>,splittime);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helprestoreIpAddresses</span><span class="params">(String s,List&lt;String&gt; list,Deque&lt;String&gt;path,<span class="keyword">int</span> len,<span class="keyword">int</span> start,<span class="keyword">int</span> splittime)</span><span class="comment">//start是这次遍历的起始位置下标,splittime是符合条件遍历的次数</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(start==len)<span class="comment">//结束条件</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(splittime==<span class="number">4</span>)</span><br><span class="line">            &#123;</span><br><span class="line">            list.add(String.join(<span class="string">"."</span>,path));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((len-start)&lt;<span class="number">4</span>-splittime||len-start&gt;(<span class="number">4</span>-splittime)*<span class="number">3</span>)<span class="comment">//去掉一些不符合的遍历</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">3</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> flag=judge(start,start+i,s);</span><br><span class="line">            <span class="keyword">if</span>(flag!=-<span class="number">1</span>)<span class="comment">//符合条件的字符串</span></span><br><span class="line">            &#123;</span><br><span class="line">                path.addLast(flag+<span class="string">""</span>);</span><br><span class="line">                helprestoreIpAddresses(s,list,path,len,start+i+<span class="number">1</span>,splittime+<span class="number">1</span>);</span><br><span class="line">                path.removeLast();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> start,<span class="keyword">int</span> end, String s)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len=end-start+<span class="number">1</span>;<span class="comment">//判断这次字符串的长度</span></span><br><span class="line">        <span class="keyword">if</span>(len&gt;<span class="number">1</span>&amp;&amp;s.charAt(start)==<span class="string">'0'</span>)<span class="comment">//如果字符串的首字母为0，则不符合</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(end&gt;=s.length())</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=start; i&lt;=end; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum=sum*<span class="number">10</span>+(s.charAt(i)-<span class="string">'0'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sum&gt;<span class="number">255</span>)<span class="comment">//只有一个0是符合的</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -469,7 +455,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode笔记/" rel="tag"> <i class="fa fa-google"></i> LeetCode笔记</a>
+            <a href="/tags/LeetCode回溯法笔记/" rel="tag"> <i class="fa fa-google"></i> LeetCode回溯法笔记</a>
           
         </div>
       
@@ -482,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/09/LeetCode345-反转字符串中的元音字母/" rel="next" title="LeetCode345-反转字符串中的元音字母">
-                <i class="fa fa-chevron-left"></i> LeetCode345-反转字符串中的元音字母
+              <a href="/2020/03/19/LeetCode409-最长回文串/" rel="next" title="LeetCode409-最长回文串">
+                <i class="fa fa-chevron-left"></i> LeetCode409-最长回文串
               </a>
             
           </div>
@@ -491,10 +477,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/11/LeetCode459-重复的子字符串/" rel="prev" title="LeetCode459-重复的子字符串">
-                LeetCode459-重复的子字符串 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -675,7 +657,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意点"><span class="nav-number">3.</span> <span class="nav-text">注意点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li></ol></div>
             
 
           </div>

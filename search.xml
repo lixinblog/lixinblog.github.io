@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode93-复原IP地址]]></title>
+    <url>%2F2020%2F03%2F20%2FLeetCode93-%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80%2F</url>
+    <content type="text"><![CDATA[题目描述给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。 示例: 12输入: &quot;25525511135&quot;输出: [&quot;255.255.11.135&quot;, &quot;255.255.111.35&quot;] 解题思路看了liweiwei1419的解法，讲得很容易理解，我回溯法这方面还要加强锻炼。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051class Solution &#123; public List&lt;String&gt; restoreIpAddresses(String s) &#123; int len=s.length(); List&lt;String&gt; list=new ArrayList&lt;&gt;();//保存最终结果 if(len&lt;4||len&gt;12)//字符串的长度小于4或者大于12，不可能有符合的ip地址 return list; int splittime=0; Deque&lt;String&gt; path=new ArrayDeque&lt;&gt;(4);//保存符合的子路径，例如255，11，111 helprestoreIpAddresses(s,list,path,len,0,splittime); return list; &#125; public void helprestoreIpAddresses(String s,List&lt;String&gt; list,Deque&lt;String&gt;path,int len,int start,int splittime)//start是这次遍历的起始位置下标,splittime是符合条件遍历的次数 &#123; if(start==len)//结束条件 &#123; if(splittime==4) &#123; list.add(String.join(".",path)); return; &#125; &#125; if((len-start)&lt;4-splittime||len-start&gt;(4-splittime)*3)//去掉一些不符合的遍历 return; for(int i=0; i&lt;3; i++) &#123; int flag=judge(start,start+i,s); if(flag!=-1)//符合条件的字符串 &#123; path.addLast(flag+""); helprestoreIpAddresses(s,list,path,len,start+i+1,splittime+1); path.removeLast(); &#125; &#125; &#125; public int judge(int start,int end, String s) &#123; int len=end-start+1;//判断这次字符串的长度 if(len&gt;1&amp;&amp;s.charAt(start)=='0')//如果字符串的首字母为0，则不符合 return -1; if(end&gt;=s.length()) return -1; int sum=0; for(int i=start; i&lt;=end; i++) &#123; sum=sum*10+(s.charAt(i)-'0'); &#125; if(sum&gt;255)//只有一个0是符合的 return -1; return sum; &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode回溯法笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode409-最长回文串]]></title>
     <url>%2F2020%2F03%2F19%2FLeetCode409-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2%2F</url>
     <content type="text"><![CDATA[题目描述给定一个包含大写字母和小写字母的字符串，找到通过这些字母构造成的最长的回文串。 在构造过程中，请注意区分大小写。比如 &quot;Aa&quot; 不能当做一个回文字符串。 注意:假设字符串的长度不会超过 1010。 示例 1: 12345678输入:&quot;abccccdd&quot;输出:7解释:我们可以构造的最长的回文串是&quot;dccaccd&quot;, 它的长度是 7。 解题思路统计每个字符出现的次数，如果这个字符出现偶数，则把次数用s加起来，如果字符出现奇数，则s加出现次数的-1.例如：aaa.最后的结果s如果小于字符串的长度，则返回s+1，如果s等于字符串的长度，则返回s 123456789101112131415161718192021222324252627class Solution &#123; public int longestPalindrome(String s) &#123; int len=s.length(); int [] a=new int[300]; for(int i=0; i&lt;len; i++)//统计每个字符出现的次数 &#123; int temp=s.charAt(i)-'0'; a[temp]++; &#125; int sum=0; for(int i=0; i&lt;300; i++) &#123; if(a[i]%2==0) &#123; sum+=a[i]; &#125; else//奇数次也只加偶数次的份 &#123; sum+=(a[i]-1); &#125; &#125; if(sum&lt;len) return sum+1; else return sum; &#125;&#125;]]></content>
