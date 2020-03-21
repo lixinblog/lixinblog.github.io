@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="LeetCode数学笔记,">
 
 
 
@@ -86,14 +86,18 @@
 
 
 
+<meta name="description" content="题目描述有两个容量分别为 x升 和* y升 的水壶以及无限多的水。请判断能否通过使用这两个水壶，从而可以得到恰好 *z升 的水？ 如果可以，最后请用以上水壶中的一或两个来盛放取得的 *z升 *水。 你允许：  装满任意一个水壶 清空任意一个水壶 从一个水壶向另外一个水壶倒水，直到装满或者倒空  示例 1: (From the famous *”Die Hard”* example) 12输入: x">
+<meta name="keywords" content="LeetCode数学笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode365-水壶问题">
 <meta property="og:url" content="http://yoursite.com/2020/03/21/LeetCode365-水壶问题/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题目描述有两个容量分别为 x升 和* y升 的水壶以及无限多的水。请判断能否通过使用这两个水壶，从而可以得到恰好 *z升 的水？ 如果可以，最后请用以上水壶中的一或两个来盛放取得的 *z升 *水。 你允许：  装满任意一个水壶 清空任意一个水壶 从一个水壶向另外一个水壶倒水，直到装满或者倒空  示例 1: (From the famous *”Die Hard”* example) 12输入: x">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-21T03:26:19.331Z">
+<meta property="og:updated_time" content="2020-03-21T05:10:50.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode365-水壶问题">
+<meta name="twitter:description" content="题目描述有两个容量分别为 x升 和* y升 的水壶以及无限多的水。请判断能否通过使用这两个水壶，从而可以得到恰好 *z升 的水？ 如果可以，最后请用以上水壶中的一或两个来盛放取得的 *z升 *水。 你允许：  装满任意一个水壶 清空任意一个水壶 从一个水壶向另外一个水壶倒水，直到装满或者倒空  示例 1: (From the famous *”Die Hard”* example) 12输入: x">
 
 
 
@@ -335,6 +339,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -361,7 +387,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  321
                 </span>
               
 
@@ -398,7 +424,29 @@
       
 
       
-        
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>有两个容量分别为 <em>x</em>升 和* y<em>升 的水壶以及无限多的水。请判断能否通过使用这两个水壶，从而可以得到恰好 *z</em>升 的水？</p>
+<p>如果可以，最后请用以上水壶中的一或两个来盛放取得的 *z升 *水。</p>
+<p>你允许：</p>
+<ul>
+<li>装满任意一个水壶</li>
+<li>清空任意一个水壶</li>
+<li>从一个水壶向另外一个水壶倒水，直到装满或者倒空</li>
+</ul>
+<p><strong>示例 1:</strong> (From the famous <a href="https://www.youtube.com/watch?v=BVtQNK_ZUJg" target="_blank" rel="noopener">*”Die Hard”* example</a>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: x = 3, y = 5, z = 4</span><br><span class="line">输出: True</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: x = 2, y = 6, z = 5</span><br><span class="line">输出: False</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><a href="https://blog.csdn.net/qq_41855420/article/details/88559535" target="_blank" rel="noopener">别人的文章</a></p>
+<p>原题可以理解为mx+ny=z，例子1为：3m+5n=4是否有解</p>
+<p><strong>数学定理</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果k为x和y的最大公约数，则k=mx+ny，m，n为整数</span><br></pre></td></tr></table></figure>
+
+<p>则原问题可以转化为z%k==0,如果是，则有解，如果不是，则无解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canMeasureWater</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x+y&lt;z)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">0</span>||y==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> y==z||x==z;</span><br><span class="line">        <span class="comment">// 让y是x和y中最大的</span></span><br><span class="line">        <span class="keyword">if</span>(x&gt;y)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp=y;</span><br><span class="line">            y=x;</span><br><span class="line">            x=temp;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="comment">//辗转相除法求最大公约数</span></span><br><span class="line">        <span class="keyword">while</span>(y%x!=<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> val=y%x;</span><br><span class="line">            y=x;</span><br><span class="line">            x=val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> k=x;</span><br><span class="line">        <span class="keyword">return</span> z%k==<span class="number">0</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -441,6 +489,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode数学笔记/" rel="tag"> <i class="fa fa-google"></i> LeetCode数学笔记</a>
+          
+        </div>
       
 
       
@@ -542,8 +596,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -560,7 +623,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -570,10 +633,10 @@ var jiathis_config={
               
               
               <div class="site-state-item site-state-categories">
-                
-                  <span class="site-state-item-count">7</span>
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
-                
+                </a>
               </div>
             
 
@@ -581,10 +644,10 @@ var jiathis_config={
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">11</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
@@ -621,6 +684,22 @@ var jiathis_config={
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

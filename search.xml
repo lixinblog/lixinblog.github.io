@@ -3,7 +3,13 @@
   <entry>
     <title><![CDATA[LeetCode365-水壶问题]]></title>
     <url>%2F2020%2F03%2F21%2FLeetCode365-%E6%B0%B4%E5%A3%B6%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[题目描述有两个容量分别为 x升 和* y升 的水壶以及无限多的水。请判断能否通过使用这两个水壶，从而可以得到恰好 *z升 的水？ 如果可以，最后请用以上水壶中的一或两个来盛放取得的 *z升 *水。 你允许： 装满任意一个水壶 清空任意一个水壶 从一个水壶向另外一个水壶倒水，直到装满或者倒空 示例 1: (From the famous *”Die Hard”* example) 12输入: x = 3, y = 5, z = 4输出: True 示例 2: 12输入: x = 2, y = 6, z = 5输出: False 解题思路别人的文章 原题可以理解为mx+ny=z，例子1为：3m+5n=4是否有解 数学定理 1如果k为x和y的最大公约数，则k=mx+ny，m，n为整数 则原问题可以转化为z%k==0,如果是，则有解，如果不是，则无解 123456789101112131415161718192021222324class Solution &#123; public boolean canMeasureWater(int x, int y, int z) &#123; if(x+y&lt;z) return false; if(x==0||y==0) return y==z||x==z; // 让y是x和y中最大的 if(x&gt;y) &#123; int temp=y; y=x; x=temp; &#125; //辗转相除法求最大公约数 while(y%x!=0) &#123; int val=y%x; y=x; x=val; &#125; int k=x; return z%k==0; &#125;&#125;]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>LeetCode数学笔记</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[LeetCode165-比较版本号]]></title>
@@ -273,6 +279,17 @@
     <title><![CDATA[LeetCode5-最长回文子串]]></title>
     <url>%2F2020%2F03%2F03%2FLeetCode5-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%2F</url>
     <content type="text"><![CDATA[题目描述原题链接 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。 示例 1： 输入: “babad”输出: “bab”注意: “aba” 也是一个有效答案。示例 2： 输入: “cbbd”输出: “bb” 解题思路这道题用动态规划，参考了这篇文章，重要的点，p(i,j)=true,则s[i,j]是回文串，p(i,j)=false,s[i,j]不是回文串，p(i,j)=(p(i+1,j-1)&amp;&amp;s[i]==s[j]),这个递推公式，长度为1，2要初始化。 12345678910111213141516171819202122232425262728class Solution &#123; public String longestPalindrome(String s) &#123; int len=s.length(); boolean [][] dp=new boolean [len][len]; String maxs=""; int maxlen=0; for(int i=1; i&lt;=len; i++)//字符串的长度 &#123; for(int start=0; start&lt;len; start++) &#123; int end=start+i-1; if(end&gt;=len)//尾下标出界 &#123; break; &#125; //长度为1和2的字符串单独判断 //其他长度靠公式推导 dp[start][end]=(i==1||i==2||dp[start+1][end-1])&amp;&amp;s.charAt(start)==s.charAt(end); if(dp[start][end]==true&amp;&amp;i&gt;maxlen) &#123; maxs=s.substring(start,end+1); maxlen=i; &#125; &#125; &#125; return maxs; &#125;&#125;]]></content>
+      <tags>
+        <tag>LeetCode笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode3-无重复字符的最长子串]]></title>
+    <url>%2F2020%2F03%2F03%2FLeetCode3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[题目描述给定一个字符串，请你找出其中不含有重复字符的 *最长子串 *的长度。 示例 1: 123输入: &quot;abcabcbb&quot;输出: 3 解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。 示例 2: 123输入: &quot;bbbbb&quot;输出: 1解释: 因为无重复字符的最长子串是 &quot;b&quot;，所以其长度为 1。 示例 3: 1234输入: &quot;pwwkew&quot;输出: 3解释: 因为无重复字符的最长子串是 &quot;wke&quot;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&quot;pwke&quot; 是一个子序列，不是子串。 解题思路这道题利用滑动窗口，我们把字符串[i,j]的字符串保存到HashSet中，从左往右遍历，如果遍历到下标为j的字符不在HashSet中，则继续往右遍历，如果遍历到重复的字符，则找到i，到j的不重复字符串。 12345678910111213141516171819202122class Solution &#123; public int lengthOfLongestSubstring(String s) &#123; int len=s.length(); Set &lt;Character&gt; set=new HashSet&lt;Character&gt;(); int ans=0,i=0,j=0; while(i&lt;len&amp;&amp;j&lt;len) &#123; if(!set.contains(s.charAt(j)))//HashSet中不包含这个字符 &#123; set.add(s.charAt(j)); j++; ans=Math.max(ans,j-i); &#125; else &#123; set.remove(s.charAt(i)); i++; &#125; &#125; return ans; &#125;&#125;]]></content>
+      <categories>
+        <category>字符串</category>
+      </categories>
       <tags>
         <tag>LeetCode笔记</tag>
       </tags>
