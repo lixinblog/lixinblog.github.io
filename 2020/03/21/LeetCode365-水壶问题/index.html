@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode笔记,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -86,18 +86,14 @@
 
 
 
-<meta name="description" content="题目描述原题链接 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。 示例 1： 输入: “babad”输出: “bab”注意: “aba” 也是一个有效答案。示例 2： 输入: “cbbd”输出: “bb” 解题思路这道题用动态规划，参考了这篇文章，重要的点，p(i,j)=true,则s[i,j]是回文串，p(i,j)=false,s[i,j]不是回文串，p">
-<meta name="keywords" content="LeetCode笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode5-最长回文子串">
-<meta property="og:url" content="http://yoursite.com/2020/03/03/LeetCode5-最长回文子串/index.html">
+<meta property="og:title" content="LeetCode365-水壶问题">
+<meta property="og:url" content="http://yoursite.com/2020/03/21/LeetCode365-水壶问题/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述原题链接 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。 示例 1： 输入: “babad”输出: “bab”注意: “aba” 也是一个有效答案。示例 2： 输入: “cbbd”输出: “bb” 解题思路这道题用动态规划，参考了这篇文章，重要的点，p(i,j)=true,则s[i,j]是回文串，p(i,j)=false,s[i,j]不是回文串，p">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-03T16:04:04.269Z">
+<meta property="og:updated_time" content="2020-03-21T03:26:19.331Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode5-最长回文子串">
-<meta name="twitter:description" content="题目描述原题链接 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。 示例 1： 输入: “babad”输出: “bab”注意: “aba” 也是一个有效答案。示例 2： 输入: “cbbd”输出: “bb” 解题思路这道题用动态规划，参考了这篇文章，重要的点，p(i,j)=true,则s[i,j]是回文串，p(i,j)=false,s[i,j]不是回文串，p">
+<meta name="twitter:title" content="LeetCode365-水壶问题">
 
 
 
@@ -127,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/03/LeetCode5-最长回文子串/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/21/LeetCode365-水壶问题/">
 
 
 
 
 
-  <title>LeetCode5-最长回文子串 | Hexo</title>
+  <title>LeetCode365-水壶问题 | Hexo</title>
   
 
 
@@ -299,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/LeetCode5-最长回文子串/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/LeetCode365-水壶问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lixin">
@@ -316,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode5-最长回文子串</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode365-水壶问题</h1>
         
 
         <div class="post-meta">
@@ -328,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-03T23:04:21+08:00">
-                2020-03-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-21T11:26:19+08:00">
+                2020-03-21
               </time>
             
 
@@ -365,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  278
+                  0
                 </span>
               
 
@@ -402,15 +398,7 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">原题链接</a></p>
-<p>给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。</p>
-<p>示例 1：</p>
-<p>输入: “babad”<br>输出: “bab”<br>注意: “aba” 也是一个有效答案。<br>示例 2：</p>
-<p>输入: “cbbd”<br>输出: “bb”</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题用动态规划，<a href="https://leetcode-cn.com/problems/longest-palindromic-substring/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-bao-gu/" target="_blank" rel="noopener">参考了这篇文章</a>，重要的点，p(i,j)=true,则s[i,j]是回文串，p(i,j)=false,s[i,j]不是回文串，p(i,j)=(p(i+1,j-1)&amp;&amp;s[i]==s[j]),这个递推公式，长度为1，2要初始化。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len=s.length();</span><br><span class="line">        <span class="keyword">boolean</span> [][] dp=<span class="keyword">new</span> <span class="keyword">boolean</span> [len][len];</span><br><span class="line">        String maxs=<span class="string">""</span>;</span><br><span class="line">        <span class="keyword">int</span> maxlen=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=len; i++)<span class="comment">//字符串的长度</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> start=<span class="number">0</span>; start&lt;len; start++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> end=start+i-<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(end&gt;=len)<span class="comment">//尾下标出界</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//长度为1和2的字符串单独判断</span></span><br><span class="line">                <span class="comment">//其他长度靠公式推导</span></span><br><span class="line">                dp[start][end]=(i==<span class="number">1</span>||i==<span class="number">2</span>||dp[start+<span class="number">1</span>][end-<span class="number">1</span>])&amp;&amp;s.charAt(start)==s.charAt(end);</span><br><span class="line">                <span class="keyword">if</span>(dp[start][end]==<span class="keyword">true</span>&amp;&amp;i&gt;maxlen)</span><br><span class="line">                &#123;</span><br><span class="line">                    maxs=s.substring(start,end+<span class="number">1</span>);</span><br><span class="line">                    maxlen=i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxs;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+        
       
     </div>
     
@@ -454,12 +442,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/LeetCode笔记/" rel="tag"> <i class="fa fa-google"></i> LeetCode笔记</a>
-          
-        </div>
-      
 
       
       
@@ -469,8 +451,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/03/LeetCode445-两数相加II/" rel="next" title="LeetCode445-两数相加II">
-                <i class="fa fa-chevron-left"></i> LeetCode445-两数相加II
+              <a href="/2020/03/21/LeetCode165-比较版本号/" rel="next" title="LeetCode165-比较版本号">
+                <i class="fa fa-chevron-left"></i> LeetCode165-比较版本号
               </a>
             
           </div>
@@ -478,10 +460,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/04/LeetCode6-Z字形变换/" rel="prev" title="LeetCode6-Z字形变换">
-                LeetCode6-Z字形变换 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,17 +542,8 @@ var jiathis_config={
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -652,22 +621,6 @@ var jiathis_config={
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
