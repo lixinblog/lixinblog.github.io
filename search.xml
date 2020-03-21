@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode227-基本计算器II]]></title>
+    <url>%2F2020%2F03%2F21%2FLeetCode227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8II%2F</url>
+    <content type="text"><![CDATA[题目描述实现一个基本的计算器来计算一个简单的字符串表达式的值。 字符串表达式仅包含非负整数，+， - ，*，/ 四种运算符和空格 。 整数除法仅保留整数部分。 示例 1: 12输入: &quot;3+2*2&quot;输出: 7 示例 2: 12输入: &quot; 3/2 &quot;输出: 1 示例 3: 12输入: &quot; 3+5 / 2 &quot;输出: 5 说明： 你可以假设所给定的表达式都是有效的。 请不要使用内置的库函数 eval。 解题思路用一个栈很好解决 1.如果是数字，就把数字入栈 2.如果是加号，就把加号后面的数字入栈 3.如果是减号，就把减号后面的数字加上负号入栈 4.如果是乘号，就把栈顶的数字取出来，和称号后面的数字相乘的结果后，入栈这个结果 5.如果是除号，就把栈顶的数字取出来，和称号后面的数字相除的结果后，入栈这个结果 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253class Solution &#123; public int calculate(String s) &#123; char [] str=s.toCharArray(); int res=0; Stack &lt;Integer&gt; stack=new Stack&lt;&gt;(); for(int i=0; i&lt;str.length; i++) &#123; if(str[i]==' ')continue; int [] a=new int[2];//a[0]返回数字，a[1]返回下一次遍历的位置 if(str[i]=='+'||Character.isDigit(str[i]))//数字或加号把数字入栈或加号后面的数字进栈 &#123; a=returnnum(str,i); stack.push(a[0]); &#125; else if(str[i]=='-')//减号，后面的数字加上负号入栈 &#123; a=returnnum(str,i); stack.push(-a[0]); &#125; else if(str[i]=='*')//乘法，把对应乘出来的结果入栈 &#123; a=returnnum(str,i); int temp=stack.pop(); stack.push(temp*a[0]); &#125; else if(str[i]=='/')//除号，把栈顶元素除以后面的数字的结果后入栈 &#123; a=returnnum(str,i); int temp=stack.pop(); stack.push(temp/a[0]); &#125; i=a[1]-1;//下次遍历的前一个下标 &#125; for(int i=0; i&lt;stack.size(); i++) &#123; res+=stack.get(i); &#125; return res; &#125; public int [] returnnum(char [] str,int i) &#123; int [] sum=new int[2]; while(i&lt;str.length&amp;&amp;!Character.isDigit(str[i]))//跳过非数字部分 i++; while(i&lt;str.length&amp;&amp;Character.isDigit(str[i])) &#123; sum[0]=sum[0]*10+(str[i]-'0'); i++; &#125; sum[1]=i; return sum; &#125;&#125; 新知识Character.isDigit(c)用来判断字符c是否是数字，如果是，返回true，否则返回false]]></content>
+      <categories>
+        <category>字符串</category>
+      </categories>
+      <tags>
+        <tag>LeetCode字符串笔记</tag>
+        <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode365-水壶问题]]></title>
     <url>%2F2020%2F03%2F21%2FLeetCode365-%E6%B0%B4%E5%A3%B6%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[题目描述有两个容量分别为 x升 和* y升 的水壶以及无限多的水。请判断能否通过使用这两个水壶，从而可以得到恰好 *z升 的水？ 如果可以，最后请用以上水壶中的一或两个来盛放取得的 *z升 *水。 你允许： 装满任意一个水壶 清空任意一个水壶 从一个水壶向另外一个水壶倒水，直到装满或者倒空 示例 1: (From the famous *”Die Hard”* example) 12输入: x = 3, y = 5, z = 4输出: True 示例 2: 12输入: x = 2, y = 6, z = 5输出: False 解题思路别人的文章 原题可以理解为mx+ny=z，例子1为：3m+5n=4是否有解 数学定理 1如果k为x和y的最大公约数，则k=mx+ny，m，n为整数 则原问题可以转化为z%k==0,如果是，则有解，如果不是，则无解 123456789101112131415161718192021222324class Solution &#123; public boolean canMeasureWater(int x, int y, int z) &#123; if(x+y&lt;z) return false; if(x==0||y==0) return y==z||x==z; // 让y是x和y中最大的 if(x&gt;y) &#123; int temp=y; y=x; x=temp; &#125; //辗转相除法求最大公约数 while(y%x!=0) &#123; int val=y%x; y=x; x=val; &#125; int k=x; return z%k==0; &#125;&#125;]]></content>
