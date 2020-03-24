@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode168-Excel表列名称]]></title>
+    <url>%2F2020%2F03%2F23%2FLeetCode168-Excel%E8%A1%A8%E5%88%97%E5%90%8D%E7%A7%B0%2F</url>
+    <content type="text"><![CDATA[题目描述给定一个正整数，返回它在 Excel 表中相对应的列名称。 例如， 123456781 -&gt; A2 -&gt; B3 -&gt; C...26 -&gt; Z27 -&gt; AA28 -&gt; AB ... 示例 1: 12输入: 1输出: &quot;A&quot; 示例 2: 12输入: 28输出: &quot;AB&quot; 示例 3: 12输入: 701输出: &quot;ZY&quot; 解题思路这么简单的问题，自己就是想不出来，这和10进制转成二进制是有差别的！ 别人的思路 12345678910111213class Solution &#123; public String convertToTitle(int n) &#123; String str="ABCDEFGHIJKLMNOPQRSTUVWXYZ"; String res=""; while(n!=0) &#123; int temp=(--n)%26; n=n/26; res=str.charAt(temp)+res; &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode周赛题5367-最长快乐前缀]]></title>
     <url>%2F2020%2F03%2F22%2FLeetCode%E5%91%A8%E8%B5%9B%E9%A2%985367-%E6%9C%80%E9%95%BF%E5%BF%AB%E4%B9%90%E5%89%8D%E7%BC%80%2F</url>
     <content type="text"><![CDATA[题目描述「快乐前缀」是在原字符串中既是 非空 前缀也是后缀（不包括原字符串自身）的字符串。 给你一个字符串 s，请你返回它的 最长快乐前缀。 如果不存在满足题意的前缀，则返回一个空字符串。 示例 1： 123输入：s = &quot;level&quot;输出：&quot;l&quot;解释：不包括 s 自己，一共有 4 个前缀（&quot;l&quot;, &quot;le&quot;, &quot;lev&quot;, &quot;leve&quot;）和 4 个后缀（&quot;l&quot;, &quot;el&quot;, &quot;vel&quot;, &quot;evel&quot;）。最长的既是前缀也是后缀的字符串是 &quot;l&quot; 。 示例 2： 123输入：s = &quot;ababab&quot;输出：&quot;abab&quot;解释：&quot;abab&quot; 是最长的既是前缀也是后缀的字符串。题目允许前后缀在原字符串中重叠。 示例 3： 12输入：s = &quot;leetcodeleet&quot;输出：&quot;leet&quot; 示例 4： 12输入：s = &quot;a&quot;输出：&quot;&quot; 提示： 1 &lt;= s.length &lt;= 10^5 s 只含有小写英文字母 解题思路我本来想用两个字符串来保存从前往后，以及从后往前的到的字符串，返回最长相等的字符串，但是超时了。后来看了别人呢的解题思路，原来这道题就是求KMP算法中next数组。KMP算法讲得很清晰 超时的代码123456789101112131415161718class Solution &#123; public String longestPrefix(String s) &#123; String pre=""; String post=""; String res=""; int i=0,j=s.length()-1; while(i&lt;s.length()-1&amp;&amp;j&gt;0) &#123; pre+=s.charAt(i); post=s.charAt(j)+post; if(pre.equals(post)) res=pre; i++; j--; &#125; return res; &#125;&#125; 求next数组的方法123456789101112131415161718192021222324252627class Solution &#123; public String longestPrefix(String s) &#123; int len=s.length(); int [] next=new int[len+1]; next=getNext(s); int n=next[len]; return s.substring(0,n); &#125; private int [] getNext(String s) &#123; int i=0,k=-1; int [] next=new int [s.length()+1]; next[0]=-1; while(i&lt;s.length()) &#123; if(k==-1||s.charAt(i)==s.charAt(k)) &#123; ++k; ++i; next[i]=k; &#125; else k=next[k]; &#125; return next; &#125;&#125;]]></content>
