@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode598-范围求和II]]></title>
+    <url>%2F2020%2F03%2F24%2FLeetCode598-%E8%8C%83%E5%9B%B4%E6%B1%82%E5%92%8CII%2F</url>
+    <content type="text"><![CDATA[题目描述给定一个初始元素全部为 0，大小为 m*n 的矩阵 M 以及在 M 上的一系列更新操作。 操作用二维数组表示，其中的每个操作用一个含有两个正整数 a 和 b 的数组表示，含义是将所有符合 0 &lt;= i &lt; a 以及 0 &lt;= j &lt; b 的元素 M[i][j] 的值都增加 1。 在执行给定的一系列操作后，你需要返回矩阵中含有最大整数的元素个数。 示例 1: 123456789101112131415161718192021输入: m = 3, n = 3operations = [[2,2],[3,3]]输出: 4解释: 初始状态, M = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]执行完操作 [2,2] 后, M = [[1, 1, 0], [1, 1, 0], [0, 0, 0]]执行完操作 [3,3] 后, M = [[2, 2, 1], [2, 2, 1], [1, 1, 1]]M 中最大的整数是 2, 而且 M 中有4个值为2的元素。因此返回 4。 注意: m 和 n 的范围是 [1,40000]。 a 的范围是 [1,m]，b 的范围是 [1,n]。 操作数目不超过 10000。 解题思路这道题用暴力通不过，这道题就是求面积的交集，由于都是从下标零开始的，就很好求公共面积。 1234567891011class Solution &#123; public int maxCount(int m, int n, int[][] ops) &#123; for(int []op: ops) &#123; m=Math.min(m,op[0]); n=Math.min(n,op[1]); &#125; return n*m; &#125;&#125;]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode453-最小移动次数使数组元素相等]]></title>
     <url>%2F2020%2F03%2F24%2FLeetCode453-%E6%9C%80%E5%B0%8F%E7%A7%BB%E5%8A%A8%E6%AC%A1%E6%95%B0%E4%BD%BF%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E7%9B%B8%E7%AD%89%2F</url>
     <content type="text"><![CDATA[题目描述给定一个长度为 n 的非空整数数组，找到让数组所有元素相等的最小移动次数。每次移动可以使 n - 1 个元素增加 1。 示例: 12345678910输入:[1,2,3]输出:3解释:只需要3次移动（注意每次移动会增加两个元素的值）：[1,2,3] =&gt; [2,3,3] =&gt; [3,4,3] =&gt; [4,4,4] 解题思路每次移动可以使n-1个元素增加1，相当于每次减少1。例如[1,2,3] =&gt; [2,3,3] =&gt; [3,4,3] =&gt; [4,4,4] 每次减少1：[1,2,3] =&gt; [1,2,2] =&gt; [1,2,1] =&gt; [1,1,1],使用的次数是一样的。 再举个例子：[1,1,2,3] =&gt;[2,2,3,3] =&gt; [3,3,4,3] =&gt; [4,4,4,4] 每次减少1：[1,1,2,3]=&gt;[1,1,1,3]=&gt;[1,1,1,2] =&gt; [1,1,1,1] 123456789101112131415class Solution &#123; public int minMoves(int[] nums) &#123; int sum=0;//统计该数组的所有元素的值 Arrays.sort(nums); int len=nums.length; if(len==1) return 0; int minelement=nums[0]; for(int i=0; i&lt;len; i++) &#123; sum+=(nums[i]-minelement); &#125; return sum; &#125;&#125;]]></content>
