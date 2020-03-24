@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode202-快乐数]]></title>
+    <url>%2F2020%2F03%2F24%2FLeetCode202-%E5%BF%AB%E4%B9%90%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[题目描述编写一个算法来判断一个数是不是“快乐数”。 一个“快乐数”定义为：对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和，然后重复这个过程直到这个数变为 1，也可能是无限循环但始终变不到 1。如果可以变为 1，那么这个数就是快乐数。 *示例: * 1234567输入: 19输出: true解释: 12 + 92 = 8282 + 22 = 6862 + 82 = 10012 + 02 + 02 = 1 解题思路看了大佬的解题思路恍然大悟 简而言之，是否可以变成快乐数，如果其中没有死循环的话，就可以变成快乐数，有死循环的话，就不能变成快乐数，相当于链表的有环路。 123456789101112131415161718192021222324class Solution &#123; public boolean isHappy(int n) &#123; int slow=getnum(n);//慢指针 int fast=getnum(getnum(n));//快指针 while(fast!=1)&#123; slow=getnum(slow); fast=getnum(getnum(fast)); if(slow==fast) return false;//有死循环 &#125; return true; &#125; public int getnum(int n) &#123; int s=0; while(n!=0) &#123; int temp=n%10; s+=temp*temp; n=n/10; &#125; return s; &#125;&#125;]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>特殊数</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode172-阶乘后的零]]></title>
     <url>%2F2020%2F03%2F24%2FLeetCode172-%E9%98%B6%E4%B9%98%E5%90%8E%E7%9A%84%E9%9B%B6%2F</url>
     <content type="text"><![CDATA[题目描述给定一个整数 n，返回 n! 结果尾数中零的数量。 示例 1: 123输入: 3输出: 0解释: 3! = 6, 尾数中没有零。 示例 2: 123输入: 5输出: 1解释: 5! = 120, 尾数中有 1 个零. 说明: *你算法的时间复杂度应为 *O(log n)。 解题思路我看到时间复杂度为logn直接就不会了。。大佬的解题思路很清晰这道题就是求n的阶乘中因子10的个数，可以简化为求n的阶乘中因子5的个数，因为因子2的个数远超5的个数。举个例子7！=7×6×5×4×3×2×1，因子2有4个，但是5只有一个。 1234567891011class Solution &#123; public int trailingZeroes(int n) &#123; int cout=0; while(n!=0) &#123; cout+=n/5; n=n/5; &#125; return cout; &#125;&#125;]]></content>
