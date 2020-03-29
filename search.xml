@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode1162-地图分析]]></title>
+    <url>%2F2020%2F03%2F29%2FLeetCode1162-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90%2F</url>
+    <content type="text"><![CDATA[题目描述你现在手里有一份大小为 N x N 的『地图』（网格）grid，上面的每个『区域』（单元格）都用 0 和 1 标记好了。其中 0 代表海洋，1 代表陆地，你知道距离陆地区域最远的海洋区域是是哪一个吗？请返回该海洋区域到离它最近的陆地区域的距离。 我们这里说的距离是『曼哈顿距离』（ Manhattan Distance）：(x0, y0) 和 (x1, y1) 这两个区域之间的距离是 |x0 - x1| + |y0 - y1| 。 如果我们的地图上只有陆地或者海洋，请返回 -1。 示例 1： 1234输入：[[1,0,1],[0,0,0],[1,0,1]]输出：2解释： 海洋区域 (1, 1) 和所有陆地区域之间的距离都达到最大，最大距离为 2。 示例 2： 1234输入：[[1,0,0],[0,0,0],[0,0,0]]输出：4解释： 海洋区域 (2, 2) 和所有陆地区域之间的距离都达到最大，最大距离为 4。 提示： 1 &lt;= grid.length == grid[0].length &lt;= 100 grid[i][j] 不是 0 就是 1 解题思路把所有陆地入队，利用BFS遍历，广度遍历结束后，最后一个入队的，就是陆地最远的距离。感谢大佬的思路 1234567891011121314151617181920212223242526272829303132333435363738class Solution &#123; public int maxDistance(int[][] grid) &#123; int rows=grid.length; int cols=grid[0].length; int [] dx=&#123;-1,1,0,0&#125;; int [] dy=&#123;0,0,-1,1&#125;; Queue &lt;int []&gt; queue=new LinkedList&lt;&gt;(); int [] point=null;//用来记录是否有陆地 for(int i=0; i&lt;rows; i++) &#123; for(int j=0; j&lt;cols; j++) &#123; if(grid[i][j]==1)//所有的陆地都入队 &#123; queue.offer(new int []&#123;i,j&#125;); &#125; &#125; &#125; boolean hasocean=false; while(!queue.isEmpty()) &#123; point=queue.poll(); for(int i=0; i&lt;4; i++) &#123; int tempx=point[0]+dx[i]; int tempy=point[1]+dy[i]; if(tempx&lt;0||tempx&gt;=rows||tempy&lt;0||tempy&gt;=cols||grid[tempx][tempy]!=0) continue; hasocean=true; grid[tempx][tempy]=grid[point[0]][point[1]]+1; queue.offer(new int []&#123;tempx,tempy&#125;); &#125; &#125; if(point==null||hasocean==false) return -1; return grid[point[0]][point[1]]-1; &#125;&#125;]]></content>
+      <categories>
+        <category>BFS</category>
+      </categories>
+      <tags>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode5370-设计地铁系统]]></title>
     <url>%2F2020%2F03%2F29%2FLeetCode5370-%E8%AE%BE%E8%AE%A1%E5%9C%B0%E9%93%81%E7%B3%BB%E7%BB%9F%2F</url>
     <content type="text"><![CDATA[题目描述请你实现一个类 UndergroundSystem，它支持以下 3 种方法： checkIn(int id, string stationName, int t) 编号为 id 的乘客在 t 时刻进入地铁站 stationName 。 一个乘客在同一时间只能在一个地铁站进入或者离开 2.checkOut(int id, string stationName, int t) 编号为 id 的乘客在 t 时刻离开地铁站 stationName 。 3.getAverageTime(string startStation, string endStation) 返回从地铁站 startStation 到地铁站 endStation 的平均花费时间。 平均时间计算的行程包括当前为止所有从 startStation 直接到达 endStation 的行程。 调用 getAverageTime 时，询问的路线至少包含一趟行程。 你可以假设所有对 checkIn 和 checkOut 的调用都是符合逻辑的。也就是说，如果一个顾客在 t1 时刻到达某个地铁站，那么他离开的时间 t2 一定满足 t2 &gt; t1 。所有的事件都按时间顺序给出。 解题思路利用HashMap，Pair解题 123456789101112131415161718192021222324252627282930313233343536373839404142434445class UndergroundSystem &#123; // 通过id找到对应的进站的车站，进站的时间 Map&lt;Integer,Pair&lt;String,Integer&gt;&gt; map=new HashMap&lt;&gt;(); // 通过进站出站车站找到对应的平均时间 Map&lt;String,Pair&lt;Integer,Float&gt;&gt; time=new HashMap&lt;&gt;(); public UndergroundSystem() &#123; &#125; public void checkIn(int id, String stationName, int t) &#123; map.put(id,new Pair&lt;&gt;(stationName,t)); &#125; public void checkOut(int id, String stationName, int t) &#123; //通过id获得进站的名称和进站的时间 Pair &lt;String,Integer&gt; stationin=map.get(id); //进站和出站的名称 String kk=stationin.getKey()+stationName; //通过进站和出站得到他对应乘坐的时间，如果是第一个信息，则乘坐的时长为0，乘坐的次数为0 Pair&lt;Integer,Float&gt; pair=time.getOrDefault(kk,new Pair&lt;&gt;(0,0.0f)); // 计算出最新的乘坐总时长 Integer sumtime=t-stationin.getValue()+pair.getKey(); // 计算最新的乘坐次数 Float v=pair.getValue()+1.0f; // 把最新的信息添加到对应time中HashMap中， time.put(kk,new Pair&lt;&gt;(sumtime,v)); // 把进站信息的HashMap删除 map.remove(id); &#125; public double getAverageTime(String startStation, String endStation) &#123; String k=startStation+endStation; // 通过键值对，是通过get函数，通过k键获得对应的值 Pair&lt;Integer,Float&gt; pair=time.get(k); return pair.getKey()/pair.getValue(); &#125;&#125;/** * Your UndergroundSystem object will be instantiated and called as such: * UndergroundSystem obj = new UndergroundSystem(); * obj.checkIn(id,stationName,t); * obj.checkOut(id,stationName,t); * double param_3 = obj.getAverageTime(startStation,endStation); */]]></content>
@@ -205,8 +216,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>时间复杂度</tag>
         <tag>质数</tag>
+        <tag>时间复杂度</tag>
       </tags>
   </entry>
   <entry>
