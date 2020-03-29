@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1.框架：高度抽取可重用代码的一种设计，高度的通用性。 2.Spring框架容器（可以管理所有的组件（类））框架； 核心关注：IOC和AOP； 2.1 IOCIOC:控制反转的缩写，把创建对象的权利交给框架，是框架的重要特征，并非面对对象编程的重要术语。 明确ioc的作用： ​    削剪计算机程序的耦合，即解除我们代码中的依赖关系。 1234ApplicationContext的三个常用实现类：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-20T15:57:36.879Z">
+<meta property="og:updated_time" content="2020-03-29T05:50:38.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring">
 <meta name="twitter:description" content="1.框架：高度抽取可重用代码的一种设计，高度的通用性。 2.Spring框架容器（可以管理所有的组件（类））框架； 核心关注：IOC和AOP； 2.1 IOCIOC:控制反转的缩写，把创建对象的权利交给框架，是框架的重要特征，并非面对对象编程的重要术语。 明确ioc的作用： ​    削剪计算机程序的耦合，即解除我们代码中的依赖关系。 1234ApplicationContext的三个常用实现类：">
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.3k
+                  3.6k
                 </span>
               
 
@@ -381,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14
+                  15
                 </span>
               
             </div>
@@ -437,7 +437,7 @@
 <p>​    作用，用于指定bean的作用范围</p>
 <p>​    取值：</p>
 <p>​        singleton：单例的（默认值）</p>
-<p>​        p’rototype:多例的</p>
+<p>​        prototype:多例的</p>
 <p>​        request：作用于web应用的请求范围</p>
 <p>​        session：作用于web应用的会话范围</p>
 <p>​        global-session：作用于集群环境的会话范围（全局会话范围），当不是集群环境时，它就是session</p>
@@ -497,6 +497,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//AccountServiceImpl文件</span></span><br><span class="line"><span class="keyword">package</span> com.service.Impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.dao.IAccountDao;</span><br><span class="line"><span class="keyword">import</span> com.dao.Impl.AccountDaoImpl;</span><br><span class="line"><span class="comment">//import factory.BeanFactory;</span></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> service.IAccountService;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> shkstart</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2020-03-06 11:57</span></span><br><span class="line"><span class="comment"> * 账户业务层实现类</span></span><br><span class="line"><span class="comment"> * 曾经XML的配置</span></span><br><span class="line"><span class="comment"> * &lt;bean id="accountService" class="service.Impl.AccountServiceImpl"</span></span><br><span class="line"><span class="comment"> *  scope="", init-method="", destroy-method=""&gt;</span></span><br><span class="line"><span class="comment"> *      &lt;property name="" value=""|ref=""&gt;&lt;/property&gt;</span></span><br><span class="line"><span class="comment"> *  &lt;/bean&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 用于创建对象的:他们的作用就和在XML配置文件中编写一个&lt;bean&gt;标签实现的功能是一样的</span></span><br><span class="line"><span class="comment"> * 用于注入数据的：他们的作用就和在XML配置文件中编写一个&lt;property&gt;标签实现的功能是一样的</span></span><br><span class="line"><span class="comment"> * 用于改变作用范围的：他们的作用就和在bean标签中使用scope属性实现的功能是一样的</span></span><br><span class="line"><span class="comment"> * 和生命周期相关：他们的作用就和在bean标签中使用init-method和destory-method方法是一样的</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountServiceImpl</span> <span class="keyword">implements</span> <span class="title">IAccountService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> IAccountDao accountDao = <span class="keyword">new</span> AccountDaoImpl();</span><br><span class="line"><span class="comment">//    private IAccountDao accountDao =(IAccountDao) BeanFactory.getBean("accountDao");</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveAccount</span><span class="params">()</span></span>&#123;</span><br><span class="line">        accountDao.saveAccount();</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.UI;</span><br><span class="line"></span><br><span class="line"><span class="comment">//import factory.BeanFactory;</span></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"><span class="keyword">import</span> service.IAccountService;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> shkstart</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2020-03-06 12:15</span></span><br><span class="line"><span class="comment"> * 模拟表现层，调用业务层</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">client</span> </span>&#123;</span><br><span class="line"><span class="comment">//    获取spring的ioc容器，并根据id获取对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        获取核心容器对象</span></span><br><span class="line">        ApplicationContext ac=<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"bean.xml"</span>);</span><br><span class="line"><span class="comment">//        根据id获取对象</span></span><br><span class="line">        IAccountService as=(IAccountService) ac.getBean(<span class="string">"accountServiceImpl"</span>);</span><br><span class="line">        System.out.println(as);</span><br><span class="line">        <span class="comment">//as.saveAccount();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">* spring中的新注解</span><br><span class="line">* @Configuration</span><br><span class="line">*          作用：指定当前类是一个配置类</span><br><span class="line">*          细节：当配置类作为AnnotationConfigApplicationContext对象创建的参数时，该注解可以不写。</span><br><span class="line">* @ComponentScan</span><br><span class="line">*          作用：用于通过注解指定spring在创建容器时要扫描的包</span><br><span class="line">*          属性：</span><br><span class="line">*              value：它和basePackages的作用是一样的，都是用于指定创建容器时要扫描的包</span><br><span class="line">*              我们使用此注解就等同于在xml中配置了：</span><br><span class="line">*              &lt;!--    告知spring在创建容器要扫描的包--&gt;</span><br><span class="line">*     &lt;context:component-scan base-package=&quot;com&quot;&gt;&lt;/context:component-scan&gt;</span><br><span class="line">*</span><br><span class="line">* @Bean</span><br><span class="line">*      作用：用于把当前方法的返回值作为bean对象存入spring的ioc容器中</span><br><span class="line">*      属性：用于指定bean的id，当不写时，默认值是当前方法的名称</span><br><span class="line">*      细节：</span><br><span class="line">*          当我们使用注解配置方法时，如果方法有参数，spring框架会去容器中查找有没有可用的bean对象。</span><br><span class="line">*          查找的方式和Autowired注解的作用是一样的</span><br><span class="line">* @Import</span><br><span class="line">*      作用：用于导入其他的配置类</span><br><span class="line">	 属性：</span><br><span class="line">	 	value：用于指定其他配置类的字节码</span><br><span class="line">	 	当我们使用Import的注解之后，有Import注解的类就是父配置类，而导入的都是子配置类。</span><br></pre></td></tr></table></figure>
 
 
       
@@ -679,7 +681,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">117</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -690,7 +692,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -701,7 +703,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
