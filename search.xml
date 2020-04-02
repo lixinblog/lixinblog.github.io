@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode1111-有效括号的嵌套深度]]></title>
+    <url>%2F2020%2F04%2F02%2FLeetCode1111-%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7%E7%9A%84%E5%B5%8C%E5%A5%97%E6%B7%B1%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[题目描述原题链接 解题思路利用栈的思想，大佬这篇文章写得很详细 1234567891011121314151617181920212223class Solution &#123; public int[] maxDepthAfterSplit(String seq) &#123; //利用栈的思想 char [] chars=seq.toCharArray(); int len=chars.length; int [] res =new int [len]; int depth=0; for(int i=0; i&lt;len; i++) &#123; if(chars[i]=='(') &#123; depth++; res[i]=depth%2; &#125; else &#123; res[i]=depth%2; depth--; &#125; &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>栈</category>
+      </categories>
+      <tags>
+        <tag>括号匹配</tag>
+        <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode349-两个数组的交集]]></title>
     <url>%2F2020%2F04%2F01%2FLeetCode349-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86%2F</url>
     <content type="text"><![CDATA[题目描述给定两个数组，编写一个函数来计算它们的交集。 示例 1: 12输入: nums1 = [1,2,2,1], nums2 = [2,2]输出: [2] 示例 2: 12输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4]输出: [9,4] 说明: 输出结果中的每个元素一定是唯一的。 我们可以不考虑输出结果的顺序。 解题思路主要是我在做题的过程中，不会遍历HashSet中的数，导致没有做出来，遍历一个数组，每遍历一个数，用二分查找从第二个数组中查找对应的数，找到了，就把这个数加到Set中。 1234567891011121314151617181920212223242526272829303132class Solution &#123;public int[] intersection(int[] nums1, int[] nums2) &#123; Set &lt;Integer&gt; set =new HashSet&lt;&gt;(); Arrays.sort(nums2); for(int target: nums1) &#123; if(!set.contains(target)&amp;&amp;binaryseach(target,nums2)) set.add(target); &#125; int [] a=new int[set.size()]; int i=0; for(int num: set) a[i++]=num; return a; &#125; private boolean binaryseach(int target,int [] nums2) &#123; int low=0; int high=nums2.length-1; while(low&lt;=high) &#123; int mid=low+(high-low)/2; if(nums2[mid]==target) return true; else if(target&gt;nums2[mid]) low=mid+1; else high=mid-1; &#125; return false; &#125;&#125; 注意点123Set &lt;Integer&gt; set= new HashSet&lt;&gt;();//是一个HashSet我想遍历这个setfor(int num:set)//则可以遍历这个set]]></content>
@@ -364,8 +376,8 @@
         <category>字符串</category>
       </categories>
       <tags>
-        <tag>LeetCode字符串笔记</tag>
         <tag>栈</tag>
+        <tag>LeetCode字符串笔记</tag>
       </tags>
   </entry>
   <entry>
