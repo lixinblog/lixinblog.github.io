@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode面试题01.07-旋转矩阵]]></title>
+    <url>%2F2020%2F04%2F07%2FLeetCode%E9%9D%A2%E8%AF%95%E9%A2%9801-07-%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5%2F</url>
+    <content type="text"><![CDATA[题目描述给你一幅由 N × N 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。 不占用额外内存空间能否做到？ 示例 1: 12345678910111213给定 matrix = [ [1,2,3], [4,5,6], [7,8,9]],原地旋转输入矩阵，使其变为:[ [7,4,1], [8,5,2], [9,6,3]] 示例 2: 123456789101112131415给定 matrix =[ [ 5, 1, 9,11], [ 2, 4, 8,10], [13, 3, 6, 7], [15,14,12,16]], 原地旋转输入矩阵，使其变为:[ [15,13, 2, 5], [14, 3, 4, 1], [12, 6, 8, 9], [16, 7,10,11]] 解题思路通过矩阵变化，矩阵的顺时针旋转90度matrix[i][j]-&gt;matrix[j][n-1-i],matrix[j][n-1-i]-&gt;matrix[n-1-i][n-1-j],matrix[n-1-i][n-1-j]-&gt;matrix[n-1-j][i],matrix[n-1-j][i]-&gt;matrix[i][j].只要旋转矩阵的左上部分即可，旋转的最大行坐标为n/2-1,旋转的最大列坐标为（n-1）/2. 大佬的解题思路 12345678910111213141516class Solution &#123; public void rotate(int[][] matrix) &#123; int n=matrix.length; for(int i=0; i&lt;=(n)/2-1; i++) &#123; for(int j=0; j&lt;=(n-1)/2; j++) &#123; int temp=matrix[n-1-j][i]; matrix[n-1-j][i]=matrix[n-1-i][n-1-j]; matrix[n-1-i][n-1-j]=matrix[j][n-1-i]; matrix[j][n-1-i]=matrix[i][j]; matrix[i][j]=temp; &#125; &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>矩阵</category>
+      </categories>
+      <tags>
+        <tag>矩阵</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode72-编辑距离]]></title>
     <url>%2F2020%2F04%2F06%2FLeetCode72-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%2F</url>
     <content type="text"><![CDATA[题目描述给你两个单词 word1 和 word2*，请你计算出将 *word1 转换成 *word2 *所使用的最少操作数 。 你可以对一个单词进行如下三种操作： 插入一个字符 删除一个字符 替换一个字符 示例 1： 123456输入：word1 = &quot;horse&quot;, word2 = &quot;ros&quot;输出：3解释：horse -&gt; rorse (将 &apos;h&apos; 替换为 &apos;r&apos;)rorse -&gt; rose (删除 &apos;r&apos;)rose -&gt; ros (删除 &apos;e&apos;) 示例 2： 12345678输入：word1 = &quot;intention&quot;, word2 = &quot;execution&quot;输出：5解释：intention -&gt; inention (删除 &apos;t&apos;)inention -&gt; enention (将 &apos;i&apos; 替换为 &apos;e&apos;)enention -&gt; exention (将 &apos;n&apos; 替换为 &apos;x&apos;)exention -&gt; exection (将 &apos;n&apos; 替换为 &apos;c&apos;)exection -&gt; execution (插入 &apos;u&apos;) 解题思路这位大佬的解题思路写得很清晰 利用dp解决，dp[i][j]表示word1的第i个字符到word2的第j个字符所用的步骤，如果word1[i]==word2[j]，那么dp[i][j]=dp[i-1][j-1]，如果不相等，那么dp[i][j]=min(dp[i-1][j-1],dp[i-1][j],dp[i][j-1]),dp[i-1][j-1]表示替换，dp[i-1][j]表示删除，dp[i][j-1]表示插入 123456789101112131415161718192021222324class Solution &#123; public int minDistance(String word1, String word2) &#123; int [][]dp=new int[word1.length()+1][word2.length()+1]; for(int i=1; i&lt;=word1.length(); i++)//第一列 &#123; dp[i][0]=dp[i-1][0]+1; &#125; for(int j=1; j&lt;=word2.length(); j++)//第一行 dp[0][j]=dp[0][j-1]+1; for(int i=1; i&lt;=word1.length(); i++) &#123; for(int j=1; j&lt;=word2.length(); j++) &#123; if(word1.charAt(i-1)==word2.charAt(j-1)) dp[i][j]=dp[i-1][j-1]; else &#123; dp[i][j]=Math.min(Math.min(dp[i-1][j-1],dp[i][j-1]),dp[i-1][j])+1; &#125; &#125; &#125; return dp[word1.length()][word2.length()]; &#125;&#125;]]></content>
@@ -19,9 +30,9 @@
         <category>贪心</category>
       </categories>
       <tags>
+        <tag>LeetCode周赛</tag>
         <tag>贪心</tag>
         <tag>优先队列</tag>
-        <tag>LeetCode周赛</tag>
       </tags>
   </entry>
   <entry>
@@ -390,8 +401,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>时间复杂度</tag>
         <tag>质数</tag>
+        <tag>时间复杂度</tag>
       </tags>
   </entry>
   <entry>
