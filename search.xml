@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode107-二叉树的层序遍历II]]></title>
+    <url>%2F2020%2F04%2F07%2FLeetCode107-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86II%2F</url>
+    <content type="text"><![CDATA[题目描绘给定一个二叉树，返回其节点值自底向上的层次遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历） 例如：给定二叉树 [3,9,20,null,null,15,7], 12345 3 / \9 20 / \ 15 7 返回其自底向上的层次遍历为： 12345[ [15,7], [9,20], [3]] 解题思路每次把一维数组加到二维数组的开始位置即可，sublist，list.add(0,sublist). 12345678910111213141516171819202122232425262728293031323334/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) &#123; List&lt;List&lt;Integer&gt;&gt; list=new ArrayList&lt;&gt;(); Queue &lt;TreeNode&gt; queue=new LinkedList&lt;&gt;(); if(root==null) return list; queue.offer(root); while(!queue.isEmpty()) &#123; List &lt;Integer&gt; sublist=new ArrayList&lt;&gt;(); int len=queue.size(); for(int i=0; i&lt;len; i++) &#123; TreeNode temp=queue.poll(); if(temp.left!=null) queue.offer(temp.left); if(temp.right!=null) queue.offer(temp.right); sublist.add(temp.val); &#125; list.add(0,sublist); &#125; return list; &#125;&#125;]]></content>
+      <categories>
+        <category>二叉树</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode102-二叉树的层序遍历]]></title>
     <url>%2F2020%2F04%2F07%2FLeetCode102-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86%2F</url>
     <content type="text"><![CDATA[题目描述给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。 示例： 二叉树：[3,9,20,null,null,15,7], 123453 / \9 20 / \ 15 7 返回其层次遍历结果： 12345[ [3], [9,20], [15,7]] 解题思路BFS还是不是很熟悉，我知道用层序遍历，但是不知道怎么把一层的树放到一位数组中，orz，真的菜！！，判断队列中的长度就可以了。 12345678910111213141516171819202122232425262728293031323334/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123; List&lt;List&lt;Integer&gt;&gt; list=new ArrayList&lt;&gt;(); Queue &lt;TreeNode&gt; queue=new LinkedList&lt;&gt;(); if(root==null) return list; queue.offer(root); while(!queue.isEmpty()) &#123; List &lt;Integer&gt; sublist=new ArrayList&lt;&gt;(); int len=queue.size(); for(int i=0; i&lt;len; i++) &#123; TreeNode temp=queue.poll(); if(temp.left!=null) queue.offer(temp.left); if(temp.right!=null) queue.offer(temp.right); sublist.add(temp.val); &#125; list.add(sublist); &#125; return list; &#125;&#125;]]></content>
@@ -42,9 +54,9 @@
         <category>贪心</category>
       </categories>
       <tags>
-        <tag>LeetCode周赛</tag>
         <tag>贪心</tag>
         <tag>优先队列</tag>
+        <tag>LeetCode周赛</tag>
       </tags>
   </entry>
   <entry>
@@ -389,8 +401,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>二分查找</tag>
         <tag>数学</tag>
+        <tag>二分查找</tag>
       </tags>
   </entry>
   <entry>
