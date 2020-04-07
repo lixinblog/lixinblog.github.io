@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode111-二叉树的最小深度]]></title>
+    <url>%2F2020%2F04%2F07%2FLeetCode111-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[题目描述给定一个二叉树，找出其最小深度。 最小深度是从根节点到最近叶子节点的最短路径上的节点数量。 说明: 叶子节点是指没有子节点的节点。 示例: 给定二叉树 [3,9,20,null,null,15,7], 12345 3 / \9 20 / \ 15 7 返回它的最小深度 2. 解题思路这里是返回根节点到最近叶子结点的最短路径上的节点数量，和以前理解的最小深度是不同的。例如[1,2]的最小深度是2，而不是1，因为根节点不是叶节点。 这道题的递归结束条件是： 如果root节点是空姐点，返回0 root节点的左右子树为空，返回1 root节点的左右子树有一个为空，返回不为空子树深度加1 root节点的左右子树都不为空，返回左右子树中深度较小的深度加1（加一是根节点） 1234567891011121314151617181920212223/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public int minDepth(TreeNode root) &#123; if(root==null)//如果根节点是空节点，那么深度为0 return 0; if(root.left==null&amp;&amp;root.right==null)//根节点的左右节点都为空，深度为1 return 1; int m1=minDepth(root.left);//计算左子树的深度 int m2=minDepth(root.right);//计算右子树的深度 if(root.left==null||root.right==null)//左右子树中有一个是空子树，返回不空子树深度加1 return m1+m2+1; //左右子树都不为空的情况 return Math.min(m1,m2)+1; &#125;&#125;]]></content>
+      <categories>
+        <category>二叉树</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+        <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode107-二叉树的层序遍历II]]></title>
     <url>%2F2020%2F04%2F07%2FLeetCode107-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86II%2F</url>
     <content type="text"><![CDATA[题目描绘给定一个二叉树，返回其节点值自底向上的层次遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历） 例如：给定二叉树 [3,9,20,null,null,15,7], 12345 3 / \9 20 / \ 15 7 返回其自底向上的层次遍历为： 12345[ [15,7], [9,20], [3]] 解题思路每次把一维数组加到二维数组的开始位置即可，sublist，list.add(0,sublist). 12345678910111213141516171819202122232425262728293031323334/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) &#123; List&lt;List&lt;Integer&gt;&gt; list=new ArrayList&lt;&gt;(); Queue &lt;TreeNode&gt; queue=new LinkedList&lt;&gt;(); if(root==null) return list; queue.offer(root); while(!queue.isEmpty()) &#123; List &lt;Integer&gt; sublist=new ArrayList&lt;&gt;(); int len=queue.size(); for(int i=0; i&lt;len; i++) &#123; TreeNode temp=queue.poll(); if(temp.left!=null) queue.offer(temp.left); if(temp.right!=null) queue.offer(temp.right); sublist.add(temp.val); &#125; list.add(0,sublist); &#125; return list; &#125;&#125;]]></content>
@@ -103,8 +115,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>递归</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -401,8 +413,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>二分查找</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -425,8 +437,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>时间复杂度</tag>
         <tag>质数</tag>
+        <tag>时间复杂度</tag>
       </tags>
   </entry>
   <entry>
