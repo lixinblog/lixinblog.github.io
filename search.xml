@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode126-单词接龙II]]></title>
+    <url>%2F2020%2F04%2F07%2FLeetCode126-%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99II%2F</url>
+    <content type="text"><![CDATA[题目描述给定两个单词（beginWord 和 endWord）和一个字典 wordList，找出所有从 beginWord 到 endWord 的最短转换序列。转换需遵循如下规则： 每次转换只能改变一个字母。 转换过程中的中间单词必须是字典中的单词。 说明: 如果不存在这样的转换序列，返回一个空列表。 所有单词具有相同的长度。 所有单词只由小写字母组成。 字典中不存在重复的单词。 你可以假设 beginWord 和 endWord 是非空的，且二者不相同。 示例 1: 12345678910输入:beginWord = &quot;hit&quot;,endWord = &quot;cog&quot;,wordList = [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]输出:[ [&quot;hit&quot;,&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;cog&quot;], [&quot;hit&quot;,&quot;hot&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]] 示例 2: 12345678输入:beginWord = &quot;hit&quot;endWord = &quot;cog&quot;wordList = [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]输出: []解释: endWord &quot;cog&quot; 不在字典中，所以不存在符合要求的转换序列。 解题思路这道题好难啊，一开始不要做困难的题，终于做出来了，对BFS理解不是很深的时候，不要去做困难的题，不然会适得其反，这篇文章写得很详细。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081class Solution &#123; public List&lt;List&lt;String&gt;&gt; findLadders(String beginWord, String endWord, List&lt;String&gt; wordList) &#123; List&lt;List&lt;String&gt;&gt; list=new ArrayList&lt;&gt;(); if(wordList.contains(endWord)==false) return list; BFS(beginWord,endWord,wordList,list); return list; &#125; private void BFS(String beginWord,String endWord,List&lt;String&gt;wordList,List&lt;List&lt;String&gt;&gt;list) &#123; Queue &lt;List&lt;String&gt;&gt; queue=new LinkedList&lt;&gt;(); List &lt;String&gt; path=new ArrayList&lt;&gt;(); path.add(beginWord); queue.offer(path); boolean flag=false; Set &lt;String&gt; visit=new HashSet&lt;&gt;(); visit.add(beginWord); Set &lt;String&gt; dict=new HashSet&lt;&gt;(wordList); while(!queue.isEmpty()) &#123; int len= queue.size(); Set&lt;String&gt; subvisit=new HashSet&lt;&gt;(); for(int i=0; i&lt;len; i++) &#123; List &lt;String&gt; tempPath=queue.poll();//出栈，即当前的路线 String temp=tempPath.get(tempPath.size()-1);//获取当前路径的末尾单词 //一次性得到下一次的节点 ArrayList &lt;String&gt; neighbors=getNeighbor(temp,dict); for(String neighbor:neighbors) &#123; if(!visit.contains(neighbor)) &#123; if(endWord.equals(neighbor)) &#123; flag=true; tempPath.add(endWord); list.add(new ArrayList&lt;String&gt;(tempPath)); tempPath.remove(tempPath.size()-1); subvisit.add(endWord); &#125; else &#123; tempPath.add(neighbor); //注意一下queue.offer(tempPath)会出错 queue.offer(new ArrayList&lt;String&gt;(tempPath)); //System.out.println(new ArrayList&lt;String&gt;(tempPath)); // System.out.println(tempPath); tempPath.remove(tempPath.size()-1); subvisit.add(neighbor); &#125; &#125; &#125; &#125; visit.addAll(subvisit); //System.out.println(queue); /*if(flag) break;*/ &#125; &#125; private ArrayList&lt;String&gt; getNeighbor(String temp,Set &lt;String&gt; dict) &#123; ArrayList &lt;String&gt; list=new ArrayList&lt;&gt;(); char [] chars=temp.toCharArray(); for(int i=0; i&lt;chars.length; i++) &#123; for(char s='a';s&lt;='z'; s++) &#123; if(s==chars[i]) continue; char oldchar=chars[i]; chars[i]=s; if(dict.contains(String.valueOf(chars))) &#123; list.add(String.valueOf(chars)); &#125; chars[i]=oldchar; &#125; &#125; return list; &#125;&#125;]]></content>
+      <categories>
+        <category>BFS</category>
+      </categories>
+      <tags>
+        <tag>BFS</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode111-二叉树的最小深度]]></title>
     <url>%2F2020%2F04%2F07%2FLeetCode111-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6%2F</url>
     <content type="text"><![CDATA[题目描述给定一个二叉树，找出其最小深度。 最小深度是从根节点到最近叶子节点的最短路径上的节点数量。 说明: 叶子节点是指没有子节点的节点。 示例: 给定二叉树 [3,9,20,null,null,15,7], 12345 3 / \9 20 / \ 15 7 返回它的最小深度 2. 解题思路这里是返回根节点到最近叶子结点的最短路径上的节点数量，和以前理解的最小深度是不同的。例如[1,2]的最小深度是2，而不是1，因为根节点不是叶节点。 这道题的递归结束条件是： 如果root节点是空姐点，返回0 root节点的左右子树为空，返回1 root节点的左右子树有一个为空，返回不为空子树深度加1 root节点的左右子树都不为空，返回左右子树中深度较小的深度加1（加一是根节点） 1234567891011121314151617181920212223/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public int minDepth(TreeNode root) &#123; if(root==null)//如果根节点是空节点，那么深度为0 return 0; if(root.left==null&amp;&amp;root.right==null)//根节点的左右节点都为空，深度为1 return 1; int m1=minDepth(root.left);//计算左子树的深度 int m2=minDepth(root.right);//计算右子树的深度 if(root.left==null||root.right==null)//左右子树中有一个是空子树，返回不空子树深度加1 return m1+m2+1; //左右子树都不为空的情况 return Math.min(m1,m2)+1; &#125;&#125;]]></content>
@@ -66,9 +78,9 @@
         <category>贪心</category>
       </categories>
       <tags>
+        <tag>LeetCode周赛</tag>
         <tag>贪心</tag>
         <tag>优先队列</tag>
-        <tag>LeetCode周赛</tag>
       </tags>
   </entry>
   <entry>
@@ -437,8 +449,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>质数</tag>
         <tag>时间复杂度</tag>
+        <tag>质数</tag>
       </tags>
   </entry>
   <entry>
