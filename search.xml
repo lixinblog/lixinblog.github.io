@@ -4,6 +4,12 @@
     <title><![CDATA[LeetCode200-岛屿数量]]></title>
     <url>%2F2020%2F04%2F09%2FLeetCode200-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F%2F</url>
     <content type="text"><![CDATA[题目描述给定一个由 ‘1‘（陆地）和 ‘0‘（水）组成的的二维网格，计算岛屿的数量。一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。你可以假设网格的四个边均被水包围。 示例 1: 1234567输入:11110110101100000000输出: 1 示例 2: 1234567输入:11000110000010000011输出: 3 解题思路访问第一个陆地，根据广度遍历，把它相邻的陆地都标记为1，对应的计数cout为1，然后访问下一个陆地，且没有被访问过，继续根据BFS，把相邻的陆地标记为1，对应的计数cout为2，直到遍历完整个二维数组，对应的计数cout就是结果。 特别注意 每次入队的时候，要把对应位置的陆地标记为已访问，这样才不会超时，如果出队的时候再标记已访问，这样会超时。 放上大佬的详解解答链接 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566class position&#123; int x; int y; public position(int i,int j) &#123; x=i; y=j; &#125;&#125;class Solution &#123; public int numIslands(char[][] grid) &#123; if(grid.length==0||grid==null) return 0; int rows=grid.length; int cols=grid[0].length; int cout=0; int [] dx=&#123;-1,1,0,0&#125;; int [] dy=&#123;0,0,-1,1&#125;; boolean [][] flag=new boolean[rows][cols]; for(int i=0; i&lt;rows; i++) &#123; for(int j=0; j&lt;cols; j++) &#123; if(grid[i][j]=='1'&amp;&amp;flag[i][j]==false) &#123; cout++; //进行广度遍历 Queue&lt;position&gt; queue=new LinkedList&lt;&gt;(); queue.offer(new position(i,j)); //入队的时候标记已访问，不然会超时 flag[i][j]=true; while(!queue.isEmpty()) &#123; int len=queue.size(); for(int k=0; k&lt;len; k++) &#123; position temp=queue.poll(); //flag[temp.x][temp.y]=true;//标记已访问,这样会超时 for(int l=0; l&lt;4; l++) &#123; int tempx=temp.x+dx[l]; int tempy=temp.y+dy[l]; if(judge(tempx,tempy,grid)==true&amp;&amp;flag[tempx][tempy]==false) &#123; queue.offer(new position(tempx,tempy)); flag[tempx][tempy]=true; &#125; &#125; &#125; &#125; &#125; &#125; &#125; return cout; &#125; private boolean judge(int i,int j,char [][] grid)//判断是否在合法坐标，是否是陆地 &#123; int rows=grid.length; int cols=grid[0].length; boolean flag=false; if(i&gt;=0&amp;&amp;i&lt;rows&amp;&amp;j&gt;=0&amp;&amp;j&lt;cols&amp;&amp;grid[i][j]=='1') return true; return flag; &#125;&#125;]]></content>
+      <categories>
+        <category>BFS</category>
+      </categories>
+      <tags>
+        <tag>BFS</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[LeetCode133-克隆图]]></title>
@@ -106,9 +112,9 @@
         <category>贪心</category>
       </categories>
       <tags>
+        <tag>LeetCode周赛</tag>
         <tag>贪心</tag>
         <tag>优先队列</tag>
-        <tag>LeetCode周赛</tag>
       </tags>
   </entry>
   <entry>
@@ -155,8 +161,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>数学</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
