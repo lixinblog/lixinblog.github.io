@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode1411-给N×3网格图涂色的方案数]]></title>
+    <url>%2F2020%2F04%2F13%2FLeetCode1411-%E7%BB%99N%C3%973%E7%BD%91%E6%A0%BC%E5%9B%BE%E6%B6%82%E8%89%B2%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[题目描述你有一个n x 3 的网格图 grid ，你需要用 红，黄，绿 三种颜色之一给每一个格子上色，且确保相邻格子颜色不同（也就是有相同水平边或者垂直边的格子颜色不同）。 给你网格图的行数 n 。 请你返回给 grid 涂色的方案数。由于答案可能会非常大，请你返回答案对 10^9 + 7 取余的结果。 示例 1： 123输入：n = 1输出：12解释：总共有 12 种可行的方法： 示例 2： 12输入：n = 2输出：54 示例 3： 12输入：n = 3输出：246 示例 4： 12输入：n = 7输出：106494 示例 5： 12输入：n = 5000输出：30228214 提示： n == grid.length grid[i].length == 3 1 &lt;= n &lt;= 5000 解题思路我在周赛的时候没做出来，找不到思路，总觉得是初中的排列组合问题，这位写得很详细，我自己就不详细写了 1234567891011121314151617181920class Solution &#123; public int numOfWays(int n) &#123; long aba=6; long abc=6; if(n==1) &#123; aba=6; abc=6; &#125; for(int i=2; i&lt;=n; i++) &#123; long temp1=(aba*3+abc*2)%1000000007; long temp2=(aba*2+abc*2)%1000000007; aba=temp1; abc=temp2; //System.out.println(aba+" "+abc); &#125; return (int)((aba+abc)%1000000007); &#125;&#125;]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode887-鸡蛋掉落]]></title>
     <url>%2F2020%2F04%2F12%2FLeetCode887-%E9%B8%A1%E8%9B%8B%E6%8E%89%E8%90%BD%2F</url>
     <content type="text"><![CDATA[题目描述你将获得 K 个鸡蛋，并可以使用一栋从 1 到 N 共有 N 层楼的建筑。 每个蛋的功能都是一样的，如果一个蛋碎了，你就不能再把它掉下去。 你知道存在楼层 F ，满足 0 &lt;= F &lt;= N 任何从高于 F 的楼层落下的鸡蛋都会碎，从 F 楼层或比它低的楼层落下的鸡蛋都不会破。 每次移动，你可以取一个鸡蛋（如果你有完整的鸡蛋）并把它从任一楼层 X 扔下（满足 1 &lt;= X &lt;= N）。 你的目标是确切地知道 F 的值是多少。 无论 F 的初始值如何，你确定 F 的值的最小移动次数是多少？ 示例 1： 1234567输入：K = 1, N = 2输出：2解释：鸡蛋从 1 楼掉落。如果它碎了，我们肯定知道 F = 0 。否则，鸡蛋从 2 楼掉落。如果它碎了，我们肯定知道 F = 1 。如果它没碎，那么我们肯定知道 F = 2 。因此，在最坏的情况下我们需要移动 2 次以确定 F 是多少。 示例 2： 12输入：K = 2, N = 6输出：3 示例 3： 12输入：K = 3, N = 14输出：4 提示： 1 &lt;= K &lt;= 100 1 &lt;= N &lt;= 10000 解题思路我是照着这篇文章写的，写得很仔细大佬的文章 1234567891011121314151617181920212223242526272829303132333435363738394041424344class Solution &#123; public int superEggDrop(int K, int N) &#123; int dp[][]=new int[N+1][K+1]; for(int i=0; i&lt;=N; i++) Arrays.fill(dp[i],Integer.MAX_VALUE); dp[0][0]=0;//0层0个鸡蛋，测试0次 for(int i=1; i&lt;=N; i++)//1层到N层 &#123; dp[i][0]=0;//i层0个鸡蛋 dp[i][1]=i;//i层1个鸡蛋 &#125; for(int i=1; i&lt;=K; i++) &#123; dp[0][i]=0;//0层i个鸡蛋 dp[1][i]=1;//1层i个鸡蛋 &#125; //状态转移方程 for(int i=2; i&lt;=N; i++) &#123; for(int j=2; j&lt;=K; j++) &#123; int low=1; int high=i; while(low&lt;high) &#123; int mid=(high+low)/2; int breakcout=dp[mid-1][j-1]; int notbreakcout=dp[i-mid][j]; if(breakcout&gt;notbreakcout) high=mid-1; else if(breakcout&lt;notbreakcout) low=mid+1; else &#123; low=mid; break; &#125; &#125; dp[i][j]=Math.max(dp[low-1][j-1],dp[i-low][j])+1; &#125; &#125; return dp[N][K]; &#125;&#125;]]></content>
@@ -173,8 +184,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>递归</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -495,8 +506,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>时间复杂度</tag>
         <tag>质数</tag>
+        <tag>时间复杂度</tag>
       </tags>
   </entry>
   <entry>
