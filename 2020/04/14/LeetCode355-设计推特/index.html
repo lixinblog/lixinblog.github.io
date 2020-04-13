@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode笔记,">
+  <meta name="keywords" content="优先队列,HashMap,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="题目描述题目链接 给定一个非空的字符串，判断它是否可以由它的一个子串重复多次构成。给定的字符串只含有小写英文字母，并且长度不超过10000。 示例 1: 123输入: &quot;abab&quot;输出: True解释: 可由子字符串 &quot;ab&quot; 重复两次构成。  示例 2: 12输入: &quot;aba&quot;输出: False  示例 3: 123输入: &quot;abcabcabcabc&quot;输出: True解释: 可由子字符串 &quot;ab">
-<meta name="keywords" content="LeetCode笔记">
+<meta name="description" content="题目描述设计一个简化版的推特(Twitter)，可以让用户实现发送推文，关注/取消关注其他用户，能够看见关注人（包括自己）的最近十条推文。你的设计需要支持以下的几个功能：  1.postTweet(userId, tweetId): 创建一条新的推文 2.getNewsFeed(userId): 检索最近的十条推文。每个推文都必须是由此用户关注的人或者是用户自己发出的。推文必须按照时间顺序由最近的">
+<meta name="keywords" content="优先队列,HashMap">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode459-重复的子字符串">
-<meta property="og:url" content="http://yoursite.com/2020/03/11/LeetCode459-重复的子字符串/index.html">
+<meta property="og:title" content="LeetCode355-设计推特">
+<meta property="og:url" content="http://yoursite.com/2020/04/14/LeetCode355-设计推特/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述题目链接 给定一个非空的字符串，判断它是否可以由它的一个子串重复多次构成。给定的字符串只含有小写英文字母，并且长度不超过10000。 示例 1: 123输入: &quot;abab&quot;输出: True解释: 可由子字符串 &quot;ab&quot; 重复两次构成。  示例 2: 12输入: &quot;aba&quot;输出: False  示例 3: 123输入: &quot;abcabcabcabc&quot;输出: True解释: 可由子字符串 &quot;ab">
+<meta property="og:description" content="题目描述设计一个简化版的推特(Twitter)，可以让用户实现发送推文，关注/取消关注其他用户，能够看见关注人（包括自己）的最近十条推文。你的设计需要支持以下的几个功能：  1.postTweet(userId, tweetId): 创建一条新的推文 2.getNewsFeed(userId): 检索最近的十条推文。每个推文都必须是由此用户关注的人或者是用户自己发出的。推文必须按照时间顺序由最近的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-11T06:30:49.825Z">
+<meta property="og:updated_time" content="2020-04-13T16:27:27.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode459-重复的子字符串">
-<meta name="twitter:description" content="题目描述题目链接 给定一个非空的字符串，判断它是否可以由它的一个子串重复多次构成。给定的字符串只含有小写英文字母，并且长度不超过10000。 示例 1: 123输入: &quot;abab&quot;输出: True解释: 可由子字符串 &quot;ab&quot; 重复两次构成。  示例 2: 12输入: &quot;aba&quot;输出: False  示例 3: 123输入: &quot;abcabcabcabc&quot;输出: True解释: 可由子字符串 &quot;ab">
+<meta name="twitter:title" content="LeetCode355-设计推特">
+<meta name="twitter:description" content="题目描述设计一个简化版的推特(Twitter)，可以让用户实现发送推文，关注/取消关注其他用户，能够看见关注人（包括自己）的最近十条推文。你的设计需要支持以下的几个功能：  1.postTweet(userId, tweetId): 创建一条新的推文 2.getNewsFeed(userId): 检索最近的十条推文。每个推文都必须是由此用户关注的人或者是用户自己发出的。推文必须按照时间顺序由最近的">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/11/LeetCode459-重复的子字符串/">
+  <link rel="canonical" href="http://yoursite.com/2020/04/14/LeetCode355-设计推特/">
 
 
 
 
 
-  <title>LeetCode459-重复的子字符串 | Hexo</title>
+  <title>LeetCode355-设计推特 | Hexo</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/11/LeetCode459-重复的子字符串/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/14/LeetCode355-设计推特/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lixin">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode459-重复的子字符串</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode355-设计推特</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-11T13:57:02+08:00">
-                2020-03-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-14T00:21:09+08:00">
+                2020-04-14
               </time>
             
 
@@ -338,6 +338,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计题/" itemprop="url" rel="index">
+                    <span itemprop="name">设计题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -365,7 +387,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  422
+                  1k
                 </span>
               
 
@@ -381,7 +403,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -402,26 +424,19 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode-cn.com/problems/repeated-substring-pattern/" target="_blank" rel="noopener">题目链接</a></p>
-<p>给定一个非空的字符串，判断它是否可以由它的一个子串重复多次构成。给定的字符串只含有小写英文字母，并且长度不超过10000。</p>
-<p>示例 1:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: <span class="string">"abab"</span></span><br><span class="line">输出: True</span><br><span class="line">解释: 可由子字符串 <span class="string">"ab"</span> 重复两次构成。</span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>设计一个简化版的推特(Twitter)，可以让用户实现发送推文，关注/取消关注其他用户，能够看见关注人（包括自己）的最近十条推文。你的设计需要支持以下的几个功能：</p>
+<ul>
+<li>1.postTweet(userId, tweetId): 创建一条新的推文</li>
+<li>2.getNewsFeed(userId): 检索最近的十条推文。每个推文都必须是由此用户关注的人或者是用户自己发出的。推文必须按照时间顺序由最近的开始排序。</li>
+<li>3.follow(followerId, followeeId): 关注一个用户</li>
+<li>4.unfollow(followerId, followeeId): 取消关注一个用户</li>
+</ul>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Twitter twitter = new Twitter();</span><br><span class="line"></span><br><span class="line">// 用户1发送了一条新推文 (用户id = 1, 推文id = 5).</span><br><span class="line">twitter.postTweet(1, 5);</span><br><span class="line"></span><br><span class="line">// 用户1的获取推文应当返回一个列表，其中包含一个id为5的推文.</span><br><span class="line">twitter.getNewsFeed(1);</span><br><span class="line"></span><br><span class="line">// 用户1关注了用户2.</span><br><span class="line">twitter.follow(1, 2);</span><br><span class="line"></span><br><span class="line">// 用户2发送了一个新推文 (推文id = 6).</span><br><span class="line">twitter.postTweet(2, 6);</span><br><span class="line"></span><br><span class="line">// 用户1的获取推文应当返回一个列表，其中包含两个推文，id分别为 -&gt; [6, 5].</span><br><span class="line">// 推文id6应当在推文id5之前，因为它是在5之后发送的.</span><br><span class="line">twitter.getNewsFeed(1);</span><br><span class="line"></span><br><span class="line">// 用户1取消关注了用户2.</span><br><span class="line">twitter.unfollow(1, 2);</span><br><span class="line"></span><br><span class="line">// 用户1的获取推文应当返回一个列表，其中包含一个id为5的推文.</span><br><span class="line">// 因为用户1已经不再关注用户2.</span><br><span class="line">twitter.getNewsFeed(1);</span><br></pre></td></tr></table></figure>
 
-<p>示例 2:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: <span class="string">"aba"</span></span><br><span class="line">输出: False</span><br></pre></td></tr></table></figure>
-
-<p>示例 3:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: <span class="string">"abcabcabcabc"</span></span><br><span class="line">输出: True</span><br><span class="line">解释: 可由子字符串 <span class="string">"abc"</span> 重复四次构成。 (或者子字符串 <span class="string">"abcabc"</span> 重复两次构成。)</span><br></pre></td></tr></table></figure>
-
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><a href="https://leetcode-cn.com/problems/repeated-substring-pattern/solution/jian-dan-ming-liao-guan-yu-javaliang-xing-dai-ma-s/" target="_blank" rel="noopener">参考了这篇文章</a></p>
-<p>如果您的字符串S包含一个重复的子字符串，那么这意味着您可以多次“移位和换行”您的字符串，并使其与原始字符串匹配。<br>例如:abcabc<br>转变:cabcab<br>改变两次:bcabca<br>改变三次:abcabc</p>
-<p>现在字符串和原字符串匹配了，所以可以得出结论存在重复的子串</p>
-<p>为了避免这种无用的环绕，可以创建一个新的字符串str,它等于原来的字符串S再加上S自身，这样其实就包含了所有移动的字符串。</p>
-<p>比如字符串：S = acd，那么str = S + S = acdacd</p>
-<p>acd移动的可能：dac、cda。其实都包含在了str中了。就像一个滑动窗口</p>
-<p>一开始acd (acd) ，移动一次ac(dac)d,移动两次a(cda)cd。循环结束</p>
-<p>所以可以直接判断str中去除首尾元素之后，是否包含自身元素。如果包含。则表明存在重复子串。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">repeatedSubstringPattern</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        String str=s+s;</span><br><span class="line">        <span class="keyword">int</span> len=str.length();</span><br><span class="line">        <span class="keyword">return</span> str.substring(<span class="number">1</span>,len-<span class="number">1</span>).contains(s);  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><p>设计题自己还是差点，主要是自己对有的数据结构不是很熟悉，尤其是HashMap，要对数据结构烂熟于心，自己不是很熟，所以总是不知道如何下手，但是做出来还是很有成就感的。</p>
+<p><a href="https://leetcode-cn.com/problems/design-twitter/solution/ha-xi-biao-lian-biao-you-xian-dui-lie-java-by-liwe/" target="_blank" rel="noopener">看了这篇文章</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">tweet</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> id;<span class="comment">//推特id</span></span><br><span class="line">    <span class="keyword">int</span> timestamp;<span class="comment">//发推文的时间</span></span><br><span class="line">    tweet next;<span class="comment">//指针</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">tweet</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        id=x;</span><br><span class="line">        timestamp=y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Twitter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> timestamp=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;Integer,tweet&gt; user_tweet;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;Integer,Set &lt;Integer&gt; &gt; user_Folllwing;</span><br><span class="line">    <span class="keyword">private</span> PriorityQueue &lt;tweet&gt; Maxheap;</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Twitter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        user_tweet=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        user_Folllwing=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Maxheap=<span class="keyword">new</span> PriorityQueue&lt;tweet&gt;((t1,t2)-&gt;t2.timestamp-t1.timestamp);<span class="comment">//建立按发推特时间的大顶堆，也就是堆顶是最新发送的推特</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Compose a new tweet. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postTweet</span><span class="params">(<span class="keyword">int</span> userId, <span class="keyword">int</span> tweetId)</span> </span>&#123;</span><br><span class="line">        timestamp++;</span><br><span class="line">        <span class="keyword">if</span>(user_tweet.containsKey(userId))</span><br><span class="line">        &#123;</span><br><span class="line">            tweet oldhead=user_tweet.get(userId);</span><br><span class="line">            tweet newhead=<span class="keyword">new</span> tweet(tweetId,timestamp);</span><br><span class="line">            newhead.next=oldhead;</span><br><span class="line">            user_tweet.put(userId,newhead);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        user_tweet.put(userId,<span class="keyword">new</span> tweet(tweetId,timestamp));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getNewsFeed</span><span class="params">(<span class="keyword">int</span> userId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//由于是全局使用，使用前大顶堆要清空</span></span><br><span class="line">        Maxheap.clear();</span><br><span class="line">        tweet head=user_tweet.get(userId);</span><br><span class="line">        <span class="keyword">if</span>(head!=<span class="keyword">null</span>)<span class="comment">//进堆时要判断是否为空</span></span><br><span class="line">        Maxheap.offer(head);</span><br><span class="line">        Set&lt;Integer&gt; followees=user_Folllwing.get(userId);</span><br><span class="line">        <span class="keyword">if</span>(followees!=<span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(Integer use:followees)</span><br><span class="line">            &#123;</span><br><span class="line">                tweet temp=user_tweet.get(use);</span><br><span class="line">                <span class="keyword">if</span>(temp!=<span class="keyword">null</span>)</span><br><span class="line">                Maxheap.offer(temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Integer&gt; res=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> cout=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!Maxheap.isEmpty()&amp;&amp;cout&lt;<span class="number">10</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            tweet lasttweet=Maxheap.poll();</span><br><span class="line">            res.add(lasttweet.id);</span><br><span class="line">            <span class="keyword">if</span>(lasttweet.next!=<span class="keyword">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Maxheap.offer(lasttweet.next);</span><br><span class="line">            &#125;</span><br><span class="line">            cout++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Follower follows a followee. If the operation is invalid, it should be a no-op. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">follow</span><span class="params">(<span class="keyword">int</span> followerId, <span class="keyword">int</span> followeeId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(followerId==followeeId)<span class="comment">//要关注的id和自己的id相等</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">        Set&lt;Integer&gt; mysubscribe=user_Folllwing.get(followerId);</span><br><span class="line">        <span class="keyword">if</span>(mysubscribe!=<span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            mysubscribe.add(followeeId);</span><br><span class="line">            user_Folllwing.put(followerId,mysubscribe);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//这里不这样写会报空指针异常，找了好久！！！</span></span><br><span class="line">            Set&lt;Integer&gt; subscribe=<span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">            subscribe.add(followeeId);</span><br><span class="line">            user_Folllwing.put(followerId,subscribe);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Follower unfollows a followee. If the operation is invalid, it should be a no-op. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unfollow</span><span class="params">(<span class="keyword">int</span> followerId, <span class="keyword">int</span> followeeId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(followerId==followeeId)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">        Set&lt;Integer&gt; mysubscribe=user_Folllwing.get(followerId);</span><br><span class="line">        <span class="keyword">if</span>(mysubscribe!=<span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            mysubscribe.remove(followeeId);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Twitter twitter = <span class="keyword">new</span> Twitter();</span><br><span class="line">        twitter.postTweet(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        List&lt;Integer&gt; res1 = twitter.getNewsFeed(<span class="number">1</span>);</span><br><span class="line">        System.out.println(res1);</span><br><span class="line"></span><br><span class="line">        twitter.follow(<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; res2 = twitter.getNewsFeed(<span class="number">2</span>);</span><br><span class="line">        System.out.println(res2);</span><br><span class="line"></span><br><span class="line">        twitter.unfollow(<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; res3 = twitter.getNewsFeed(<span class="number">2</span>);</span><br><span class="line">        System.out.println(res3);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your Twitter object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * Twitter obj = new Twitter();</span></span><br><span class="line"><span class="comment"> * obj.postTweet(userId,tweetId);</span></span><br><span class="line"><span class="comment"> * List&lt;Integer&gt; param_2 = obj.getNewsFeed(userId);</span></span><br><span class="line"><span class="comment"> * obj.follow(followerId,followeeId);</span></span><br><span class="line"><span class="comment"> * obj.unfollow(followerId,followeeId);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -469,7 +484,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode笔记/" rel="tag"> <i class="fa fa-google"></i> LeetCode笔记</a>
+            <a href="/tags/优先队列/" rel="tag"> <i class="fa fa-google"></i> 优先队列</a>
+          
+            <a href="/tags/HashMap/" rel="tag"> <i class="fa fa-google"></i> HashMap</a>
           
         </div>
       
@@ -482,8 +499,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/10/LeetCode443-压缩字符串/" rel="next" title="LeetCode443-压缩字符串">
-                <i class="fa fa-chevron-left"></i> LeetCode443-压缩字符串
+              <a href="/2020/04/13/LeetCode1411-给N×3网格图涂色的方案数/" rel="next" title="LeetCode1411-给N×3网格图涂色的方案数">
+                <i class="fa fa-chevron-left"></i> LeetCode1411-给N×3网格图涂色的方案数
               </a>
             
           </div>
@@ -491,10 +508,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/11/LeetCode521-最长特殊序列I/" rel="prev" title="LeetCode521-最长特殊序列I">
-                LeetCode521-最长特殊序列I <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -675,7 +688,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#想法"><span class="nav-number">2.</span> <span class="nav-text">想法</span></a></li></ol></div>
             
 
           </div>
