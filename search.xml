@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LCP 10-二叉树任务调度]]></title>
+    <url>%2F2020%2F04%2F20%2FLCP-10-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[题目描述任务调度优化是计算机性能优化的关键任务之一。在任务众多时，不同的调度策略可能会得到不同的总体执行时间，因此寻求一个最优的调度方案是非常有必要的。 通常任务之间是存在依赖关系的，即对于某个任务，你需要先完成他的前导任务（如果非空），才能开始执行该任务。我们保证任务的依赖关系是一棵二叉树，其中 root 为根任务，root.left 和 root.right 为他的两个前导任务（可能为空），root.val 为其自身的执行时间。 在一个 CPU 核执行某个任务时，我们可以在任何时刻暂停当前任务的执行，并保留当前执行进度。在下次继续执行该任务时，会从之前停留的进度开始继续执行。暂停的时间可以不是整数。 现在，系统有两个 CPU 核，即我们可以同时执行两个任务，但是同一个任务不能同时在两个核上执行。给定这颗任务树，请求出所有任务执行完毕的最小时间。 示例 1： 12345输入：root = [47, 74, 31]输出：121解释：根节点的左右节点可以并行执行31分钟，剩下的43+47分钟只能串行执行，因此总体执行时间是121分钟。 示例 2： 123输入：root = [15, 21, null, 24, null, 27, 26]输出：87 示例 3： 123输入：root = [1,3,2,null,null,4,4]输出：7.5 限制： 1 &lt;= 节点数量 &lt;= 1000 1 &lt;= 单节点执行时间 &lt;= 1000 解题思路比赛的时候，题目都看错了，做了二十多分钟，以为自己要做出来，只是时间到了，看成先遍历根节点，然后才能遍历左右子树，题目是先遍历左右子树才能遍历根节点。别人的思路 12345678910111213141516171819202122232425/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public double minimalExecTime(TreeNode root) &#123; double [] res=searchTree(root); return res[0]; &#125; private double [] searchTree(TreeNode root) &#123; if(root==null) return new double []&#123;0.0D,0.0D&#125;; double [] leftv=searchTree(root.left); double [] rightv=searchTree(root.right); double sum=leftv[1]+rightv[1]; double minivalue=Math.max(Math.max(leftv[0],rightv[0]),sum/2)+root.val; return new double []&#123;minivalue,sum+root.val&#125;; &#125;&#125;]]></content>
+      <categories>
+        <category>二叉树</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LCP 09-最小跳跃次数]]></title>
+    <url>%2F2020%2F04%2F20%2FLCP-09-%E6%9C%80%E5%B0%8F%E8%B7%B3%E8%B7%83%E6%AC%A1%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[题目描述为了给刷题的同学一些奖励，力扣团队引入了一个弹簧游戏机。游戏机由 N 个特殊弹簧排成一排，编号为 0 到 N-1。初始有一个小球在编号 0 的弹簧处。若小球在编号为 i 的弹簧处，通过按动弹簧，可以选择把小球向右弹射 jump[i] 的距离，或者向左弹射到任意左侧弹簧的位置。也就是说，在编号为 i 弹簧处按动弹簧，小球可以弹向 0 到 i-1 中任意弹簧或者 i+jump[i] 的弹簧（若 i+jump[i]&gt;=N ，则表示小球弹出了机器）。小球位于编号 0 处的弹簧时不能再向左弹。 为了获得奖励，你需要将小球弹出机器。请求出最少需要按动多少次弹簧，可以将小球从编号 0 弹簧弹出整个机器，即向右越过编号 N-1 的弹簧。 示例 1： 12345输入：jump = [2, 5, 1, 1, 1, 1]输出：3解释：小 Z 最少需要按动 3 次弹簧，小球依次到达的顺序为 0 -&gt; 2 -&gt; 1 -&gt; 6，最终小球弹出了机器。 限制： 1 &lt;= jump.length &lt;= 10^6 1 &lt;= jump[i] &lt;= 10000 解题思路比赛的时候，用的是暴力每访问一个位置，都要重新从0到该位置之间的每个位置是否比往右边下一个跳的位置更远，时间复杂度为n×n,结果就超时了。。。。。。。 看别人用BFS也可以做，先是从0位置开始，每访问一个位置，就标记该位置已经被访问，下次就不需要访问该位置了，时间复杂度为n,大佬博客 123456789101112131415161718192021222324252627282930313233343536373839404142class Solution &#123; public int minJump(int[] jump) &#123; int len=jump.length; int [] flag=new int[len];//用来标记该位置是否被访问 Queue &lt;Integer&gt; position=new LinkedList&lt;&gt;(),ifgo=new LinkedList&lt;&gt;(); for(int i=0; i&lt;len; i++) ifgo.offer(i); position.offer(0); int cout=0;//统计走的步数 while(!position.isEmpty()) &#123; int n=position.size(); for(int i=0; i&lt;n; i++) &#123; int temp=position.poll(); flag[temp]=1; if(temp+jump[temp]&gt;=len) &#123; return cout+1; &#125; //向右找 if(flag[temp+jump[temp]]==0) &#123; flag[temp+jump[temp]]=1; position.offer(temp+jump[temp]); &#125; //向左找 while(!ifgo.isEmpty()&amp;&amp;ifgo.peek()&lt;temp) &#123; int num=ifgo.poll(); if(flag[num]==0) &#123; flag[num]=1; position.offer(num); &#125; &#125; &#125; cout++; &#125; return cout; &#125;&#125;]]></content>
+      <categories>
+        <category>BFS</category>
+      </categories>
+      <tags>
+        <tag>BFS</tag>
+        <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LCP 08-剧情触发时间]]></title>
+    <url>%2F2020%2F04%2F20%2FLCP-08-%E5%89%A7%E6%83%85%E8%A7%A6%E5%8F%91%E6%97%B6%E9%97%B4%2F</url>
+    <content type="text"><![CDATA[题目描述在战略游戏中，玩家往往需要发展自己的势力来触发各种新的剧情。一个势力的主要属性有三种，分别是文明等级（C），资源储备（R）以及人口数量（H）。在游戏开始时（第 0 天），三种属性的值均为 0。 随着游戏进程的进行，每一天玩家的三种属性都会对应增加，我们用一个二维数组 increase 来表示每天的增加情况。这个二维数组的每个元素是一个长度为 3 的一维数组，例如 [[1,2,1],[3,4,2]] 表示第一天三种属性分别增加 1,2,1 而第二天分别增加 3,4,2。 所有剧情的触发条件也用一个二维数组 requirements 表示。这个二维数组的每个元素是一个长度为 3 的一维数组，对于某个剧情的触发条件 c[i], r[i], h[i]，如果当前 C &gt;= c[i] 且 R &gt;= r[i] 且 H &gt;= h[i] ，则剧情会被触发。 根据所给信息，请计算每个剧情的触发时间，并以一个数组返回。如果某个剧情不会被触发，则该剧情对应的触发时间为 -1 。 示例 1： 123456789101112131415输入： increase = [[2,8,4],[2,5,0],[10,9,8]] requirements = [[2,11,3],[15,10,7],[9,17,12],[8,1,14]]输出: [2,-1,3,-1]解释：初始时，C = 0，R = 0，H = 0第 1 天，C = 2，R = 8，H = 4第 2 天，C = 4，R = 13，H = 4，此时触发剧情 0第 3 天，C = 14，R = 22，H = 12，此时触发剧情 2剧情 1 和 3 无法触发。 示例 2： 123输入： increase = [[0,4,5],[4,8,8],[8,6,1],[10,10,0]] requirements = [[12,11,16],[20,2,6],[9,2,6],[10,18,3],[8,14,9]]输出: [-1,4,3,3,3] 示例 3： 123输入： increase = [[1,1,1]] requirements = [[0,0,0]]输出: [0] 限制： 1 &lt;= increase.length &lt;= 10000 1 &lt;= requirements.length &lt;= 100000 0 &lt;= increase[i] &lt;= 10 0 &lt;= requirements[i] &lt;= 100000 解题思路比赛的时候，我就知道用暴力，最终超时，自己在瞎搞时间优化，最后也没有优化出来，判断条件调换顺序什么的，因为我看requirement是没有顺序的，但是忘了increase是有顺序的。用二分查找就出来了，哎！ 12345678910111213141516171819202122232425262728293031323334353637383940class Solution &#123; public int[] getTriggerTime(int[][] increase, int[][] requirements) &#123; int [] res=new int [requirements.length]; for(int i=1; i&lt;increase.length; i++) &#123; increase[i][0]+=increase[i-1][0]; increase[i][1]+=increase[i-1][1]; increase[i][2]+=increase[i-1][2]; &#125; for(int i=0; i&lt;requirements.length; i++) &#123; if(requirements[i][0]==0&amp;&amp;requirements[i][1]==0&amp;&amp;requirements[i][2]==0) &#123; res[i]=0; continue; &#125; int left=0; int right=increase.length-1; if(!(increase[right][0]&gt;=requirements[i][0]&amp;&amp;increase[right][1]&gt;=requirements[i][1]&amp;&amp;increase[right][2]&gt;=requirements[i][2])) &#123; res[i]=-1; continue; &#125; while(left&lt;right) &#123; int mid=(left+right)/2; if(!(increase[mid][0]&gt;=requirements[i][0]&amp;&amp;increase[mid][1]&gt;=requirements[i][1]&amp;&amp;increase[mid][2]&gt;=requirements[i][2])) &#123; left=mid+1; &#125; else &#123; right=mid; &#125; &#125; res[i]=left+1; &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>二分查找</category>
+      </categories>
+      <tags>
+        <tag>二分查找</tag>
+        <tag>时间复杂度</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LCP 07-传递信息]]></title>
     <url>%2F2020%2F04%2F20%2FLCP-07-%E4%BC%A0%E9%80%92%E4%BF%A1%E6%81%AF%2F</url>
     <content type="text"><![CDATA[题目描述小朋友 A 在和 ta 的小伙伴们玩传信息游戏，游戏规则如下： ​ 1.有 n 名玩家，所有玩家编号分别为 0 ～ n-1，其中小朋友 A 的编号为 0​ 2.每个玩家都有固定的若干个可传信息的其他玩家（也可能没有）。传信息的关系是单向的（比如 A 可以向 B 传信息，但 B 不能向 A 传信息）。​ 3.每轮信息必须需要传递给另一个人，且信息可重复经过同一个人 给定总玩家数 n，以及按 [玩家编号,对应可传递玩家编号] 关系组成的二维数组 relation。返回信息从小 A (编号 0 ) 经过 k 轮传递到编号为 n-1 的小伙伴处的方案数；若不能到达，返回 0。 示例 1： 输入：n = 5, relation = [[0,2],[2,1],[3,4],[2,3],[1,4],[2,0],[0,4]], k = 3 输出：3 解释：信息从小 A 编号 0 处开始，经 3 轮传递，到达编号 4。共有 3 种方案，分别是 0-&gt;2-&gt;0-&gt;4， 0-&gt;2-&gt;1-&gt;4， 0-&gt;2-&gt;3-&gt;4。 示例 2： 12345输入：n = 3, relation = [[0,2],[2,1]], k = 2输出：0解释：信息不能从小 A 处经过 2 轮传递到编号 2 限制： 2 &lt;= n &lt;= 10 1 &lt;= k &lt;= 5 1 &lt;= relation.length &lt;= 90, 且 relation[i].length == 2 0 &lt;= relation[i][0],relation[i][1] &lt; n 且 relation[i][0] != relation[i][1] 解题思路比赛的时候，我用递归去解，最后栈溢出了，BFS也没有想到，真的是菜到了极点，看了别人的解题思路后，用BFS解题 用一个队列，定义一个Node的类，类中有该节点的下一个位置(next),遍历到该点的步数level，先把起始点是0的点，把下一点的位置入队，起始点的level是1.举个例子，比如[0,2],[2,1],[3,4],[2,3],[1,4],[2,0],[0,4],起始点是0的有[0,2],[0,4]，则Node(2,1)，Node(4,1)入队,通过BFS遍历，遍历二维数组，起始点是2的，则把对应的下一个位置入队，对应的leve等于当前level加1，[2,1],[2,0]，满足条件，Node(1,2)，Node(0,2)入队,一直到到n-1并且对应走的步数为k，则对应的统计数加1. 12345678910111213141516171819202122232425262728293031323334353637class Node&#123; int next; int level; public Node(int next,int level) &#123; this.next=next; this.level=level; &#125;&#125;class Solution &#123; public int numWays(int n, int[][] relation, int k) &#123; Queue &lt;Node&gt; queue=new LinkedList&lt;&gt;(); int res=0; for(int i=0; i&lt;relation.length; i++) &#123; if(relation[i][0]==0) queue.offer(new Node(relation[i][1],1)); &#125; while(!queue.isEmpty()) &#123; Node temp=queue.poll(); if(temp.next==n-1&amp;&amp;temp.level==k) res++; else if(temp.level&lt;k) &#123; for(int i=0; i&lt;relation.length; i++) &#123; if(relation[i][0]==temp.next) &#123; queue.offer(new Node(relation[i][1],temp.level+1)); &#125; &#125; &#125; &#125; return res; &#125;&#125;]]></content>
@@ -241,8 +276,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>数学</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -551,8 +586,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>时间复杂度</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -587,8 +622,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>时间复杂度</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
