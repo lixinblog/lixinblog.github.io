@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode1419-数青蛙]]></title>
+    <url>%2F2020%2F04%2F22%2FLeetCode1419-%E6%95%B0%E9%9D%92%E8%9B%99%2F</url>
+    <content type="text"><![CDATA[题目描述给你一个字符串 croakOfFrogs，它表示不同青蛙发出的蛙鸣声（字符串 “croak” ）的组合。由于同一时间可以有多只青蛙呱呱作响，所以 croakOfFrogs 中会混合多个 “croak” 。请你返回模拟字符串中所有蛙鸣所需不同青蛙的最少数目。 注意：要想发出蛙鸣 “croak”，青蛙必须 依序 输出 ‘c’, ’r’, ’o’, ’a’, ’k’ 这 5 个字母。如果没有输出全部五个字母，那么它就不会发出声音。 如果字符串 croakOfFrogs 不是由若干有效的 “croak” 字符混合而成，请返回 -1 。 示例 1： 123输入：croakOfFrogs = &quot;croakcroak&quot;输出：1 解释：一只青蛙 “呱呱” 两次 示例 2： 12345输入：croakOfFrogs = &quot;crcoakroak&quot;输出：2 解释：最少需要两只青蛙，“呱呱” 声用黑体标注第一只青蛙 &quot;crcoakroak&quot;第二只青蛙 &quot;crcoakroak&quot; 示例 3： 123输入：croakOfFrogs = &quot;croakcrook&quot;输出：-1解释：给出的字符串不是 &quot;croak&quot; 的有效组合。 示例 4： 12输入：croakOfFrogs = &quot;croakcroa&quot;输出：-1 提示： 1 &lt;= croakOfFrogs.length &lt;= 10^5 字符串中的字符只有 &#39;c&#39;, &#39;r&#39;, &#39;o&#39;, &#39;a&#39; 或者 &#39;k&#39; 解题思路大佬的思路 分别用c,r,o,a,k统计对应字符出现的次数，遍历给的字符，如果遍历到字符’r’,那么r的个数加1，c的个数减1.遍历到字符c时，那么c的个数加1，对应k的个数减1，如果这时k的个数等于0，对应的青蛙的个数加1。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import java.util.*;class Solution &#123; public int minNumberOfFrogs(String croakOfFrogs) &#123; int c=0,r=0,o=0,a=0,k=0; char [] chars=croakOfFrogs.toCharArray(); int res=0;//统计青蛙的个数 for(int i=0; i&lt;chars.length; i++) &#123; if(chars[i]=='c') &#123; if(k&gt;0) k--; else res++; c++; &#125; if(chars[i]=='r') &#123; c--; r++; &#125; if(chars[i]=='o') &#123; r--; o++; &#125; if(chars[i]=='a') &#123; o--; a++; &#125; if(chars[i]=='k') &#123; a--; k++; &#125; if(c&lt;0||r&lt;0||o&lt;0||a&lt;0||k&lt;0) &#123; //System.out.println(c+" "+r+" "+o+" "+a+" "+k); return -1; &#125; &#125; if(c!=0||r!=0||o!=0||a!=0) &#123; //System.out.println(c+" "+r+" "+o+" "+a+" "+k); return -1; &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>字符串</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode1418-点菜展示表]]></title>
     <url>%2F2020%2F04%2F22%2FLeetCode1418-%E7%82%B9%E8%8F%9C%E5%B1%95%E7%A4%BA%E8%A1%A8%2F</url>
     <content type="text"><![CDATA[题目描述给你一个数组 orders，表示客户在餐厅中完成的订单，确切地说， orders[i]=[customerNamei,tableNumberi,foodItemi]，其中 customerNamei 是客户的姓名，tableNumberi 是客户所在餐桌的桌号，而 foodItemi是客户点的餐品名称。 请你返回该餐厅的 点菜展示表 。在这张表中，表中第一行为标题，其第一列为餐桌桌号 “Table” ，后面每一列都是按字母顺序排列的餐品名称。接下来每一行中的项则表示每张餐桌订购的相应餐品数量，第一列应当填对应的桌号，后面依次填写下单的餐品数量。 注意：客户姓名不是点菜展示表的一部分。此外，表中的数据行应该按餐桌桌号升序排列。 示例 1： 1234567891011输入：orders = [[&quot;David&quot;,&quot;3&quot;,&quot;Ceviche&quot;],[&quot;Corina&quot;,&quot;10&quot;,&quot;Beef Burrito&quot;],[&quot;David&quot;,&quot;3&quot;,&quot;Fried Chicken&quot;],[&quot;Carla&quot;,&quot;5&quot;,&quot;Water&quot;],[&quot;Carla&quot;,&quot;5&quot;,&quot;Ceviche&quot;],[&quot;Rous&quot;,&quot;3&quot;,&quot;Ceviche&quot;]]输出：[[&quot;Table&quot;,&quot;Beef Burrito&quot;,&quot;Ceviche&quot;,&quot;Fried Chicken&quot;,&quot;Water&quot;],[&quot;3&quot;,&quot;0&quot;,&quot;2&quot;,&quot;1&quot;,&quot;0&quot;],[&quot;5&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;1&quot;],[&quot;10&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;]] 解释：点菜展示表如下所示：Table,Beef Burrito,Ceviche,Fried Chicken,Water3 ,0 ,2 ,1 ,05 ,0 ,1 ,0 ,110 ,1 ,0 ,0 ,0对于餐桌 3：David 点了 &quot;Ceviche&quot; 和 &quot;Fried Chicken&quot;，而 Rous 点了 &quot;Ceviche&quot;而餐桌 5：Carla 点了 &quot;Water&quot; 和 &quot;Ceviche&quot;餐桌 10：Corina 点了 &quot;Beef Burrito&quot; 示例 2： 12345输入：orders = [[&quot;James&quot;,&quot;12&quot;,&quot;Fried Chicken&quot;],[&quot;Ratesh&quot;,&quot;12&quot;,&quot;Fried Chicken&quot;],[&quot;Amadeus&quot;,&quot;12&quot;,&quot;Fried Chicken&quot;],[&quot;Adam&quot;,&quot;1&quot;,&quot;Canadian Waffles&quot;],[&quot;Brianna&quot;,&quot;1&quot;,&quot;Canadian Waffles&quot;]]输出：[[&quot;Table&quot;,&quot;Canadian Waffles&quot;,&quot;Fried Chicken&quot;],[&quot;1&quot;,&quot;2&quot;,&quot;0&quot;],[&quot;12&quot;,&quot;0&quot;,&quot;3&quot;]] 解释：对于餐桌 1：Adam 和 Brianna 都点了 &quot;Canadian Waffles&quot;而餐桌 12：James, Ratesh 和 Amadeus 都点了 &quot;Fried Chicken&quot; 示例 3： 12输入：orders = [[&quot;Laura&quot;,&quot;2&quot;,&quot;Bean Burrito&quot;],[&quot;Jhon&quot;,&quot;2&quot;,&quot;Beef Burrito&quot;],[&quot;Melissa&quot;,&quot;2&quot;,&quot;Soda&quot;]]输出：[[&quot;Table&quot;,&quot;Bean Burrito&quot;,&quot;Beef Burrito&quot;,&quot;Soda&quot;],[&quot;2&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;]] 提示： 1 &lt;= orders.length &lt;= 5 * 10^4 orders[i].length == 3 1 &lt;= customerNamei.length, foodItemi.length &lt;= 20 customerNamei 和 foodItemi 由大小写英文字母及空格字符 ‘ ‘ 组成。 tableNumberi 是 1 到 500 范围内的整数。 解题思路这道题自己有太多的知识盲点，二维的List怎么加入元素，我只直到二维List中加入一维List，只知道HashMap，没用过TreeMap,原来TreeMap还可以对当中的元素进行排序，默认是升序，怎么对容器的元素按照题目的要求进行排序，都不熟练，在比赛的时候当然就没有做出来。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152class Solution &#123; public List&lt;List&lt;String&gt;&gt; displayTable(List&lt;List&lt;String&gt;&gt; orders) &#123; TreeMap&lt;String,Map&lt;String,Integer&gt;&gt; tableid_food=new TreeMap&lt;&gt;(new Comparator&lt;String&gt;()&#123; public int compare(String o1,String o2)//按桌子的id从小到大排序 &#123; return Integer.valueOf(o1)-Integer.valueOf(o2); &#125; &#125;); Set&lt;String&gt; foodNameset=new HashSet&lt;&gt;();//里面是菜单名 for(List&lt;String&gt; list:orders) &#123; String tableid=list.get(1); String foodName=list.get(2); foodNameset.add(foodName); if(tableid_food.containsKey(tableid))//TreeMap中有这个桌子号 &#123; Map&lt;String,Integer&gt;food_cout=tableid_food.get(tableid);//获取对应食物和统计数 food_cout.put(foodName,food_cout.getOrDefault(foodName,0)+1); &#125; else &#123; Map&lt;String,Integer&gt;food_cout=new HashMap&lt;&gt;(); food_cout.put(foodName,1); tableid_food.put(tableid,food_cout); &#125; &#125; List&lt;String&gt; foodlist=new ArrayList&lt;&gt;(foodNameset); foodlist.sort(new Comparator&lt;String&gt;()&#123; public int compare(String l1,String l2) &#123; return l1.compareTo(l2); &#125; &#125;);//list中按首字母从小到大排序 List&lt;List&lt;String&gt;&gt;menus=new ArrayList&lt;&gt;(); for(Map.Entry&lt;String,Map&lt;String,Integer&gt;&gt;entry:tableid_food.entrySet()) &#123; String tableid=entry.getKey(); List&lt;String&gt;tempmenus=new ArrayList&lt;&gt;();//统计当前桌的菜名和对应菜的数量 tempmenus.add(tableid); for(String foodName:foodlist) &#123; tempmenus.add(entry.getValue().getOrDefault(foodName,0)+""); &#125; menus.add(tempmenus); &#125; List&lt;List&lt;String&gt;&gt;fianlMenus=new ArrayList&lt;&gt;();//最终的菜单 foodlist.add(0,"Table"); fianlMenus.add(foodlist); fianlMenus.addAll(menus); return fianlMenus; &#125;&#125;]]></content>
@@ -124,8 +135,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>二分查找</tag>
         <tag>dp</tag>
+        <tag>二分查找</tag>
       </tags>
   </entry>
   <entry>
@@ -289,8 +300,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>数学</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
