@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode207-课程表]]></title>
+    <url>%2F2020%2F04%2F25%2FLeetCode207-%E8%AF%BE%E7%A8%8B%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[题目描述你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。 在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们：[0,1] 给定课程总量以及它们的先决条件，请你判断是否可能完成所有课程的学习？ 示例 1: 123输入: 2, [[1,0]] 输出: true解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。 示例 2: 123输入: 2, [[1,0],[0,1]]输出: false解释: 总共有 2 门课程。学习课程 1 之前，你需要先完成课程 0；并且学习课程 0 之前，你还应先完成课程 1。这是不可能的。 提示： ​ 1.输入的先决条件是由 边缘列表 表示的图形，而不是 邻接矩阵 。详情请参见图的表示法。​ 2.你可以假定输入的先决条件中没有重复的边。​ 3.1 &lt;= numCourses &lt;= 10^5 解题思路别人的详细解答 12345678910111213141516171819202122232425262728293031323334class Solution &#123; public boolean canFinish(int numCourses, int[][] prerequisites) &#123; int [] indegrees=new int[numCourses];//记录每门课程的入度 List&lt;List&lt;Integer&gt;&gt; adjacency=new ArrayList&lt;&gt;(); for(int i=0; i&lt;numCourses; i++)//adjacency[i]记录的是修完第i门课的可以学习的后续课程 &#123; List&lt;Integer&gt; list=new ArrayList&lt;&gt;(); adjacency.add(list); &#125; for(int [] temp:prerequisites) &#123; indegrees[temp[0]]++;//记录i课程的入度 adjacency.get(temp[1]).add(temp[0]);//学习完temp[1]可以学习temp[0] &#125; Queue&lt;Integer&gt; queue=new LinkedList&lt;&gt;(); for(int i=0; i&lt;numCourses; i++) &#123; if(indegrees[i]==0)//入度为0的课程入队 queue.offer(i); &#125; while(!queue.isEmpty()) &#123; int pre=queue.poll(); numCourses--; for(int s:adjacency.get(pre)) &#123; indegrees[s]--; if(indegrees[s]==0) queue.offer(s); &#125; &#125; return numCourses==0; &#125;&#125;]]></content>
+      <categories>
+        <category>BFS</category>
+      </categories>
+      <tags>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode1419-数青蛙]]></title>
     <url>%2F2020%2F04%2F22%2FLeetCode1419-%E6%95%B0%E9%9D%92%E8%9B%99%2F</url>
     <content type="text"><![CDATA[题目描述给你一个字符串 croakOfFrogs，它表示不同青蛙发出的蛙鸣声（字符串 “croak” ）的组合。由于同一时间可以有多只青蛙呱呱作响，所以 croakOfFrogs 中会混合多个 “croak” 。请你返回模拟字符串中所有蛙鸣所需不同青蛙的最少数目。 注意：要想发出蛙鸣 “croak”，青蛙必须 依序 输出 ‘c’, ’r’, ’o’, ’a’, ’k’ 这 5 个字母。如果没有输出全部五个字母，那么它就不会发出声音。 如果字符串 croakOfFrogs 不是由若干有效的 “croak” 字符混合而成，请返回 -1 。 示例 1： 123输入：croakOfFrogs = &quot;croakcroak&quot;输出：1 解释：一只青蛙 “呱呱” 两次 示例 2： 12345输入：croakOfFrogs = &quot;crcoakroak&quot;输出：2 解释：最少需要两只青蛙，“呱呱” 声用黑体标注第一只青蛙 &quot;crcoakroak&quot;第二只青蛙 &quot;crcoakroak&quot; 示例 3： 123输入：croakOfFrogs = &quot;croakcrook&quot;输出：-1解释：给出的字符串不是 &quot;croak&quot; 的有效组合。 示例 4： 12输入：croakOfFrogs = &quot;croakcroa&quot;输出：-1 提示： 1 &lt;= croakOfFrogs.length &lt;= 10^5 字符串中的字符只有 &#39;c&#39;, &#39;r&#39;, &#39;o&#39;, &#39;a&#39; 或者 &#39;k&#39; 解题思路大佬的思路 分别用c,r,o,a,k统计对应字符出现的次数，遍历给的字符，如果遍历到字符’r’,那么r的个数加1，c的个数减1.遍历到字符c时，那么c的个数加1，对应k的个数减1，如果这时k的个数等于0，对应的青蛙的个数加1。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import java.util.*;class Solution &#123; public int minNumberOfFrogs(String croakOfFrogs) &#123; int c=0,r=0,o=0,a=0,k=0; char [] chars=croakOfFrogs.toCharArray(); int res=0;//统计青蛙的个数 for(int i=0; i&lt;chars.length; i++) &#123; if(chars[i]=='c') &#123; if(k&gt;0) k--; else res++; c++; &#125; if(chars[i]=='r') &#123; c--; r++; &#125; if(chars[i]=='o') &#123; r--; o++; &#125; if(chars[i]=='a') &#123; o--; a++; &#125; if(chars[i]=='k') &#123; a--; k++; &#125; if(c&lt;0||r&lt;0||o&lt;0||a&lt;0||k&lt;0) &#123; //System.out.println(c+" "+r+" "+o+" "+a+" "+k); return -1; &#125; &#125; if(c!=0||r!=0||o!=0||a!=0) &#123; //System.out.println(c+" "+r+" "+o+" "+a+" "+k); return -1; &#125; return res; &#125;&#125;]]></content>
@@ -74,7 +85,7 @@
   <entry>
     <title><![CDATA[mybatis笔记]]></title>
     <url>%2F2020%2F04%2F19%2Fmybatis%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[1.环境搭建环境搭建的注意事项： 1.mybatis的映射配置文件位置必须和dao接口的包结构相同 2.映射配置文件的mapper标签namespace属性的取值必须是dao接口的全限定类名 3.映射配置文件的操作配置(select),id属性的取值必须是dao接口的方法名 当我们遵从了上面三点之后，我们在开发中就无须再写dao的实现类]]></content>
+    <content type="text"><![CDATA[1.环境搭建环境搭建的注意事项： 1.mybatis的映射配置文件位置必须和dao接口的包结构相同 2.映射配置文件的mapper标签namespace属性的取值必须是dao接口的全限定类名 3.映射配置文件的操作配置(select),id属性的取值必须是dao接口的方法名 当我们遵从了上面三点之后，我们在开发中就无须再写dao的实现类 2.连接池连接池： 我们在实际开发中都会使用连接池，因为它可以减少我们获取连接的所消耗的时间。 连接池就是用于存储连接的一个容器。 容器其实就是一个集合对象，该集合必须是线程安全的，不能两个线程拿到统一连接，该集合还必须实现队列的特性，先进先出 mybatis中的连接池 mybatis连接池提供了3种方式的配置： 配置的位置： ​ 主配置文件SqlMapConfig.xml中的dataSource标签，type属性就是表示采用何种连接池方式 type属性的取值： ​ POOLED 采用传统的javax.sql.DataSource规范中的连接池，mybatis中有针对规范的实现（常用） ​ UNPOOLED 采用传统的获取连接的方式，虽然也实现javax.sql.DataSource接口，但是并没有使用池的思想 ​ JNDI 采用服务器提供的JNDI技术实现，来获取DataSource对象，不同的服务器所能拿到DataSource是不一样的 ​ 注意： 如果不是web或者maven的war工程，是不能使用的。我们课程中使用的是tomcat服务器，采用连接池dbcp连接池。 mybatis中的事务 ​ 什么是事务 ​ 事务的四大特性ACID ​ 不考虑隔离性会产生的3个问题 ​ 解决办法：四种隔离级别（4个常见面试题） ​ 它是通过sqlsession对象的commit方法和rollback方法实现事务的提交和回滚 ​]]></content>
       <categories>
         <category>mybatis</category>
       </categories>
@@ -135,8 +146,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>二分查找</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>

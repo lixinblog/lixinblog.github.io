@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="1.环境搭建环境搭建的注意事项： 1.mybatis的映射配置文件位置必须和dao接口的包结构相同 2.映射配置文件的mapper标签namespace属性的取值必须是dao接口的全限定类名 3.映射配置文件的操作配置(select),id属性的取值必须是dao接口的方法名 当我们遵从了上面三点之后，我们在开发中就无须再写dao的实现类">
+<meta name="description" content="1.环境搭建环境搭建的注意事项： 1.mybatis的映射配置文件位置必须和dao接口的包结构相同 2.映射配置文件的mapper标签namespace属性的取值必须是dao接口的全限定类名 3.映射配置文件的操作配置(select),id属性的取值必须是dao接口的方法名 当我们遵从了上面三点之后，我们在开发中就无须再写dao的实现类 2.连接池连接池： 我们在实际开发中都会使用连接池，因为它可">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mybatis笔记">
 <meta property="og:url" content="http://yoursite.com/2020/04/19/mybatis笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.环境搭建环境搭建的注意事项： 1.mybatis的映射配置文件位置必须和dao接口的包结构相同 2.映射配置文件的mapper标签namespace属性的取值必须是dao接口的全限定类名 3.映射配置文件的操作配置(select),id属性的取值必须是dao接口的方法名 当我们遵从了上面三点之后，我们在开发中就无须再写dao的实现类">
+<meta property="og:description" content="1.环境搭建环境搭建的注意事项： 1.mybatis的映射配置文件位置必须和dao接口的包结构相同 2.映射配置文件的mapper标签namespace属性的取值必须是dao接口的全限定类名 3.映射配置文件的操作配置(select),id属性的取值必须是dao接口的方法名 当我们遵从了上面三点之后，我们在开发中就无须再写dao的实现类 2.连接池连接池： 我们在实际开发中都会使用连接池，因为它可">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-19T13:39:09.216Z">
+<meta property="og:updated_time" content="2020-04-24T14:19:34.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mybatis笔记">
-<meta name="twitter:description" content="1.环境搭建环境搭建的注意事项： 1.mybatis的映射配置文件位置必须和dao接口的包结构相同 2.映射配置文件的mapper标签namespace属性的取值必须是dao接口的全限定类名 3.映射配置文件的操作配置(select),id属性的取值必须是dao接口的方法名 当我们遵从了上面三点之后，我们在开发中就无须再写dao的实现类">
+<meta name="twitter:description" content="1.环境搭建环境搭建的注意事项： 1.mybatis的映射配置文件位置必须和dao接口的包结构相同 2.映射配置文件的mapper标签namespace属性的取值必须是dao接口的全限定类名 3.映射配置文件的操作配置(select),id属性的取值必须是dao接口的方法名 当我们遵从了上面三点之后，我们在开发中就无须再写dao的实现类 2.连接池连接池： 我们在实际开发中都会使用连接池，因为它可">
 
 
 
@@ -387,7 +387,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  119
+                  496
                 </span>
               
 
@@ -429,6 +429,26 @@
 <p>2.映射配置文件的mapper标签namespace属性的取值必须是dao接口的全限定类名</p>
 <p>3.映射配置文件的操作配置(select),id属性的取值必须是dao接口的方法名</p>
 <p>当我们遵从了上面三点之后，我们在开发中就无须再写dao的实现类</p>
+<h2 id="2-连接池"><a href="#2-连接池" class="headerlink" title="2.连接池"></a>2.连接池</h2><p><strong>连接池：</strong></p>
+<p>我们在实际开发中都会使用连接池，因为它可以减少我们获取连接的所消耗的时间。</p>
+<p>连接池就是用于存储连接的一个容器。</p>
+<p>容器其实就是一个集合对象，该集合必须是线程安全的，不能两个线程拿到统一连接，该集合还必须实现队列的特性，先进先出</p>
+<p><strong>mybatis中的连接池</strong></p>
+<p>mybatis连接池提供了3种方式的配置：</p>
+<p>配置的位置：</p>
+<p>​    主配置文件SqlMapConfig.xml中的dataSource标签，type属性就是表示采用何种连接池方式</p>
+<p>type属性的取值：</p>
+<p>​    POOLED  采用传统的javax.sql.DataSource规范中的连接池，mybatis中有针对规范的实现（常用）</p>
+<p>​    UNPOOLED  采用传统的获取连接的方式，虽然也实现javax.sql.DataSource接口，但是并没有使用池的思想</p>
+<p>​    JNDI 采用服务器提供的JNDI技术实现，来获取DataSource对象，不同的服务器所能拿到DataSource是不一样的</p>
+<p>​    注意： 如果不是web或者maven的war工程，是不能使用的。我们课程中使用的是tomcat服务器，采用连接池dbcp连接池。</p>
+<p><strong>mybatis中的事务</strong></p>
+<p>​    什么是事务</p>
+<p>​    事务的四大特性ACID</p>
+<p>​    不考虑隔离性会产生的3个问题</p>
+<p>​    解决办法：四种隔离级别（4个常见面试题）</p>
+<p>​    它是通过sqlsession对象的commit方法和rollback方法实现事务的提交和回滚</p>
+<p>​    </p>
 
       
     </div>
@@ -610,7 +630,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">154</span>
+                  <span class="site-state-item-count">155</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -681,7 +701,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-环境搭建"><span class="nav-number">1.</span> <span class="nav-text">1.环境搭建</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-环境搭建"><span class="nav-number">1.</span> <span class="nav-text">1.环境搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-连接池"><span class="nav-number">2.</span> <span class="nav-text">2.连接池</span></a></li></ol></div>
             
 
           </div>
