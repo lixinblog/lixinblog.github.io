@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode1423-可获得的最大点数]]></title>
+    <url>%2F2020%2F04%2F28%2FLeetCode1423-%E5%8F%AF%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E7%82%B9%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[题目描述几张卡牌 排成一行，每张卡牌都有一个对应的点数。点数由整数数组 cardPoints 给出。 每次行动，你可以从行的开头或者末尾拿一张卡牌，最终你必须正好拿 k 张卡牌。 你的点数就是你拿到手中的所有卡牌的点数之和。 给你一个整数数组 cardPoints 和整数 k，请你返回可以获得的最大点数。 示例 1： 123输入：cardPoints = [1,2,3,4,5,6,1], k = 3输出：12解释：第一次行动，不管拿哪张牌，你的点数总是 1 。但是，先拿最右边的卡牌将会最大化你的可获得点数。最优策略是拿右边的三张牌，最终点数为 1 + 6 + 5 = 12 。 示例 2： 123输入：cardPoints = [2,2,2], k = 2输出：4解释：无论你拿起哪两张卡牌，可获得的点数总是 4 。 示例 3： 123输入：cardPoints = [9,7,7,9,7,7,9], k = 7输出：55解释：你必须拿起所有卡牌，可以获得的点数为所有卡牌的点数之和。 示例 4： 123输入：cardPoints = [1,1000,1], k = 1输出：1解释：你无法拿到中间那张卡牌，所以可以获得的最大点数为 1 。 示例 5： 12输入：cardPoints = [1,79,80,1,1,1,200,1], k = 3输出：202 提示： 1 &lt;= cardPoints.length &lt;= 10^5 1 &lt;= cardPoints[i] &lt;= 10^4 1 &lt;= k &lt;= cardPoints.length 解题思路先求数组的前缀和，左边取前n个数，右边取从后面往前面的m个数，n+m等于k，从左往右边滑动。获得其中最大值。 1234567891011121314151617class Solution &#123; public int maxScore(int[] cardPoints, int k) &#123; int len=cardPoints.length; int [] pre=new int[len+1]; pre[0]=0; for(int i=0; i&lt;len; i++)//求数组的前缀和 &#123; pre[i+1]=pre[i]+cardPoints[i]; &#125; int max=-1; for(int i=0; i&lt;=k; i++)//从左往右滑动，求最大值 &#123; max=Math.max(max,pre[i]+pre[len]-pre[len-k+i]); &#125; return max; &#125;&#125;]]></content>
+      <categories>
+        <category>贪心</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode1424-对角线遍历II]]></title>
+    <url>%2F2020%2F04%2F28%2FLeetCode1424-%E5%AF%B9%E8%A7%92%E7%BA%BF%E9%81%8D%E5%8E%86II%2F</url>
+    <content type="text"><![CDATA[题目描述给你一个列表 nums ，里面每一个元素都是一个整数列表。请你依照下面各图的规则，按顺序返回 nums 中对角线上的整数。 示例 1： 12输入：nums = [[1,2,3],[4,5,6],[7,8,9]]输出：[1,4,2,7,5,3,8,6,9] 示例 2： 12输入：nums = [[1,2,3,4,5],[6,7],[8],[9,10,11],[12,13,14,15,16]]输出：[1,6,2,8,7,3,9,4,12,10,5,13,11,14,15,16] 示例 3： 12输入：nums = [[1,2,3],[4],[5,6,7],[8],[9,10,11]]输出：[1,4,2,5,3,8,6,9,7,10,11] 示例 4： 12输入：nums = [[1,2,3,4,5,6]]输出：[1,2,3,4,5,6] 提示： 1 &lt;= nums.length &lt;= 10^5 1 &lt;= nums[i].length &lt;= 10^5 1 &lt;= nums[i][j] &lt;= 10^9 nums 中最多有 10^5 个数字。 1234567891011121314151617181920212223242526272829303132333435class Solution &#123; public int[] findDiagonalOrder(List&lt;List&lt;Integer&gt;&gt; nums) &#123; int len=0;//记录列表中数字的个数 Map&lt;Integer,List&lt;Integer&gt;&gt; map=new TreeMap&lt;&gt;();//对角线上横坐标和纵坐标的和是一定的 for(int i=0; i&lt;nums.size(); i++) &#123; len+=nums.get(i).size(); for(int j=0; j&lt;nums.get(i).size(); j++) &#123; if(map.containsKey(i+j)) &#123; List&lt;Integer&gt; temp=map.get(i+j); temp.add(nums.get(i).get(j)); &#125; else &#123; List&lt;Integer&gt; temp=new ArrayList&lt;&gt;(); temp.add(nums.get(i).get(j)); map.put(i+j,temp); &#125; &#125; &#125; int [] res=new int[len]; int k=0; for(int key:map.keySet()) &#123; List&lt;Integer&gt; s=map.get(key); for(int i=s.size()-1;i&gt;=0; i--)//按照题意顺序输出数组 &#123; res[k++]=s.get(i); &#125; &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>List</category>
+      </categories>
+      <tags>
+        <tag>List</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode207-课程表]]></title>
     <url>%2F2020%2F04%2F25%2FLeetCode207-%E8%AF%BE%E7%A8%8B%E8%A1%A8%2F</url>
     <content type="text"><![CDATA[题目描述你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。 在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们：[0,1] 给定课程总量以及它们的先决条件，请你判断是否可能完成所有课程的学习？ 示例 1: 123输入: 2, [[1,0]] 输出: true解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。 示例 2: 123输入: 2, [[1,0],[0,1]]输出: false解释: 总共有 2 门课程。学习课程 1 之前，你需要先完成课程 0；并且学习课程 0 之前，你还应先完成课程 1。这是不可能的。 提示： ​ 1.输入的先决条件是由 边缘列表 表示的图形，而不是 邻接矩阵 。详情请参见图的表示法。​ 2.你可以假定输入的先决条件中没有重复的边。​ 3.1 &lt;= numCourses &lt;= 10^5 解题思路别人的详细解答 12345678910111213141516171819202122232425262728293031323334class Solution &#123; public boolean canFinish(int numCourses, int[][] prerequisites) &#123; int [] indegrees=new int[numCourses];//记录每门课程的入度 List&lt;List&lt;Integer&gt;&gt; adjacency=new ArrayList&lt;&gt;(); for(int i=0; i&lt;numCourses; i++)//adjacency[i]记录的是修完第i门课的可以学习的后续课程 &#123; List&lt;Integer&gt; list=new ArrayList&lt;&gt;(); adjacency.add(list); &#125; for(int [] temp:prerequisites) &#123; indegrees[temp[0]]++;//记录i课程的入度 adjacency.get(temp[1]).add(temp[0]);//学习完temp[1]可以学习temp[0] &#125; Queue&lt;Integer&gt; queue=new LinkedList&lt;&gt;(); for(int i=0; i&lt;numCourses; i++) &#123; if(indegrees[i]==0)//入度为0的课程入队 queue.offer(i); &#125; while(!queue.isEmpty()) &#123; int pre=queue.poll(); numCourses--; for(int s:adjacency.get(pre)) &#123; indegrees[s]--; if(indegrees[s]==0) queue.offer(s); &#125; &#125; return numCourses==0; &#125;&#125;]]></content>
@@ -30,9 +54,9 @@
         <category>Map</category>
       </categories>
       <tags>
+        <tag>List</tag>
         <tag>Map</tag>
         <tag>排序</tag>
-        <tag>List</tag>
       </tags>
   </entry>
   <entry>
@@ -311,8 +335,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>递归</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
