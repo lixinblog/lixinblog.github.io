@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[获取所有非manager员工当前的薪水情况]]></title>
+    <url>%2F2020%2F05%2F02%2F%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E9%9D%9Emanager%E5%91%98%E5%B7%A5%E5%BD%93%E5%89%8D%E7%9A%84%E8%96%AA%E6%B0%B4%E6%83%85%E5%86%B5%2F</url>
+    <content type="text"><![CDATA[题目描述原题链接 获取所有非manager员工当前的薪水情况，给出dept_no、emp_no以及salary ，当前表示to_date=’9999-01-01’ 1234567891011121314151617181920212223242526CREATE TABLE `dept_emp` (`emp_no` int(11) NOT NULL,`dept_no` char(4) NOT NULL,`from_date` date NOT NULL,`to_date` date NOT NULL,PRIMARY KEY (`emp_no`,`dept_no`));CREATE TABLE `dept_manager` (`dept_no` char(4) NOT NULL,`emp_no` int(11) NOT NULL,`from_date` date NOT NULL,`to_date` date NOT NULL,PRIMARY KEY (`emp_no`,`dept_no`));CREATE TABLE `employees` (`emp_no` int(11) NOT NULL,`birth_date` date NOT NULL,`first_name` varchar(14) NOT NULL,`last_name` varchar(16) NOT NULL,`gender` char(1) NOT NULL,`hire_date` date NOT NULL,PRIMARY KEY (`emp_no`));CREATE TABLE `salaries` (`emp_no` int(11) NOT NULL,`salary` int(11) NOT NULL,`from_date` date NOT NULL,`to_date` date NOT NULL,PRIMARY KEY (`emp_no`,`from_date`)); 还不懂就去看题解 12345select de.dept_no,e.emp_no,s.salaryfrom (employees as e inner join dept_emp as de on e.emp_no=de.emp_no) inner join salaries as s on e.emp_no=s.emp_nowhere de.to_date='9999-01-01' and s.to_date='9999-01-01' and e.emp_no not in(select emp_no from dept_manager);]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[对所有员工的薪水按照salary进行按照1-N的排名]]></title>
+    <url>%2F2020%2F05%2F02%2F%E5%AF%B9%E6%89%80%E6%9C%89%E5%91%98%E5%B7%A5%E7%9A%84%E8%96%AA%E6%B0%B4%E6%8C%89%E7%85%A7salary%E8%BF%9B%E8%A1%8C%E6%8C%89%E7%85%A71-N%E7%9A%84%E6%8E%92%E5%90%8D%2F</url>
+    <content type="text"><![CDATA[题目描述1234567对所有员工的当前(to_date=&apos;9999-01-01&apos;)薪水按照salary进行按照1-N的排名，相同salary并列且按照emp_no升序排列CREATE TABLE `salaries` (`emp_no` int(11) NOT NULL,`salary` int(11) NOT NULL,`from_date` date NOT NULL,`to_date` date NOT NULL,PRIMARY KEY (`emp_no`,`from_date`)); 原题链接 解题思路我怎么感觉sql的查询语句好难啊，都不会做，每道题都要看别人的题解 第一个的题解写得很清晰 12345select a.emp_no,a.salary,count(distinct b.salary)as rankfrom salaries as a,salaries as bwhere a.to_date='9999-01-01' and b.to_date='9999-01-01' and a.salary&lt;=b.salarygroup by a.emp_noorder by a.salary desc,a.emp_no asc;]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[统计各个部门的工资记录数]]></title>
+    <url>%2F2020%2F05%2F02%2F%E7%BB%9F%E8%AE%A1%E5%90%84%E4%B8%AA%E9%83%A8%E9%97%A8%E7%9A%84%E5%B7%A5%E8%B5%84%E8%AE%B0%E5%BD%95%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[题目描述统计各个部门的工资记录数，给出部门编码dept_no、部门名称dept_name以及次数sum 12345678910111213141516CREATE TABLE `departments` (`dept_no` char(4) NOT NULL,`dept_name` varchar(40) NOT NULL,PRIMARY KEY (`dept_no`));CREATE TABLE `dept_emp` (`emp_no` int(11) NOT NULL,`dept_no` char(4) NOT NULL,`from_date` date NOT NULL,`to_date` date NOT NULL,PRIMARY KEY (`emp_no`,`dept_no`));CREATE TABLE `salaries` (`emp_no` int(11) NOT NULL,`salary` int(11) NOT NULL,`from_date` date NOT NULL,`to_date` date NOT NULL,PRIMARY KEY (`emp_no`,`from_date`)); 原题链接 1234select de.dept_no,dp.dept_name,count(s.salary)as sumfrom (dept_emp AS de Inner join salaries AS s on de.emp_no=s.emp_no)Inner join departments as dp on de.dept_no=dp.dept_nogroup by de.dept_no;]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode407-接雨水II]]></title>
     <url>%2F2020%2F05%2F02%2FLeetCode407-%E6%8E%A5%E9%9B%A8%E6%B0%B4II%2F</url>
     <content type="text"><![CDATA[题目描述给你一个 m x n 的矩阵，其中的值均为非负整数，代表二维高度图每个单元的高度，请计算图中形状最多能接多少体积的雨水。 示例： 12345678给出如下 3x6 的高度图:[ [1,4,3,1,3,2], [3,2,1,3,2,4], [2,3,3,2,3,1]]返回 4 。 如上图所示，这是下雨前的高度图[[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]] 的状态。 下雨后，雨水将会被存储在这些方块中。总的接雨水量是4。 提示： 1 &lt;= m, n &lt;= 110 0 &lt;= heightMap[i][j] &lt;= 20000 解题思路我开始想的是遍历二维数组，每遍历一个位置就判断四周单元格的高度，如果都比当前位置的高度高，取最小的高度，能接的雨水体积就是四周最低高度减去当前的高度，但是这样做例子中第二行第三列就不满足，于是看了别人的博客，写的很详细的博客，十分感谢 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859class position&#123; int x; int y; int height; public position(int i,int j,int h) &#123; x=i; y=j; height=h; &#125;&#125;class Solution &#123; int [] dx=new int []&#123;-1,1,0,0&#125;;//上下左右 int [] dy=new int []&#123;0,0,-1,1&#125;;//上下左右 public int trapRainWater(int[][] heightMap) &#123; int rows=heightMap.length; int cols=heightMap[0].length; boolean [][] visit=new boolean[rows][cols]; PriorityQueue &lt;position&gt; queue=new PriorityQueue&lt;position&gt;( new Comparator&lt;position&gt;()&#123; public int compare(position a,position b) &#123; return a.height-b.height; &#125; &#125; ); for(int i=0; i&lt;heightMap.length; i++)//把四周的点入队 &#123; queue.offer(new position(i,0,heightMap[i][0])); visit[i][0]=true; queue.offer(new position(i,cols-1,heightMap[i][cols-1])); visit[i][cols-1]=true; &#125; for(int i=0; i&lt;cols; i++) &#123; queue.offer(new position(0,i,heightMap[0][i])); visit[0][i]=true; queue.offer(new position(rows-1,i,heightMap[rows-1][i])); visit[rows-1][i]=true; &#125; int res=0; while(!queue.isEmpty()) &#123; position temp=queue.poll(); for(int i=0; i&lt;4; i++) &#123; int tx=temp.x+dx[i]; int ty=temp.y+dy[i]; if(tx&gt;=0&amp;&amp;tx&lt;rows&amp;&amp;ty&gt;=0&amp;&amp;ty&lt;cols&amp;&amp;!visit[tx][ty]) &#123; res+=Math.max(0,temp.height-heightMap[tx][ty]); queue.offer(new position(tx,ty,Math.max(temp.height,heightMap[tx][ty]))); visit[tx][ty]=true; &#125; &#125; &#125; return res; &#125;&#125;]]></content>
@@ -66,8 +99,8 @@
         <category>贪心</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>数组</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -160,8 +193,8 @@
         <category>BFS</category>
       </categories>
       <tags>
-        <tag>BFS</tag>
         <tag>LeetCode春季赛</tag>
+        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
@@ -228,8 +261,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>二分查找</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -344,9 +377,9 @@
         <category>贪心</category>
       </categories>
       <tags>
+        <tag>LeetCode周赛</tag>
         <tag>贪心</tag>
         <tag>优先队列</tag>
-        <tag>LeetCode周赛</tag>
       </tags>
   </entry>
   <entry>
