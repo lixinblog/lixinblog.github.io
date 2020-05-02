@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode407-接雨水II]]></title>
+    <url>%2F2020%2F05%2F02%2FLeetCode407-%E6%8E%A5%E9%9B%A8%E6%B0%B4II%2F</url>
+    <content type="text"><![CDATA[题目描述给你一个 m x n 的矩阵，其中的值均为非负整数，代表二维高度图每个单元的高度，请计算图中形状最多能接多少体积的雨水。 示例： 12345678给出如下 3x6 的高度图:[ [1,4,3,1,3,2], [3,2,1,3,2,4], [2,3,3,2,3,1]]返回 4 。 如上图所示，这是下雨前的高度图[[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]] 的状态。 下雨后，雨水将会被存储在这些方块中。总的接雨水量是4。 提示： 1 &lt;= m, n &lt;= 110 0 &lt;= heightMap[i][j] &lt;= 20000 解题思路我开始想的是遍历二维数组，每遍历一个位置就判断四周单元格的高度，如果都比当前位置的高度高，取最小的高度，能接的雨水体积就是四周最低高度减去当前的高度，但是这样做例子中第二行第三列就不满足，于是看了别人的博客，写的很详细的博客，十分感谢 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859class position&#123; int x; int y; int height; public position(int i,int j,int h) &#123; x=i; y=j; height=h; &#125;&#125;class Solution &#123; int [] dx=new int []&#123;-1,1,0,0&#125;;//上下左右 int [] dy=new int []&#123;0,0,-1,1&#125;;//上下左右 public int trapRainWater(int[][] heightMap) &#123; int rows=heightMap.length; int cols=heightMap[0].length; boolean [][] visit=new boolean[rows][cols]; PriorityQueue &lt;position&gt; queue=new PriorityQueue&lt;position&gt;( new Comparator&lt;position&gt;()&#123; public int compare(position a,position b) &#123; return a.height-b.height; &#125; &#125; ); for(int i=0; i&lt;heightMap.length; i++)//把四周的点入队 &#123; queue.offer(new position(i,0,heightMap[i][0])); visit[i][0]=true; queue.offer(new position(i,cols-1,heightMap[i][cols-1])); visit[i][cols-1]=true; &#125; for(int i=0; i&lt;cols; i++) &#123; queue.offer(new position(0,i,heightMap[0][i])); visit[0][i]=true; queue.offer(new position(rows-1,i,heightMap[rows-1][i])); visit[rows-1][i]=true; &#125; int res=0; while(!queue.isEmpty()) &#123; position temp=queue.poll(); for(int i=0; i&lt;4; i++) &#123; int tx=temp.x+dx[i]; int ty=temp.y+dy[i]; if(tx&gt;=0&amp;&amp;tx&lt;rows&amp;&amp;ty&gt;=0&amp;&amp;ty&lt;cols&amp;&amp;!visit[tx][ty]) &#123; res+=Math.max(0,temp.height-heightMap[tx][ty]); queue.offer(new position(tx,ty,Math.max(temp.height,heightMap[tx][ty]))); visit[tx][ty]=true; &#125; &#125; &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>BFS</category>
+      </categories>
+      <tags>
+        <tag>BFS</tag>
+        <tag>优先队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode310-最小高度树]]></title>
+    <url>%2F2020%2F04%2F30%2FLeetCode310-%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[题目描述对于一个具有树特征的无向图，我们可选择任何一个节点作为根。图因此可以成为树，在所有可能的树中，具有最小高度的树被称为最小高度树。给出这样的一个图，写出一个函数找到所有的最小高度树并返回他们的根节点。 格式 该图包含 n 个节点，标记为 0 到 n - 1。给定数字 n 和一个无向边 edges 列表（每一个边都是一对标签）。 你可以假设没有重复的边会出现在 edges 中。由于所有的边都是无向边， [0, 1]和 [1, 0] 是相同的，因此不会同时出现在 edges 里。 示例 1: 123456789输入: n = 4, edges = [[1, 0], [1, 2], [1, 3]] 0 | 1 / \ 2 3 输出: [1] 示例 2: 1234567891011输入: n = 6, edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]] 0 1 2 \ | / 3 | 4 | 5 输出: [3, 4] 说明: 根据树的定义，树是一个无向图，其中任何两个顶点只通过一条路径连接。 换句话说，一个任何没有简单环路的连通图都是一棵树。 树的高度是指根节点和叶子节点之间最长向下路径上边的数量。 解题思路我开始想的是把每个节点都当成根节点，然后记录相应的高度，最后把高度最小的树的根节点输出，但是超出内存限制了，代码如下 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354class Solution &#123; public List&lt;Integer&gt; findMinHeightTrees(int n, int[][] edges) &#123; Map&lt;Integer,List&lt;Integer&gt;&gt; map=new HashMap&lt;&gt;();//树的高度对应的根结点 List&lt;Integer&gt; res=new ArrayList&lt;&gt;(); Queue&lt;Integer&gt; queue=new LinkedList&lt;&gt;(); for(int i=0; i&lt;n; i++) &#123; int high=0;//树的高度 queue.offer(i); Set&lt;Integer&gt; set=new HashSet&lt;&gt;(); set.add(i); while(!queue.isEmpty()) &#123; int len=queue.size(); high++; for(int j=0; j&lt;len; j++) &#123; int value=queue.poll(); for(int k=0; k&lt;edges.length; k++) &#123; if(edges[k][0]==value&amp;&amp;!set.contains(edges[k][1])) &#123; queue.offer(edges[k][1]); set.add(edges[k][1]); &#125; if(edges[k][1]==value&amp;&amp;!set.contains(edges[k][0])) &#123; queue.offer(edges[k][0]); set.add(edges[k][0]); &#125; &#125; &#125; &#125; if(!map.containsKey(high)) &#123; List&lt;Integer&gt; list=new ArrayList&lt;&gt;(); list.add(i); map.put(high,list); &#125; else &#123; List&lt;Integer&gt; list=map.get(high); list.add(i); &#125; &#125; int max=Integer.MAX_VALUE; for(int key:map.keySet()) &#123; if(key&lt;max) max=key; &#125; return map.get(max); &#125;&#125; 看了别人的解题思路后，从叶子节点往根节点找，每次除去一个叶子节点（也就是度为1的节点），最后剩下的就是根节点。 别人的思路 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556class Solution &#123; public List&lt;Integer&gt; findMinHeightTrees(int n, int[][] edges) &#123; int [] degree=new int[n]; List&lt;List&lt;Integer&gt;&gt; sublist=new ArrayList&lt;&gt;();//邻接表 for(int i=0; i&lt;n; i++) &#123; List&lt;Integer&gt; list=new ArrayList&lt;&gt;(); sublist.add(list); &#125; for(int i=0; i&lt;edges.length; i++)//计算每个节点的度 &#123; degree[edges[i][0]]++; degree[edges[i][1]]++; sublist.get(edges[i][0]).add(edges[i][1]); sublist.get(edges[i][1]).add(edges[i][0]); &#125; Queue&lt;Integer&gt; queue=new LinkedList&lt;&gt;(); for(int i=0; i&lt;n; i++) &#123; if(degree[i]==1)//把度为1的节点入队 queue.offer(i); &#125; List &lt;Integer&gt; res=new ArrayList&lt;&gt;(); if(n==1) &#123; res.add(0); return res; &#125; int nums=n; while(nums&gt;2) &#123; int len=queue.size(); nums=nums-len; for(int i=0; i&lt;len; i++) &#123; int temp=queue.poll(); for(int de:sublist.get(temp)) &#123; if(degree[de]&gt;0) &#123; degree[de]--; &#125; if(degree[de]==1) queue.offer(de); &#125; &#125; &#125; //最后队列里保留的就是根节点 while(!queue.isEmpty()) &#123; int s=queue.poll(); res.add(s); &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>BFS</category>
+      </categories>
+      <tags>
+        <tag>BFS</tag>
+        <tag>图</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode301-删除无效的括号]]></title>
     <url>%2F2020%2F04%2F30%2FLeetCode301-%E5%88%A0%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%2F</url>
-    <content type="text"><![CDATA[题目描述删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。 说明: 输入可能包含了除 ( 和 ) 以外的字符。 示例 1: 12输入: &quot;()())()&quot;输出: [&quot;()()()&quot;, &quot;(())()&quot;] 示例 2: 12输入: &quot;(a)())()&quot;输出: [&quot;(a)()()&quot;, &quot;(a())()&quot;] 示例 3: 12输入: &quot;)(&quot;输出: [&quot;&quot;] 解题思路利用BFS，每删除一个括号，就判断是否合法的括号 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647class Solution &#123; public List&lt;String&gt; removeInvalidParentheses(String s) &#123; List&lt;String&gt; res=new ArrayList&lt;&gt;(); Queue&lt;String&gt; queue=new LinkedList&lt;&gt;(); queue.offer(s); boolean flag=false;//用来判断每删除一个括号，是否已经找到合法的括号 Set&lt;String&gt; set=new HashSet&lt;&gt;();//防止找到重复的合法括号 set.add(s); while(!queue.isEmpty()) &#123; String temps=queue.poll(); if(judge(temps)) &#123; res.add(temps); flag=true; &#125; if(flag==true) continue; for(int i=0; i&lt;temps.length(); i++) &#123; if(temps.charAt(i)!='('&amp;&amp;temps.charAt(i)!=')') continue; String news=temps.substring(0,i)+temps.substring(i+1,temps.length()); if(!set.contains(news)) &#123; set.add(news); queue.offer(news); &#125; &#125; &#125; return res; &#125; private boolean judge(String s) &#123; int cnt=0; for(int i=0; i&lt;s.length(); i++) &#123; if(s.charAt(i)=='(') cnt++; if(s.charAt(i)==')') cnt--; if(cnt&lt;0) return false; &#125; return cnt==0; &#125;&#125;]]></content>
+    <content type="text"><![CDATA[题目描述删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。 说明: 输入可能包含了除 ( 和 ) 以外的字符。 示例 1: 12输入: &quot;()())()&quot;输出: [&quot;()()()&quot;, &quot;(())()&quot;] 示例 2: 12输入: &quot;(a)())()&quot;输出: [&quot;(a)()()&quot;, &quot;(a())()&quot;] 示例 3: 12输入: &quot;)(&quot;输出: [&quot;&quot;] 解题思路利用BFS，每删除一个括号，就判断是否合法的括号 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647class Solution &#123; public List&lt;String&gt; removeInvalidParentheses(String s) &#123; List&lt;String&gt; res=new ArrayList&lt;&gt;(); Queue&lt;String&gt; queue=new LinkedList&lt;&gt;(); queue.offer(s); boolean flag=false;//用来判断每删除一个括号，是否已经找到合法的括号 Set&lt;String&gt; set=new HashSet&lt;&gt;();//防止找到重复的合法括号 set.add(s); while(!queue.isEmpty()) &#123; String temps=queue.poll(); if(judge(temps)) &#123; res.add(temps); flag=true; &#125; if(flag==true) continue; for(int i=0; i&lt;temps.length(); i++) &#123; if(temps.charAt(i)!='('&amp;&amp;temps.charAt(i)!=')') continue; String news=temps.substring(0,i)+temps.substring(i+1,temps.length()); if(!set.contains(news)) &#123; set.add(news); queue.offer(news); &#125; &#125; &#125; return res; &#125; private boolean judge(String s)//判断是否是合法的括号 &#123; int cnt=0; for(int i=0; i&lt;s.length(); i++) &#123; if(s.charAt(i)=='(') cnt++; if(s.charAt(i)==')') cnt--; if(cnt&lt;0) return false; &#125; return cnt==0; &#125;&#125;]]></content>
       <categories>
         <category>BFS</category>
       </categories>
@@ -136,8 +160,8 @@
         <category>BFS</category>
       </categories>
       <tags>
-        <tag>LeetCode春季赛</tag>
         <tag>BFS</tag>
+        <tag>LeetCode春季赛</tag>
       </tags>
   </entry>
   <entry>
@@ -204,8 +228,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>二分查找</tag>
         <tag>dp</tag>
+        <tag>二分查找</tag>
       </tags>
   </entry>
   <entry>
@@ -320,9 +344,9 @@
         <category>贪心</category>
       </categories>
       <tags>
-        <tag>LeetCode周赛</tag>
         <tag>贪心</tag>
         <tag>优先队列</tag>
+        <tag>LeetCode周赛</tag>
       </tags>
   </entry>
   <entry>
