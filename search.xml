@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Error:Failed to load project configuration: cannot parse file]]></title>
+    <url>%2F2020%2F05%2F15%2FError-Failed-to-load-project-configuration-cannot-parse-file%2F</url>
+    <content type="text"><![CDATA[spring boot整合jdbc遇到的问题由于是第一次用Spring Initializr创建一个新的项目，导致这个问题搞了一整天，到了晚上终于弄好了 pom.xml文件 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt; &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; &lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; &lt;version&gt;1.5.10.RELEASE&lt;/version&gt; &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt; &lt;/parent&gt; &lt;groupId&gt;com.example&lt;/groupId&gt; &lt;artifactId&gt;spring_boot_jdbc&lt;/artifactId&gt; &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt; &lt;name&gt;spring_boot_jdbc&lt;/name&gt; &lt;description&gt;Demo project for Spring Boot&lt;/description&gt; &lt;properties&gt; &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt; &lt;project.build.outputEncoding&gt;UTF-8&lt;/project.build.outputEncoding&gt; &lt;java.version&gt;1.8&lt;/java.version&gt; &lt;/properties&gt; &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt; &lt;!--一定要导jdbc的坐标，不然会报错--&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt; &lt;version&gt;2.2.7.RELEASE&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;scope&gt;runtime&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;/dependencies&gt; &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt;&lt;/project&gt; application.yml 123456spring: datasource: username: root password: 'lixin13922171767' url: jdbc:mysql://localhost:3306/eesy driver‐class‐name: com.mysql.jdbc.Driver SpringBootJdbcApplication 1234567891011121314151617181920212223242526package com.example.spring_boot_jdbc;import org.junit.Test;import org.junit.runner.RunWith;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.boot.test.context.SpringBootTest;import org.springframework.test.context.junit4.SpringRunner;import javax.sql.DataSource;import java.sql.Connection;import java.sql.SQLException;@RunWith(SpringRunner.class)@SpringBootTestpublic class SpringBootJdbcApplicationTests &#123; @Autowired DataSource dataSource; @Test public void contextLoads() throws Exception &#123; System.out.println(dataSource.getClass()); Connection connection = dataSource.getConnection(); System.out.println(connection); connection.close(); &#125;&#125; 目录结构如图所示 但是运行的结果就是 12Error:Failed to load project configuration: cannot parse file C:\project\springboot_jdbc_2020\.idea\libraries\Maven__ch_qos_logback_logback_classic_1_2_3.xml: ParseError at [row,col]:[1,1]Message: 前言中不允许有内容。 在网上找了各种方法就是不行，但是我就把.idea文件删掉了，然后重新reimport all maven project,然后配置一下jdk，重新运行，最后就好了]]></content>
+      <categories>
+        <category>spring boot 笔记</category>
+      </categories>
+      <tags>
+        <tag>spring boot 笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[thymeleaf导包]]></title>
+    <url>%2F2020%2F05%2F14%2Fthymeleaf%E5%AF%BC%E5%8C%85%2F</url>
+    <content type="text"><![CDATA[thymeleaf导入相关的版本才能正确进行页面渲染，但是对于新手来说很容易搞错了 引入thymeleaf的错误写法 1234567891011&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring‐boot‐starter‐thymeleaf&lt;/artifactId&gt; 2.1.6 &lt;/dependency&gt; 切换thymeleaf版本 &lt;properties&gt; &lt;thymeleaf.version&gt;3.0.9.RELEASE&lt;/thymeleaf.version&gt; &lt;!‐‐ 布局功能的支持程序 thymeleaf3主程序 layout2以上版本 ‐‐&gt; &lt;!‐‐ thymeleaf2 layout1‐‐&gt; &lt;thymeleaf‐layout‐dialect.version&gt;2.2.2&lt;/thymeleaf‐layout‐dialect.version&gt; &lt;/properties&gt; 正确写法 123456789&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;&lt;/dependency&gt;&lt;properties&gt; &lt;java.version&gt;1.8&lt;/java.version&gt; &lt;springboot-thymeleaf.version&gt;3.0.9.RELEASE&lt;/springboot-thymeleaf.version&gt; &lt;thymeleaf-layout-dialect.version&gt;2.2.2&lt;/thymeleaf-layout-dialect.version&gt;&lt;/properties&gt; 如果有重复的thymeleaf包，运行时会报错，要把多余的包删除]]></content>
+      <categories>
+        <category>spring boot笔记</category>
+      </categories>
+      <tags>
+        <tag>spring boot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode1442-形成两个异或相等数组的三元组数目]]></title>
     <url>%2F2020%2F05%2F11%2FLeetCode1442-%E5%BD%A2%E6%88%90%E4%B8%A4%E4%B8%AA%E5%BC%82%E6%88%96%E7%9B%B8%E7%AD%89%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%89%E5%85%83%E7%BB%84%E6%95%B0%E7%9B%AE%2F</url>
     <content type="text"><![CDATA[题目描述给你一个整数数组 arr 。 现需要从数组中取三个下标 i、j 和 k ，其中 (0 &lt;= i &lt; j &lt;= k &lt; arr.length) 。 a 和 b 定义如下： a = arr[i] ^ arr[i + 1] ^ ... ^ arr[j - 1] b = arr[j] ^ arr[j + 1] ^ ... ^ arr[k] 注意：^ 表示 按位异或 操作。 请返回能够令 a == b 成立的三元组 (i, j , k) 的数目。 示例 1： 123输入：arr = [2,3,1,6,7]输出：4解释：满足题意的三元组分别是 (0,1,2), (0,2,2), (2,3,4) 以及 (2,4,4) 示例 2： 12输入：arr = [1,1,1,1,1]输出：10 示例 3： 12输入：arr = [2,3]输出：0 示例 4： 12输入：arr = [1,3,5,7,9]输出：3 示例 5： 12输入：arr = [7,11,12,9,5,2,7,17,22]输出：8 提示： 1 &lt;= arr.length &lt;= 300 1 &lt;= arr[i] &lt;= 10^8 解题思路本来用暴力是很简单的，但是可能是自己前一天晚上玩手机玩到2点的原因，到了比赛的时候，自己就是脑子一团浆糊，就感觉这道题好难，心情都不好了，这道题写了1个多小时，下面看我的代码，ORZ！！！，我自己都哭了。。 1234567891011121314151617181920212223242526272829303132333435363738394041424344class Solution &#123; public int countTriplets(int[] arr) &#123; int len=arr.length; int cout=0;//统计对应三元组的数量 for(int i=0; i&lt;len; i++) &#123; int a=arr[i]; for(int j=i+1; j&lt;len; j++) &#123; if(j&gt;i+1) &#123; for(int temp=i+1; temp&lt;j; temp++)//从i一直到j-1 &#123; a=a^arr[temp]; &#125; &#125; int b=arr[j]; for(int k=j; k&lt;len; k++) &#123; if(k==j) &#123; if(a==b) &#123; cout++; //System.out.println(i+" "+j+" "+k+"a="+a+"b="+b); &#125; &#125; if(k&gt;j) &#123; for(int temp1=j+1; temp1&lt;=k; temp1++)//从j到k &#123; b=b^arr[temp1]; &#125; if(a==b) &#123; cout++; //System.out.println(i+" "+j+" "+k+"a="+a+"b="+b); &#125; &#125; &#125; &#125; &#125; return cout; &#125;&#125; 我后来想，可能是自己对异或这个慨念不是很熟悉吧，0异或非零数a等于a，从而导致了一系列的问题。 暴力解法 123456789101112131415161718192021class Solution &#123; public int countTriplets(int[] arr) &#123; int cout=0; for(int i=0; i&lt;arr.length; i++) &#123; int a=0; for(int j=i; j&lt;arr.length; j++) &#123; a=a^arr[j]; int b=0; for(int k=j+1; k&lt;arr.length; k++) &#123; b=b^arr[k]; if(a==b) cout++; &#125; &#125; &#125; return cout; &#125;&#125; 时间复杂度优化这种解法需要记住异或的两个性质：如果a == b，那么a ^ b == 0。反之也成立。异或具有结合率。(a1 ^ a2) ^ a3 =a1 ^ (a2 ^ a3) 题目中a = arr[i] ^ arr[i + 1] ^ ... ^ arr[j - 1],b = arr[j] ^ arr[j + 1] ^ ... ^ arr[k]。那么a ^ b = arr[i] ^ arr[i + 1] ^ ... ^ arr[k] a==b,则a^b==0,arr[i] ^ arr[i + 1] ^ ... ^ arr[k]==0,统计arr数组中有多少个i到k满足条件，例如数组1，2，3，下标0到2满足条件，一共有3个元素，则可以分成满足条件的2组，1,2 3和1 2,3,则每一个满足条件的下标i到k，可以生成k-i组的数目。把这些满足条件的统计出来即可。 12345678910111213141516class Solution &#123; public int countTriplets(int[] arr) &#123; int cout=0; for(int i=0; i&lt;arr.length; i++) &#123; int a=arr[i]; for(int k=i+1; k&lt;arr.length; k++) &#123; a=a^arr[k]; if(a==0) cout+=(k-i); &#125; &#125; return cout; &#125;&#125; 时间复杂度从n的三次方降到ln的二次方]]></content>
@@ -212,9 +234,9 @@
         <category>Map</category>
       </categories>
       <tags>
+        <tag>List</tag>
         <tag>Map</tag>
         <tag>排序</tag>
-        <tag>List</tag>
       </tags>
   </entry>
   <entry>
@@ -260,8 +282,8 @@
         <category>BFS</category>
       </categories>
       <tags>
-        <tag>LeetCode春季赛</tag>
         <tag>BFS</tag>
+        <tag>LeetCode春季赛</tag>
       </tags>
   </entry>
   <entry>
@@ -493,8 +515,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>数学</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
