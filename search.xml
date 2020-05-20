@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode1452-收藏清单]]></title>
+    <url>%2F2020%2F05%2F20%2FLeetCode1452-%E6%94%B6%E8%97%8F%E6%B8%85%E5%8D%95%2F</url>
+    <content type="text"><![CDATA[题目描述给你一个数组 favoriteCompanies ，其中 favoriteCompanies[i] 是第 i 名用户收藏的公司清单（下标从 0 开始）。 请找出不是其他任何人收藏的公司清单的子集的收藏清单，并返回该清单下标。下标需要按升序排列。 示例 1： 123456输入：favoriteCompanies = [[&quot;leetcode&quot;,&quot;google&quot;,&quot;facebook&quot;],[&quot;google&quot;,&quot;microsoft&quot;],[&quot;google&quot;,&quot;facebook&quot;],[&quot;google&quot;],[&quot;amazon&quot;]]输出：[0,1,4] 解释：favoriteCompanies[2]=[&quot;google&quot;,&quot;facebook&quot;] 是 favoriteCompanies[0]=[&quot;leetcode&quot;,&quot;google&quot;,&quot;facebook&quot;] 的子集。favoriteCompanies[3]=[&quot;google&quot;] 是 favoriteCompanies[0]=[&quot;leetcode&quot;,&quot;google&quot;,&quot;facebook&quot;] 和 favoriteCompanies[1]=[&quot;google&quot;,&quot;microsoft&quot;] 的子集。其余的收藏清单均不是其他任何人收藏的公司清单的子集，因此，答案为 [0,1,4] 。 示例 2： 123输入：favoriteCompanies = [[&quot;leetcode&quot;,&quot;google&quot;,&quot;facebook&quot;],[&quot;leetcode&quot;,&quot;amazon&quot;],[&quot;facebook&quot;,&quot;google&quot;]]输出：[0,1] 解释：favoriteCompanies[2]=[&quot;facebook&quot;,&quot;google&quot;] 是 favoriteCompanies[0]=[&quot;leetcode&quot;,&quot;google&quot;,&quot;facebook&quot;] 的子集，因此，答案为 [0,1] 。 示例 3： 12输入：favoriteCompanies = [[&quot;leetcode&quot;],[&quot;google&quot;],[&quot;facebook&quot;],[&quot;amazon&quot;]]输出：[0,1,2,3] 提示： 1 &lt;= favoriteCompanies.length &lt;= 100 1 &lt;= favoriteCompanies[i].length &lt;= 500 1 &lt;= favoriteCompanies[i][j].length &lt;= 20 favoriteCompanies[i] 中的所有字符串 各不相同 。 用户收藏的公司清单也 各不相同 ，也就是说，即便我们按字母顺序排序每个清单， favoriteCompanies[i] != favoriteCompanies[j] 仍然成立。 所有字符串仅包含小写英文字母。 解题思路一个字符串是零一个字符串的子串，我比赛的时候为啥就没有想到用HashSet啊，一直想着如何判断一个字符串是否是另一个字符串的字符，但是一直到比赛结束也没有写出来 12345678910111213141516171819202122232425class Solution &#123; public List&lt;Integer&gt; peopleIndexes(List&lt;List&lt;String&gt;&gt; favoriteCompanies) &#123; List&lt;Integer&gt; res=new ArrayList&lt;&gt;(); for(int i=0; i&lt;favoriteCompanies.size(); i++) &#123; List&lt;String&gt; l1=favoriteCompanies.get(i); boolean flag=true; for(int j=0; j&lt;favoriteCompanies.size(); j++) &#123; if(i==j) continue; List&lt;String&gt; l2=favoriteCompanies.get(j); Set&lt;String&gt; set1=new HashSet&lt;&gt;(l2); if(set1.containsAll(l1)) &#123; flag=false; break; &#125; &#125; if(flag==true) res.add(i); &#125; return res; &#125;&#125; 注意使用的是HashSet中的containsAll方法]]></content>
+      <categories>
+        <category>Set</category>
+      </categories>
+      <tags>
+        <tag>List</tag>
+        <tag>Set</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode1451-重新排列句子中的单词]]></title>
+    <url>%2F2020%2F05%2F20%2FLeetCode1451-%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%8F%A5%E5%AD%90%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D%2F</url>
+    <content type="text"><![CDATA[题目描述「句子」是一个用空格分隔单词的字符串。给你一个满足下述格式的句子 text : 句子的首字母大写 text 中的每个单词都用单个空格分隔。 请你重新排列 text 中的单词，使所有单词按其长度的升序排列。如果两个单词的长度相同，则保留其在原句子中的相对顺序。 请同样按上述格式返回新的句子。 示例 1： 1234输入：text = &quot;Leetcode is cool&quot;输出：&quot;Is cool leetcode&quot;解释：句子中共有 3 个单词，长度为 8 的 &quot;Leetcode&quot; ，长度为 2 的 &quot;is&quot; 以及长度为 4 的 &quot;cool&quot; 。输出需要按单词的长度升序排列，新句子中的第一个单词首字母需要大写。 示例 2： 12345678输入：text = &quot;Keep calm and code on&quot;输出：&quot;On and keep calm code&quot;解释：输出的排序情况如下：&quot;On&quot; 2 个字母。&quot;and&quot; 3 个字母。&quot;keep&quot; 4 个字母，因为存在长度相同的其他单词，所以它们之间需要保留在原句子中的相对顺序。&quot;calm&quot; 4 个字母。&quot;code&quot; 4 个字母。 示例 3： 12输入：text = &quot;To be or not to be&quot;输出：&quot;To be or to be not&quot; 提示： text 以大写字母开头，然后包含若干小写字母以及单词间的单个空格。 1 &lt;= text.length &lt;= 10^5 解题思路自己还是要加强对排序的练习，对排序还是很不熟悉 12345678910class Solution &#123; public String arrangeWords(String text) &#123; String[] s=text.toLowerCase().split(" "); Arrays.sort(s,(s1,s2)-&gt;(s1.length()-s2.length()));//按字符长度从小到大排序 char first=(char)(s[0].charAt(0)-32); String temp=first+s[0].substring(1); s[0]=temp; return String.join(" ",s); &#125;&#125;]]></content>
+      <categories>
+        <category>排序</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode1443-收集树上所有苹果的最少时间]]></title>
+    <url>%2F2020%2F05%2F20%2FLeetCode1443-%E6%94%B6%E9%9B%86%E6%A0%91%E4%B8%8A%E6%89%80%E6%9C%89%E8%8B%B9%E6%9E%9C%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4%2F</url>
+    <content type="text"><![CDATA[题目描述给你一棵有 n 个节点的无向树，节点编号为 0 到 n-1 ，它们中有一些节点有苹果。通过树上的一条边，需要花费 1 秒钟。你从 节点 0 出发，请你返回最少需要多少秒，可以收集到所有苹果，并回到节点 0 。 无向树的边由 edges 给出，其中 edges[i] = [fromi, toi] ，表示有一条边连接from 和to 。除此以外，还有一个布尔数组 hasApple ，其中 hasApple[i] = true 代表节点 i 有一个苹果，否则，节点 i 没有苹果。 示例 1： 123输入：n = 7, edges = [[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]], hasApple = [false,false,true,false,true,true,false]输出：8 解释：上图展示了给定的树，其中红色节点表示有苹果。一个能收集到所有苹果的最优方案由绿色箭头表示。 示例 2： 123输入：n = 7, edges = [[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]], hasApple = [false,false,true,false,false,true,false]输出：6解释：上图展示了给定的树，其中红色节点表示有苹果。一个能收集到所有苹果的最优方案由绿色箭头表示。 示例 3： 12输入：n = 7, edges = [[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]], hasApple = [false,false,false,false,false,false,false]输出：0 提示： 1 &lt;= n &lt;= 10^5 edges.length == n-1 edges[i].length == 2 0 &lt;= fromi, toi &lt;= n-1 fromi &lt; toi hasApple.length == n 解题思路从有苹果的节点往根节点遍历，用result记录走过的路径，每走一条边，result就加1，并用一个visit数组记录对应是否走过该节点，遍历每一个有苹果的节点，最后result记录就是最短路径。 12345678910111213141516171819202122232425262728293031323334class Solution &#123; int result=0; boolean [] visit; public int minTime(int n, int[][] edges, List&lt;Boolean&gt; hasApple) &#123; visit=new boolean[n];//用来标记该节点是否被访问过 int [] father=new int[n];//节点i的父节点就是father[i] Arrays.fill(father,-1); for(int [] temp:edges) &#123; if(father[temp[1]]==-1)//还没有赋值父节点 father[temp[1]]=temp[0]; else father[temp[0]]=temp[1]; &#125; for(int i=0; i&lt;hasApple.size(); i++) &#123; if(hasApple.get(i)) &#123; dfs(i,father); &#125; &#125; return result*2; &#125; private void dfs(int i,int [] father) &#123; if(i==0||visit[i])//已经到根节点，或者该节点已经被访问过 &#123; return; &#125; visit[i]=true; result++; dfs(father[i],father); &#125;&#125;]]></content>
+      <categories>
+        <category>DFS</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Error:Failed to load project configuration: cannot parse file]]></title>
     <url>%2F2020%2F05%2F15%2FError-Failed-to-load-project-configuration-cannot-parse-file%2F</url>
     <content type="text"><![CDATA[spring boot整合jdbc遇到的问题由于是第一次用Spring Initializr创建一个新的项目，导致这个问题搞了一整天，到了晚上终于弄好了 pom.xml文件 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt; &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; &lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; &lt;version&gt;1.5.10.RELEASE&lt;/version&gt; &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt; &lt;/parent&gt; &lt;groupId&gt;com.example&lt;/groupId&gt; &lt;artifactId&gt;spring_boot_jdbc&lt;/artifactId&gt; &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt; &lt;name&gt;spring_boot_jdbc&lt;/name&gt; &lt;description&gt;Demo project for Spring Boot&lt;/description&gt; &lt;properties&gt; &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt; &lt;project.build.outputEncoding&gt;UTF-8&lt;/project.build.outputEncoding&gt; &lt;java.version&gt;1.8&lt;/java.version&gt; &lt;/properties&gt; &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt; &lt;!--一定要导jdbc的坐标，不然会报错--&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt; &lt;version&gt;2.2.7.RELEASE&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;scope&gt;runtime&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;/dependencies&gt; &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt;&lt;/project&gt; application.yml 123456spring: datasource: username: root password: 'lixin13922171767' url: jdbc:mysql://localhost:3306/eesy driver‐class‐name: com.mysql.jdbc.Driver SpringBootJdbcApplication 1234567891011121314151617181920212223242526package com.example.spring_boot_jdbc;import org.junit.Test;import org.junit.runner.RunWith;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.boot.test.context.SpringBootTest;import org.springframework.test.context.junit4.SpringRunner;import javax.sql.DataSource;import java.sql.Connection;import java.sql.SQLException;@RunWith(SpringRunner.class)@SpringBootTestpublic class SpringBootJdbcApplicationTests &#123; @Autowired DataSource dataSource; @Test public void contextLoads() throws Exception &#123; System.out.println(dataSource.getClass()); Connection connection = dataSource.getConnection(); System.out.println(connection); connection.close(); &#125;&#125; 目录结构如图所示 但是运行的结果就是 12Error:Failed to load project configuration: cannot parse file C:\project\springboot_jdbc_2020\.idea\libraries\Maven__ch_qos_logback_logback_classic_1_2_3.xml: ParseError at [row,col]:[1,1]Message: 前言中不允许有内容。 在网上找了各种方法就是不行，但是我就把.idea文件删掉了，然后重新reimport all maven project,然后配置一下jdk，重新运行，最后就好了]]></content>
@@ -200,8 +235,8 @@
         <category>List</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>List</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -234,9 +269,9 @@
         <category>Map</category>
       </categories>
       <tags>
-        <tag>List</tag>
         <tag>Map</tag>
         <tag>排序</tag>
+        <tag>List</tag>
       </tags>
   </entry>
   <entry>
@@ -350,8 +385,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>二分查找</tag>
         <tag>dp</tag>
+        <tag>二分查找</tag>
       </tags>
   </entry>
   <entry>
@@ -515,8 +550,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>递归</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
