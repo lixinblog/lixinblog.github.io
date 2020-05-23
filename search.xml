@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode274-H指数]]></title>
+    <url>%2F2020%2F05%2F23%2FLeetCode274-H%E6%8C%87%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[题目描述给定一位研究者论文被引用次数的数组（被引用次数是非负整数）。编写一个方法，计算出研究者的 h 指数。 h 指数的定义：h 代表“高引用次数”（high citations），一名科研人员的 h 指数是指他（她）的 （N 篇论文中）总共有 h 篇论文分别被引用了至少 h 次。（其余的 N - h 篇论文每篇被引用次数 不超过 h 次。） 例如：某人的 h 指数是 20，这表示他已发表的论文中，每篇被引用了至少 20 次的论文总共有 20 篇。 示例： 1234输入：citations = [3,0,6,1,5]输出：3 解释：给定数组表示研究者总共有 5 篇论文，每篇论文相应的被引用了 3, 0, 6, 1, 5 次。 由于研究者有 3 篇论文每篇 至少 被引用了 3 次，其余两篇论文每篇被引用 不多于 3 次，所以她的 h 指数是 3。 提示：如果 h 有多种可能的值，h 指数是其中最大的那个。 问题我想让数组从大到小排序，但是写了好久没写出来，我把写的代码贴在这里，我以后想起来了，再来看看 123456Arrays.sort(citations,new Comparator&lt;Integer&gt;()&#123; public int compare(Integer a,Integer b) &#123; return b-a; &#125; &#125;); 通过的代码： 123456789101112131415class Solution &#123; public int hIndex(int[] citations) &#123; int len=citations.length; Arrays.sort(citations); int h=1; for(int i=len-1; i&gt;=0; i--) &#123; if(citations[i]&lt;h) break; else h++; &#125; return h-1; &#125;&#125;]]></content>
+      <categories>
+        <category>排序</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode220-存在重复元素III]]></title>
     <url>%2F2020%2F05%2F23%2FLeetCode220-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0III%2F</url>
     <content type="text"><![CDATA[题目描述给定一个整数数组，判断数组中是否有两个不同的索引 i 和 j，使得 nums [i] 和 nums [j] 的差的绝对值最大为 t，并且 i 和 j 之间的差的绝对值最大为 ķ。 示例 1: 12输入: nums = [1,2,3,1], k = 3, t = 0输出: true 示例 2: 12输入: nums = [1,0,1,1], k = 1, t = 2输出: true 示例 3: 12输入: nums = [1,5,9,1,5,9], k = 2, t = 3输出: false 解题思路首先想到是用暴力，比较数组中不同元素，是否满足两个元素值的差和两个元素的下标差是否满足条件，最后就超时了 超时代码如下： 12345678910111213141516class Solution &#123; public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) &#123; int len=nums.length; for(int i=0; i&lt;len; i++) &#123; for(int j=i; j&lt;len; j++) &#123; if(i==j) continue; if(Math.abs((long)nums[i]-nums[j])&lt;=t&amp;&amp;Math.abs(i-j)&lt;=k)//这里容易溢出，所以强转 return true; &#125; &#125; return false; &#125;&#125; 题解 12345678910111213141516171819202122232425262728class Solution &#123; public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) &#123; TreeSet&lt;Long&gt; set=new TreeSet&lt;&gt;(); int len=nums.length; for(int i=0; i&lt;len; i++) &#123; Long h=set.ceiling((long)(nums[i])); if(h!=null&amp;&amp;h&lt;=(long)t+nums[i]) return true; Long l=set.floor((long)(nums[i])); /*if(l!=null) &#123; 这样写会算出错误的结果(long)(nums[i]-t); long res=(long)(nums[i]-t); System.out.println("nums[i]-t："+res); System.out.println("l："+l); &#125;*/ if(l!=null&amp;&amp;(long)nums[i]-t&lt;=l)//用Integer会溢出 return true; set.add((long)(nums[i])); if(set.size()&gt;k) &#123; set.remove((long)nums[i-k]); &#125; &#125; return false; &#125;&#125;]]></content>
