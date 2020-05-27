@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode23-合并K个排序链表]]></title>
+    <url>%2F2020%2F05%2F27%2FLeetCode23-%E5%90%88%E5%B9%B6K%E4%B8%AA%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[题目描述合并 *k *个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。 示例 1234567输入:[ 1-&gt;4-&gt;5, 1-&gt;3-&gt;4, 2-&gt;6]输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6 解题思路利用优先队列，依次把k个链表的头节点入队，按节点的值建立小顶堆，每次从优先队列中获取最小值节点。 时间复杂度，每次从优先队列中获取最小值的时间复杂度为Log(K),总的时间复杂度为nlog(K) 123456789101112131415161718192021222324252627282930313233/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public ListNode mergeKLists(ListNode[] lists) &#123; ListNode newhead=new ListNode(0); ListNode p=newhead; if(lists==null||lists.length==0) return null; PriorityQueue&lt;ListNode&gt; pq=new PriorityQueue&lt;&gt;((v1,v2)-&gt;(v1.val-v2.val)); for(ListNode temp:lists) &#123; if(temp!=null)//特判lists是否为空 pq.offer(temp); &#125; while(!pq.isEmpty()) &#123; ListNode head=pq.poll(); p.next=head; p=head; if(head.next!=null) &#123; pq.offer(head.next); &#125; &#125; return newhead.next; &#125;&#125;]]></content>
+      <categories>
+        <category>链表</category>
+      </categories>
+      <tags>
+        <tag>优先队列</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode4-寻找两个正序数组的中位数]]></title>
     <url>%2F2020%2F05%2F26%2FLeetCode4-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0%2F</url>
     <content type="text"><![CDATA[题目描述给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。 请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。 你可以假设 nums1 和 nums2 不会同时为空。 示例 1: 1234nums1 = [1, 3]nums2 = [2]则中位数是 2.0 示例 2: 1234nums1 = [1, 2]nums2 = [3, 4]则中位数是 (2 + 3)/2 = 2.5 解题思路详见视频 1234567891011121314151617181920212223242526272829303132333435363738394041424344class Solution &#123; public double findMedianSortedArrays(int[] nums1, int[] nums2) &#123; if(nums2.length&lt;nums1.length)//nums1永远是长度较小的数组 &#123; int [] temp=nums1; nums1=nums2; nums2=temp; &#125; int len1=nums1.length; int len2=nums2.length; int n=(len1+len2+1)/2;//分割线左边元素的个数 int left=0; int right=len1; while(left&lt;right) &#123; int i=left+(right-left+1)/2; int j=n-i; if(nums1[i-1]&gt;nums2[j])//如果分割线左上角的数大于右下角 &#123;//向[left,i-1]搜索 right=i-1; &#125; else &#123;//向[i,right]搜索 left=i; &#125; &#125; int i=left; int j=n-i; int nums1LeftMax= i==0?Integer.MIN_VALUE:nums1[i-1]; int nums1RightMin= i==len1?Integer.MAX_VALUE:nums1[i]; int nums2LeftMax= j==0?Integer.MIN_VALUE:nums2[j-1]; int nums2RightMin= j==len2?Integer.MAX_VALUE:nums2[j]; double res=0; if((len1+len2)%2==1)//如果总的数组中元素的数量为奇数个 &#123; res=(double)Math.max(nums1LeftMax,nums2LeftMax); &#125; else//偶数个 &#123; res=(Math.max(nums1LeftMax,nums2LeftMax)+Math.min(nums1RightMin,nums2RightMin))/2.0; &#125; return res; &#125;&#125;]]></content>
@@ -325,8 +337,8 @@
         <category>List</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>List</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -475,8 +487,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>二分查找</tag>
         <tag>dp</tag>
+        <tag>二分查找</tag>
       </tags>
   </entry>
   <entry>
@@ -591,9 +603,9 @@
         <category>贪心</category>
       </categories>
       <tags>
+        <tag>LeetCode周赛</tag>
         <tag>贪心</tag>
         <tag>优先队列</tag>
-        <tag>LeetCode周赛</tag>
       </tags>
   </entry>
   <entry>
@@ -640,8 +652,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>数学</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
