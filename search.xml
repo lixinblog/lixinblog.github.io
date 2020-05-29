@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode25-K个一组翻转链表]]></title>
+    <url>%2F2020%2F05%2F29%2FLeetCode25-K%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[题目描述给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。 k 是一个正整数，它的值小于或等于链表的长度。 如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。 示例： 给你这个链表：1-&gt;2-&gt;3-&gt;4-&gt;5 当 k = 2 时，应当返回: 2-&gt;1-&gt;4-&gt;3-&gt;5 当 k = 3 时，应当返回: 3-&gt;2-&gt;1-&gt;4-&gt;5 说明： 你的算法只能使用常数的额外空间。 你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。 解题思路这题的思路是很简单的，但是指针的操作比较复杂，主要涉及到多个指针的操作，画图有助于这道题的理解。 这里详细的图解 1234567891011121314151617181920212223242526272829303132333435363738394041424344/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public ListNode reverseKGroup(ListNode head, int k) &#123; ListNode first=new ListNode(0); first.next=head; ListNode pre=first; ListNode end=first; while(end!=null) &#123; for(int i=0; i&lt;k&amp;&amp;end!=null; i++) end=end.next; if(end==null)//如果小于k个就循环结束 break; ListNode start=pre.next;//每k个节点的开始节点 ListNode Next=end.next;//k个节点的最后节点的下一个节点 end.next=null; pre.next=reverse(start); start.next=Next; end=start; pre=start; &#125; return first.next; &#125; private ListNode reverse(ListNode node)//把这k个节点进行翻转 &#123; ListNode curr=node; ListNode pre=null; while(curr!=null) &#123; ListNode Next=curr.next; curr.next=pre; pre=curr; curr=Next; &#125; return pre; &#125;&#125;]]></content>
+      <categories>
+        <category>链表</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+        <tag>翻转</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode23-合并K个排序链表]]></title>
     <url>%2F2020%2F05%2F27%2FLeetCode23-%E5%90%88%E5%B9%B6K%E4%B8%AA%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%2F</url>
     <content type="text"><![CDATA[题目描述合并 *k *个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。 示例 1234567输入:[ 1-&gt;4-&gt;5, 1-&gt;3-&gt;4, 2-&gt;6]输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6 解题思路利用优先队列，依次把k个链表的头节点入队，按节点的值建立小顶堆，每次从优先队列中获取最小值节点。 时间复杂度，每次从优先队列中获取最小值的时间复杂度为Log(K),总的时间复杂度为nlog(K) 123456789101112131415161718192021222324252627282930313233/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public ListNode mergeKLists(ListNode[] lists) &#123; ListNode newhead=new ListNode(0); ListNode p=newhead; if(lists==null||lists.length==0) return null; PriorityQueue&lt;ListNode&gt; pq=new PriorityQueue&lt;&gt;((v1,v2)-&gt;(v1.val-v2.val)); for(ListNode temp:lists) &#123; if(temp!=null)//特判lists是否为空 pq.offer(temp); &#125; while(!pq.isEmpty()) &#123; ListNode head=pq.poll(); p.next=head; p=head; if(head.next!=null) &#123; pq.offer(head.next); &#125; &#125; return newhead.next; &#125;&#125;]]></content>
@@ -419,8 +431,8 @@
         <category>BFS</category>
       </categories>
       <tags>
-        <tag>LeetCode春季赛</tag>
         <tag>BFS</tag>
+        <tag>LeetCode春季赛</tag>
       </tags>
   </entry>
   <entry>
@@ -487,8 +499,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>二分查找</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -603,9 +615,9 @@
         <category>贪心</category>
       </categories>
       <tags>
-        <tag>LeetCode周赛</tag>
         <tag>贪心</tag>
         <tag>优先队列</tag>
+        <tag>LeetCode周赛</tag>
       </tags>
   </entry>
   <entry>
