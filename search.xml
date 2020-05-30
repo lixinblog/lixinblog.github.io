@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode32-最长有效括号]]></title>
+    <url>%2F2020%2F05%2F30%2FLeetCode32-%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7%2F</url>
+    <content type="text"><![CDATA[题目描述给定一个只包含 &#39;(&#39; 和 &#39;)&#39; 的字符串，找出最长的包含有效括号的子串的长度。 示例 1: 123输入: &quot;(()&quot;输出: 2解释: 最长有效括号子串为 &quot;()&quot; 示例 2: 123输入: &quot;)()())&quot;输出: 4解释: 最长有效括号子串为 &quot;()()&quot; 解题思路首先使用想用栈，自己都不知道下手，看了别人的思路才写出来的，但是超时了 1234567891011121314151617181920212223242526272829303132class Solution &#123; public int longestValidParentheses(String s) &#123; if(s.length()&lt;2) return 0; int maxlen=0; for(int i=0; i&lt;s.length(); i++) &#123; for(int j=i+2; j&lt;=s.length(); j+=2) &#123; if(judge(s.substring(i,j))) &#123; maxlen=Math.max(maxlen,j-i); &#125; &#125; &#125; return maxlen; &#125; private boolean judge(String s) &#123; Stack&lt;Character&gt; stack=new Stack&lt;&gt;(); for(int i=0; i&lt;s.length(); i++) &#123; if(s.charAt(i)=='(') stack.push('('); else if(!stack.isEmpty()&amp;&amp;s.charAt(i)==')') stack.pop(); else return false; &#125; return stack.isEmpty(); &#125;&#125; 利用栈的另一种方法，时间复杂度为O(n),空间复杂度为O(n) 详细图解 123456789101112131415161718192021222324class Solution &#123; public int longestValidParentheses(String s) &#123; if(s.length()&lt;2) return 0; Stack &lt;Integer&gt; stack=new Stack&lt;&gt;(); stack.push(-1); int maxlen=0; for(int i=0; i&lt;s.length(); i++) &#123; if(s.charAt(i)=='(')//左括号把对应下标进栈 stack.push(i); else &#123; stack.pop();//遇到右括号，出栈 if(stack.isEmpty())//出栈后如果栈为空，把出栈下标进栈 &#123; stack.push(i); &#125; maxlen=Math.max(maxlen,i-stack.peek()); &#125; &#125; return maxlen; &#125;&#125;]]></content>
+      <categories>
+        <category>括号</category>
+      </categories>
+      <tags>
+        <tag>栈</tag>
+        <tag>括号</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode30-串联所有单词的子串]]></title>
     <url>%2F2020%2F05%2F30%2FLeetCode30-%E4%B8%B2%E8%81%94%E6%89%80%E6%9C%89%E5%8D%95%E8%AF%8D%E7%9A%84%E5%AD%90%E4%B8%B2%2F</url>
     <content type="text"><![CDATA[题目描述给定一个字符串 s 和一些长度相同的单词 words。找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。 注意子串要与 words 中的单词完全匹配，中间不能有其他字符，但不需要考虑 words 中单词串联的顺序。 示例 1： 1234567输入： s = &quot;barfoothefoobarman&quot;, words = [&quot;foo&quot;,&quot;bar&quot;]输出：[0,9]解释：从索引 0 和 9 开始的子串分别是 &quot;barfoo&quot; 和 &quot;foobar&quot; 。输出的顺序不重要, [9,0] 也是有效答案。 示例 2： 1234输入： s = &quot;wordgoodgoodgoodbestword&quot;, words = [&quot;word&quot;,&quot;good&quot;,&quot;best&quot;,&quot;word&quot;]输出：[] 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455class Solution &#123; public List&lt;Integer&gt; findSubstring(String s, String[] words) &#123; List &lt;Integer&gt; res=new ArrayList&lt;&gt;(); if(s.length()==0||words.length==0) return res; int onelen=words[0].length();//每一个单词的长度 int wordslen=onelen*words.length;//总的单词长度 if(wordslen&gt;s.length())//如果单词的长度大于字符串的长度 return res; Map&lt;String,Integer&gt;wordsMap=new HashMap&lt;&gt;(); for(String word:words) &#123; if(s.indexOf(word)&lt;0)//如果字符串中没有这个单词 return res; wordsMap.put(word,wordsMap.getOrDefault(word,0)+1); &#125; for(int i=0; i&lt;onelen; i++)//滑动窗口查找 &#123; int left=i,right=i,cout=0; Map&lt;String,Integer&gt;subMap=new HashMap&lt;&gt;();//字符串中符合要求的单词 while(right+onelen&lt;=s.length()) &#123; String wo=s.substring(right,right+onelen); right=right+onelen; if(!wordsMap.containsKey(wo))//wordsMap中没有这个单词 &#123; left=right;//左滑动窗口跳到右滑动窗口 subMap.clear();//清掉里面的单词统计 cout=0;//符合要求的单词个数为0 &#125; else &#123; //统计字符串符合要求的单词个数 subMap.put(wo,subMap.getOrDefault(wo,0)+1); cout++;//当前匹配的单词个数//s:"foobarfoobarfoothe",words:"foo","bar","foo","the"//subMap中bar的个数超过wordsMap中bar的个数，自己在纸上模拟一下就懂了 while(subMap.getOrDefault(wo,0)&gt;wordsMap.getOrDefault(wo,0)) &#123; String temp=s.substring(left,left+onelen);//左指针的单词 left=left+onelen;//左指针向右移 subMap.put(temp,subMap.getOrDefault(temp,0)-1);//subMap中对应的单词个数减一 cout--;//匹配单词的个数减一 &#125; if(cout==words.length)//匹配个数等于单词的个数 &#123; res.add(left);//添加左指针 // System.out.println(cout+" "+wo); &#125; &#125; &#125; &#125; return res; &#125;&#125;]]></content>
@@ -444,8 +457,8 @@
         <category>BFS</category>
       </categories>
       <tags>
-        <tag>BFS</tag>
         <tag>LeetCode春季赛</tag>
+        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
@@ -512,8 +525,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>二分查找</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -677,8 +690,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>数学</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
