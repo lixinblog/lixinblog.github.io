@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[关于驼峰命名的问题]]></title>
+    <url>%2F2020%2F06%2F04%2F%E5%85%B3%E4%BA%8E%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[12&lt;!-- 开启驼峰命名转换：Table&#123;create_time&#125;-&gt;&#123;createTime&#125;--&gt; &lt;setting name="mapUnderscoreToCamelCase" value="true"/&gt; 开启驼峰命名，如果你的实体类中属性名和数据库的属性名一样也会出错，害的我一顿好找，找了好久，能够根据查询到对应的对象，就是查不到对象对应的属性，最后把驼峰命名关闭就好了 总结以后就不要开启驼峰命名了，实体类的属性就写得和数据库中的属性一样就可以了，别瞎折腾，搞什么驼峰命名了，没什么用，和数据库中的的属性一样不就好了]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode1467-两个盒子中球的颜色数相同的概率]]></title>
     <url>%2F2020%2F06%2F02%2FLeetCode1467-%E4%B8%A4%E4%B8%AA%E7%9B%92%E5%AD%90%E4%B8%AD%E7%90%83%E7%9A%84%E9%A2%9C%E8%89%B2%E6%95%B0%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A6%82%E7%8E%87%2F</url>
     <content type="text"><![CDATA[题目描述桌面上有 2n 个颜色不完全相同的球，球上的颜色共有 k 种。给你一个大小为 k 的整数数组 balls ，其中 balls[i] 是颜色为 i 的球的数量。 所有的球都已经 随机打乱顺序 ，前 n 个球放入第一个盒子，后 n 个球放入另一个盒子（请认真阅读示例 2 的解释部分）。 注意：这两个盒子是不同的。例如，两个球颜色分别为 a 和 b，盒子分别为 [] 和 ()，那么 [a] (b) 和 [b] (a) 这两种分配方式是不同的（请认真阅读示例 1 的解释部分）。 请计算「两个盒子中球的颜色数相同」的情况的概率。 示例 1： 123456输入：balls = [1,1]输出：1.00000解释：球平均分配的方式只有两种：- 颜色为 1 的球放入第一个盒子，颜色为 2 的球放入第二个盒子- 颜色为 2 的球放入第一个盒子，颜色为 1 的球放入第二个盒子这两种分配，两个盒子中球的颜色数都相同。所以概率为 2/2 = 1 。 示例 2： 12345678输入：balls = [2,1,1]输出：0.66667解释：球的列表为 [1, 1, 2, 3]随机打乱，得到 12 种等概率的不同打乱方案，每种方案概率为 1/12 ：[1,1 / 2,3], [1,1 / 3,2], [1,2 / 1,3], [1,2 / 3,1], [1,3 / 1,2], [1,3 / 2,1], [2,1 / 1,3], [2,1 / 3,1], [2,3 / 1,1], [3,1 / 1,2], [3,1 / 2,1], [3,2 / 1,1]然后，我们将前两个球放入第一个盒子，后两个球放入第二个盒子。这 12 种可能的随机打乱方式中的 8 种满足「两个盒子中球的颜色数相同」。概率 = 8/12 = 0.66667 示例 3： 1234输入：balls = [1,2,1,2]输出：0.60000解释：球的列表为 [1, 2, 2, 3, 4, 4]。要想显示所有 180 种随机打乱方案是很难的，但只检查「两个盒子中球的颜色数相同」的 108 种情况是比较容易的。概率 = 108 / 180 = 0.6 。 示例 4： 1234输入：balls = [3,2,1]输出：0.30000解释：球的列表为 [1, 1, 1, 2, 2, 3]。要想显示所有 60 种随机打乱方案是很难的，但只检查「两个盒子中球的颜色数相同」的 18 种情况是比较容易的。概率 = 18 / 60 = 0.3 。 示例 5： 12输入：balls = [6,6,6,6,6,6]输出：0.90327 提示： 1 &lt;= balls.length &lt;= 8 1 &lt;= balls[i] &lt;= 6 sum(balls) 是偶数 答案与真实值误差在 10^-5 以内，则被视为正确答案 解题思路这道题对现在的我确实有点难度，自己要多练dp了 大佬视频讲解链接 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182class Solution &#123; public double[][][][] dp=new double [10][30][10][10]; //盒子A，盒子B //盒子A中球的颜色数=盒子B中球的颜色数 //dp[c][i][p][q] 已经分配了前c中颜色的球，盒子A中有i个球，盒子B中有sum-i个球(sum=balls[0]+...+balls[c-1]),盒子A中有p中颜色，盒子B中有q种颜色 //取颜色c+1，balls[c] //L个放进盒子A，balls[c]-L个放进盒子B private double C(int n,int m) &#123; if(m&gt;n) return 0; if(m==n) return 1; double s=1; for(int i=n; i&gt;m; i--) s=s*i; for(int i=1; i&lt;=n-m; i++) s=s/i; return s; &#125; public double getProbability(int[] balls) &#123; int m=balls.length,n=0; for(int k:balls) n=n+k; n=n/2; for(int i=0; i&lt;=m; i++) &#123; for(int j=0; j&lt;=n; j++) &#123; for(int p=0; p&lt;=m; p++) &#123; for(int q=0; q&lt;=m; q++) &#123; dp[i][j][p][q]=0; &#125; &#125; &#125; &#125; dp[0][0][0][0]=1.0; int sum=0; for(int c=1; c&lt;=m; c++) &#123; int cnt=balls[c-1]; for(int i=0; i&lt;=n; i++) &#123; for(int p=0; p&lt;=m; p++) &#123; for(int q=0; q&lt;=m; q++) &#123; double tot=0; for(int L=0; L&lt;=cnt; L++) &#123; if(i+L&lt;=n&amp;&amp;sum-i+cnt-L&lt;=n) tot+=C(n-i,L)*C(n-(sum-i),cnt-L); &#125; for(int L=0; L&lt;=cnt; L++) &#123; if(i+L&lt;=n&amp;&amp;sum-i+cnt-L&lt;=n) &#123; int np=p+(L&gt;0?1:0);//三目运算符记得加括号 int nq=q+((cnt-L)&gt;0?1:0); double a=C(n-i,L); double b=C(n-(sum-i),cnt-L); double v=C(n-i,L)*C(n-(sum-i),cnt-L)/tot; dp[c][i+L][np][nq]+=dp[c-1][i][p][q]*v; //System.out.println(a+" "+b+" "+tot+" "+v); &#125; &#125; &#125; &#125; &#125; sum+=cnt; &#125; double ans=0; for(int p=0; p&lt;=m; p++) &#123; ans+=dp[m][n][p][p]; // System.out.println(ans); &#125; return ans; &#125;&#125;]]></content>
@@ -398,8 +409,8 @@
         <category>贪心</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>贪心</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -410,8 +421,8 @@
         <category>List</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>List</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
