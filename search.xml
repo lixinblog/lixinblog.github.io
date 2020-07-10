@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[剑指Offer04-二维数组的查找]]></title>
+    <url>%2F2020%2F07%2F10%2F%E5%89%91%E6%8C%87Offer04-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E6%9F%A5%E6%89%BE%2F</url>
+    <content type="text"><![CDATA[题目描述在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 示例: 现有矩阵 matrix 如下： 1234567[ [1, 4, 7, 11, 15], [2, 5, 8, 12, 19], [3, 6, 9, 16, 22], [10, 13, 14, 17, 24], [18, 21, 23, 26, 30]] 给定 target = 5，返回 true。 给定 target = 20，返回 false。 限制： 120 &lt;= n &lt;= 10000 &lt;= m &lt;= 1000 123456789101112131415161718class Solution &#123; public boolean findNumberIn2DArray(int[][] matrix, int target) &#123; //这道题你主要是思维固化，你可以从左下角开始查找，当前的值比目标值小，往上查找，当前的值比目标值大，往右查找 if(matrix==null||matrix.length==0) return false; int i=matrix.length-1,j=0; while(j&lt;matrix[0].length&amp;&amp;i&gt;=0) &#123; if(matrix[i][j]&gt;target) i--; else if(matrix[i][j]&lt;target) j++; else return true; &#125; return false; &#125;&#125;]]></content>
+      <categories>
+        <category>数组</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[关于驼峰命名的问题]]></title>
     <url>%2F2020%2F06%2F04%2F%E5%85%B3%E4%BA%8E%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[12&lt;!-- 开启驼峰命名转换：Table&#123;create_time&#125;-&gt;&#123;createTime&#125;--&gt; &lt;setting name="mapUnderscoreToCamelCase" value="true"/&gt; 开启驼峰命名，如果你的实体类中属性名和数据库的属性名一样也会出错，害的我一顿好找，找了好久，能够根据查询到对应的对象，就是查不到对象对应的属性，最后把驼峰命名关闭就好了 总结以后就不要开启驼峰命名了，实体类的属性就写得和数据库中的属性一样就可以了，别瞎折腾，搞什么驼峰命名了，没什么用，和数据库中的的属性一样不就好了]]></content>
@@ -455,9 +466,9 @@
         <category>Map</category>
       </categories>
       <tags>
-        <tag>List</tag>
         <tag>Map</tag>
         <tag>排序</tag>
+        <tag>List</tag>
       </tags>
   </entry>
   <entry>
@@ -687,9 +698,9 @@
         <category>贪心</category>
       </categories>
       <tags>
-        <tag>LeetCode周赛</tag>
         <tag>贪心</tag>
         <tag>优先队列</tag>
+        <tag>LeetCode周赛</tag>
       </tags>
   </entry>
   <entry>
