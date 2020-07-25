@@ -556,9 +556,9 @@
         <category>Map</category>
       </categories>
       <tags>
-        <tag>List</tag>
         <tag>Map</tag>
         <tag>排序</tag>
+        <tag>List</tag>
       </tags>
   </entry>
   <entry>
@@ -672,8 +672,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>二分查找</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -837,8 +837,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>数学</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -1870,7 +1870,7 @@
   <entry>
     <title><![CDATA[包含min函数的栈]]></title>
     <url>%2F2020%2F02%2F06%2F%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88%2F</url>
-    <content type="text"><![CDATA[题目描述题目链接 定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。 解题思路用两个栈来完成，一个栈记录元素，另一个栈用来记录栈中所含最小元素，每一次元素的入栈和出栈，都要更新对应最小元素栈中的值。例如一个元素入栈，如果这个元素小于最小元素栈中的值，则要更新最小元素栈中的值，否则最小元素栈中的值保持不变。 123456789101112131415161718192021222324252627282930313233import java.util.Stack;public class Solution &#123; Stack &lt;Integer&gt; Total=new Stack &lt;&gt; ();//记录所有的元素 Stack &lt;Integer&gt; Little=new Stack &lt;&gt; ();//栈顶记录当前的最小元素 public void push(int node) &#123; Total.push(node); if(Little.empty()) Little.push(node); else&#123; if(node&lt;Little.peek())//如果这个元素小于栈中的最小元素 &#123; Little.push(node); &#125; else&#123;//如果这个元素大于栈中最小元素，则最小元素栈进栈的还是最小元素栈中栈顶的元素 Little.push(Little.peek());//Little.peek()只取栈顶的元素值，但是不出栈 &#125; &#125; &#125; public void pop() &#123; Total.pop(); Little.pop(); &#125; public int top() &#123; return Little.peek(); &#125; public int min() &#123; return Little.peek(); &#125;&#125;]]></content>
+    <content type="text"><![CDATA[题目描述题目链接 定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。 解题思路用两个栈来完成，一个栈记录元素，另一个栈用来记录栈中所含最小元素，每一次元素的入栈和出栈，都要更新对应最小元素栈中的值。例如一个元素入栈，如果这个元素小于最小元素栈中的值，则要更新最小元素栈中的值，否则最小元素栈中的值保持不变。 123456789101112131415161718192021222324252627282930313233import java.util.Stack;public class Solution &#123; Stack &lt;Integer&gt; Total=new Stack &lt;&gt; ();//记录所有的元素 Stack &lt;Integer&gt; Little=new Stack &lt;&gt; ();//栈顶记录当前的最小元素 public void push(int node) &#123; Total.push(node); if(Little.empty()) Little.push(node); else&#123; if(node&lt;Little.peek())//如果这个元素小于栈中的最小元素 &#123; Little.push(node); &#125; else&#123;//如果这个元素大于栈中最小元素，则最小元素栈进栈的还是最小元素栈中栈顶的元素 Little.push(Little.peek());//Little.peek()只取栈顶的元素值，但是不出栈 &#125; &#125; &#125; public void pop() &#123; Total.pop(); Little.pop(); &#125; public int top() &#123; return Total.peek(); &#125; public int min() &#123; return Little.peek(); &#125;&#125;]]></content>
       <tags>
         <tag>笔记</tag>
       </tags>
