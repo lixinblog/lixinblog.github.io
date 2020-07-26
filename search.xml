@@ -556,9 +556,9 @@
         <category>Map</category>
       </categories>
       <tags>
+        <tag>List</tag>
         <tag>Map</tag>
         <tag>排序</tag>
-        <tag>List</tag>
       </tags>
   </entry>
   <entry>
@@ -1846,7 +1846,7 @@
   <entry>
     <title><![CDATA[二叉搜索树的后序遍历序列]]></title>
     <url>%2F2020%2F02%2F06%2F%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%2F</url>
-    <content type="text"><![CDATA[题目描述题目链接 输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。 解题思路什么叫做二叉搜索数，即左子树小于根节点，左子树大于根节点，每一个子树也满足这个条件。 这道题采用分治的方法，数组序列的最后一个节点就是根节点，根据二叉搜索树的后序遍历，小于根节点的数就是左子树，大于根节点的数就是右子树，然后再分别判断左子树和右子树是否满足二叉搜索树的后续遍历。 123456789101112131415161718192021222324252627public class Solution &#123; public boolean VerifySquenceOfBST(int [] sequence) &#123; if(sequence.length&lt;=0)//数组为空就是不符合后序遍历 return false; return judgeBSF(sequence,0,sequence.length-1); &#125; public boolean judgeBSF(int [] sequence,int start,int end) &#123; if(start&gt;=end) return true; int i=start; int val=sequence[end];//根节点的值 while(sequence[i]&lt;val)//循环截止时i-1的值，就是左子树根节点的下标 &#123; i++; &#125; int j=i; while(j&lt;end) &#123; j++; if(sequence[j]&lt;val)//如果右子树的值小于根节点的值，这个就不符合后序遍历 return false; &#125; //判断左子树和右子树是否符合二叉搜索树的后序遍历 return judgeBSF(sequence,start,i-1)&amp;&amp;judgeBSF(sequence,i,end-1); &#125;&#125;]]></content>
+    <content type="text"><![CDATA[题目描述题目链接 输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。 解题思路什么叫做二叉搜索数，即左子树小于根节点，右子树大于根节点，每一个子树也满足这个条件。 这道题采用分治的方法，数组序列的最后一个节点就是根节点，根据二叉搜索树的后序遍历，小于根节点的数就是左子树，大于根节点的数就是右子树，然后再分别判断左子树和右子树是否满足二叉搜索树的后续遍历。 123456789101112131415161718192021222324252627public class Solution &#123; public boolean VerifySquenceOfBST(int [] sequence) &#123; if(sequence.length&lt;=0)//数组为空就是不符合后序遍历 return false; return judgeBSF(sequence,0,sequence.length-1); &#125; public boolean judgeBSF(int [] sequence,int start,int end) &#123; if(start&gt;=end) return true; int i=start; int val=sequence[end];//根节点的值 while(sequence[i]&lt;val)//循环截止时i-1的值，就是左子树根节点的下标 &#123; i++; &#125; int j=i; while(j&lt;end) &#123; j++; if(sequence[j]&lt;val)//如果右子树的值小于根节点的值，这个就不符合后序遍历 return false; &#125; //判断左子树和右子树是否符合二叉搜索树的后序遍历 return judgeBSF(sequence,start,i-1)&amp;&amp;judgeBSF(sequence,i,end-1); &#125;&#125;]]></content>
       <tags>
         <tag>笔记</tag>
       </tags>
