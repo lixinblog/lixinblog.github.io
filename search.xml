@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[剑指Offer46-把数字翻译成字符串]]></title>
+    <url>%2F2020%2F08%2F01%2F%E5%89%91%E6%8C%87Offer46-%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[题目描述给定一个数字，我们按照如下规则把它翻译为字符串：0 翻译成 “a” ，1 翻译成 “b”，……，11 翻译成 “l”，……，25 翻译成 “z”。一个数字可能有多个翻译。请编程实现一个函数，用来计算一个数字有多少种不同的翻译方法。 示例 1: 123输入: 12258输出: 5解释: 12258有5种不同的翻译，分别是&quot;bccfi&quot;, &quot;bwfi&quot;, &quot;bczi&quot;, &quot;mcfi&quot;和&quot;mzi&quot; 提示： 0 &lt;= num &lt; 2^31 解题思路字符串x1x2x3x4x5,如果计算第xi的翻译方案数，则要看x(i-2)x(i-1)是否可以组成可以翻译成字母的字符串，如果可以，则和x(i-1)加x(i-2)组成的方案是相同的，不可以的话，和x(i-1)组成的方案是相同的。 详细的解释请看这里 12345678910111213141516171819class Solution &#123; public int translateNum(int num) &#123; String str=String.valueOf(num); int len=str.length(); int [] dp=new int[len+1]; dp[0]=1; dp[1]=1; for(int i=2; i&lt;=len; i++) &#123; String tmp=str.substring(i-2,i); int s=Integer.valueOf(tmp); if(s&gt;=10&amp;&amp;s&lt;=25) dp[i]=dp[i-1]+dp[i-2]; else dp[i]=dp[i-1]; &#125; return dp[len]; &#125;&#125;]]></content>
+      <categories>
+        <category>dp</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[剑指Offer44-数字序列中某一位的数字]]></title>
     <url>%2F2020%2F08%2F01%2F%E5%89%91%E6%8C%87Offer44-%E6%95%B0%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%AD%E6%9F%90%E4%B8%80%E4%BD%8D%E7%9A%84%E6%95%B0%E5%AD%97%2F</url>
     <content type="text"><![CDATA[题目描述数字以0123456789101112131415…的格式序列化到一个字符序列中。在这个序列中，第5位（从下标0开始计数）是5，第13位是1，第19位是4，等等。 请写一个函数，求任意第n位对应的数字。 示例 1： 12输入：n = 3输出：3 示例 2： 12输入：n = 11输出：0 限制： 0 &lt;= n &lt; 2^31 解题思路digit是这种类型的数字有多少位，例如1099，有2位，start是指这种数字开始时的数字，例如1099，start=10，cout是指这个范围的数字总共有多少位，例如10~99,一共有90*2=180位。 第一步，先确定在哪个范围的第几个数字，例如n=15，一位数一共有9个，那么15是从10开始的第6个数。（n=n-9=6) 第二步，再确定n是哪个数字，例如n=5对应的数字为5，计算公式为：start+(n-1)/digit,例如n=15,通过第一步后n=6,通过计算公式得出的结果为:10+2=12，确定的数字为12 第三步，再确定是数字12的哪一位，计算公式为:(n-1)%digit 这里面详细的图表解释 123456789101112131415161718class Solution &#123; public int findNthDigit(int n) &#123; int digit=1; long start=1,cout=9; while(n&gt;cout) &#123; n-=cout;//n=n-cout会有类型转换的错误 digit++; start=start*10; cout=9*start*digit; &#125; //确定是那个数字 long num=start+(n-1)/digit; //System.out.println(num); return Long.toString(num).charAt((n-1)%digit)-'0'; //return (int)num; &#125;&#125;]]></content>
@@ -532,8 +543,8 @@
         <category>贪心</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>数组</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -626,8 +637,8 @@
         <category>BFS</category>
       </categories>
       <tags>
-        <tag>LeetCode春季赛</tag>
         <tag>BFS</tag>
+        <tag>LeetCode春季赛</tag>
       </tags>
   </entry>
   <entry>
@@ -859,8 +870,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>递归</tag>
         <tag>数学</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
