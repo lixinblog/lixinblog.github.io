@@ -621,8 +621,8 @@
         <category>贪心</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>数组</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -633,8 +633,8 @@
         <category>List</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>List</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -667,9 +667,9 @@
         <category>Map</category>
       </categories>
       <tags>
-        <tag>List</tag>
         <tag>Map</tag>
         <tag>排序</tag>
+        <tag>List</tag>
       </tags>
   </entry>
   <entry>
@@ -783,8 +783,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>二分查找</tag>
         <tag>dp</tag>
+        <tag>二分查找</tag>
       </tags>
   </entry>
   <entry>
@@ -948,8 +948,8 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>递归</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -1837,7 +1837,7 @@
   <entry>
     <title><![CDATA[翻转单词顺序列]]></title>
     <url>%2F2020%2F02%2F22%2F%E7%BF%BB%E8%BD%AC%E5%8D%95%E8%AF%8D%E9%A1%BA%E5%BA%8F%E5%88%97%2F</url>
-    <content type="text"><![CDATA[题目描述原题链接 牛客最近来了一个新员工Fish，每天早晨总是会拿着一本英文杂志，写些句子在本子上。同事Cat对Fish写的内容颇感兴趣，有一天他向Fish借来翻看，但却读不懂它的意思。例如，“student. a am I”。后来才意识到，这家伙原来把句子单词的顺序翻转了，正确的句子应该是“I am a student.”。Cat对一一的翻转这些单词顺序可不在行，你能帮助他么？ 解题思路String不能翻转字符串，但是StringBuffer可以 例子: 12345"student. a am I"翻转后"I ma a .tneduts"以空格为标记，把每个单词翻转，拼接到一个新的字符串中"I am a student." 不熟悉的知识点: 123456789StringBuffer需要导入的包java.lang.StringBuffer;把String类型转化成StringBufferString str;StringBuffer newstr=new StringBuffer(str);newstr.reverse();//翻转newstr.charAt(i)==' ';//对应下标的字符是否是空newstr.subString(i,j);//取字符串中i到j-1下标的字符newstr.toString();//把StringBuffer类型转化成String类型 123456789101112131415161718192021222324252627282930import java.lang.StringBuffer;//注意导入包的写法，是java.langpublic class Solution &#123; public String ReverseSentence(String str) &#123; if(str.length()==0) return ""; StringBuffer newstr=new StringBuffer(str); newstr.reverse();//对字符串进行翻转 StringBuffer result=new StringBuffer();//用来存放结果 int spacenum=0;//空格数 int j=0;//每个单词的其实下标 for(int i=0; i&lt;newstr.length(); i++) &#123; if(newstr.charAt(i)==' '&amp;&amp;i!=newstr.length()-1) &#123; spacenum++; StringBuffer str2=new StringBuffer(newstr.substring(j,i)); result.append(str2.reverse()).append(" "); j=i+1;//j重新指向新单词的第一位 &#125; if(i==newstr.length()-1) &#123; StringBuffer str3=new StringBuffer(newstr.substring(j,i+1)); result.append(str3.reverse()); &#125; &#125; if(spacenum==0)//如果空格数为零 return str; return result.toString(); &#125;&#125;]]></content>
+    <content type="text"><![CDATA[题目描述原题链接 牛客最近来了一个新员工Fish，每天早晨总是会拿着一本英文杂志，写些句子在本子上。同事Cat对Fish写的内容颇感兴趣，有一天他向Fish借来翻看，但却读不懂它的意思。例如，“student. a am I”。后来才意识到，这家伙原来把句子单词的顺序翻转了，正确的句子应该是“I am a student.”。Cat对一一的翻转这些单词顺序可不在行，你能帮助他么？ 解题思路String不能翻转字符串，但是StringBuffer可以 例子: 12345"student. a am I"翻转后"I ma a .tneduts"以空格为标记，把每个单词翻转，拼接到一个新的字符串中"I am a student." 不熟悉的知识点: 123456789StringBuffer需要导入的包java.lang.StringBuffer;把String类型转化成StringBufferString str;StringBuffer newstr=new StringBuffer(str);newstr.reverse();//翻转newstr.charAt(i)==' ';//对应下标的字符是否是空newstr.subString(i,j);//取字符串中i到j-1下标的字符newstr.toString();//把StringBuffer类型转化成String类型 123456789101112131415161718192021222324252627282930import java.lang.StringBuffer;//注意导入包的写法，是java.langpublic class Solution &#123; public String ReverseSentence(String str) &#123; if(str.length()==0) return ""; StringBuffer newstr=new StringBuffer(str); newstr.reverse();//对字符串进行翻转 StringBuffer result=new StringBuffer();//用来存放结果 int spacenum=0;//空格数 int j=0;//每个单词的其实下标 for(int i=0; i&lt;newstr.length(); i++) &#123; if(newstr.charAt(i)==' '&amp;&amp;i!=newstr.length()-1) &#123; spacenum++; StringBuffer str2=new StringBuffer(newstr.substring(j,i)); result.append(str2.reverse()).append(" "); j=i+1;//j重新指向新单词的第一位 &#125; if(i==newstr.length()-1) &#123; StringBuffer str3=new StringBuffer(newstr.substring(j,i+1)); result.append(str3.reverse()); &#125; &#125; if(spacenum==0)//如果空格数为零 return str; return result.toString(); &#125;&#125; 解法二1234567891011121314151617class Solution &#123; public String reverseWords(String s) &#123; s=s.trim();//去掉首位的空格 int i=s.length()-1,j=i; StringBuffer str=new StringBuffer(); while(i&gt;=0) &#123; while(i&gt;=0&amp;&amp;s.charAt(i)!=' ')//寻找首个单词 i--; str.append(s.substring(i+1,j+1)).append(" ");//把单词添加 while(i&gt;=0&amp;&amp;s.charAt(i)==' ')//跳过空格 i--; j=i; &#125; return str.toString().trim(); &#125;&#125;]]></content>
       <tags>
         <tag>剑指offer笔记</tag>
       </tags>
