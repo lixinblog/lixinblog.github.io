@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[剑指Offer 56-II 数组中数字出现的次数II]]></title>
+    <url>%2F2020%2F08%2F02%2F%E5%89%91%E6%8C%87Offer-56-II-%E6%95%B0%E7%BB%84%E4%B8%AD%E6%95%B0%E5%AD%97%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0II%2F</url>
+    <content type="text"><![CDATA[题目描述在一个数组 nums 中除一个数字只出现一次之外，其他数字都出现了三次。请找出那个只出现一次的数字。 示例 1： 12输入：nums = [3,4,3,3]输出：4 示例 2： 12输入：nums = [9,1,7,9,7,9,7]输出：1 限制： 1 &lt;= nums.length &lt;= 10000 1 &lt;= nums[i] &lt; 2^31 解题思路先把每一个数化成二进制位，如果一个数出现三次，统计它的二进制表示的每一位（0或1）出现的次数也是三次。如果把所有出现三次的数字的二进制表示的每一位分别加起来，那么每一位的和都能被3整除。我们需要一个长度位32的辅助数组存储二进制表示的每一位的和。 参考文章 12345678910111213141516171819202122class Solution &#123; public int singleNumber(int[] nums) &#123; int [] bit=new int[32]; int res=0; for(int num: nums) &#123; int k=1; for(int i=31; i&gt;=0; i--) &#123; if((k&amp;num)!=0) bit[i]++; k=k&lt;&lt;1; &#125; &#125; for(int i=0; i&lt;32; i++) &#123; res=res&lt;&lt;1; res+=bit[i]%3; &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>位运算</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[剑指Offer 56-I 数组中数字出现的次数]]></title>
     <url>%2F2020%2F08%2F02%2F%E5%89%91%E6%8C%87Offer-56-I-%E6%95%B0%E7%BB%84%E4%B8%AD%E6%95%B0%E5%AD%97%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0%2F</url>
     <content type="text"><![CDATA[题目描述一个整型数组 nums 里除两个数字之外，其他数字都出现了两次。请写程序找出这两个只出现一次的数字。要求时间复杂度是O(n)，空间复杂度是O(1)。 示例 1： 12输入：nums = [4,1,4,6]输出：[1,6] 或 [6,1] 示例 2： 12输入：nums = [1,2,10,4,1,4,3,3]输出：[2,10] 或 [10,2] 限制： 2 &lt;= nums.length &lt;= 10000 解题思路所有数字进行异或操作后，就是两个不同数异或的结果，比如1和6异或的结果就是7，对应的二进制111，我们找一位为1的数，1，2，4，都可以，我找1，遍历数组，如果和1&amp;的结果为0的为一组，4，4，6为一组，1为一组，然后每一组里面的数进行异或操作，就是我们想要的结果。 详细的思路解答 12345678910111213141516171819class Solution &#123; public int[] singleNumbers(int[] nums) &#123; int res=0; for(int n:nums) res^=n; int k=1; while((k&amp;res)==0) k=k&lt;&lt;1; int a=0,b=0; for(int n:nums) &#123; if((n&amp;k)==0) a^=n; else b^=n; &#125; return new int[]&#123;a,b&#125;; &#125;&#125;]]></content>
@@ -622,8 +633,8 @@
         <category>List</category>
       </categories>
       <tags>
-        <tag>List</tag>
         <tag>数组</tag>
+        <tag>List</tag>
       </tags>
   </entry>
   <entry>
@@ -656,9 +667,9 @@
         <category>Map</category>
       </categories>
       <tags>
+        <tag>List</tag>
         <tag>Map</tag>
         <tag>排序</tag>
-        <tag>List</tag>
       </tags>
   </entry>
   <entry>
