@@ -204,7 +204,7 @@
   <entry>
     <title><![CDATA[剑指Offer26-树的子结构]]></title>
     <url>%2F2020%2F07%2F24%2F%E5%89%91%E6%8C%87Offer26-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84%2F</url>
-    <content type="text"><![CDATA[题目描述原题链接 输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构) B是A的子结构， 即 A中有出现和B相同的结构和节点值。 例如:给定的树 A: 3 / \ 4 5 / \ 1 2 4 5 / 1 2给定的树 B： 123 4 /1 返回 true，因为 B 与 A 的一个子树拥有相同的结构和节点值。 示例 1： 12输入：A = [1,2,3], B = [3,1]输出：false 示例 2： 12输入：A = [3,4,5,1,2], B = [4,1]输出：true 限制： 10 &lt;= 节点个数 &lt;= 10000 1234567891011121314151617181920212223242526/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public boolean isSubStructure(TreeNode A, TreeNode B) &#123; if(B==null||A==null) return false; return judge(A,B)||isSubStructure(A.left,B)||isSubStructure(A.right,B); &#125; public boolean judge(TreeNode A,TreeNode B) &#123; if(B==null) return true; if(A==null) return false; if(A.val!=B.val) return false; return judge(A.left,B.left)&amp;&amp;judge(A.right,B.right); &#125;&#125;]]></content>
+    <content type="text"><![CDATA[题目描述原题链接 输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构) B是A的子结构， 即 A中有出现和B相同的结构和节点值。 例如:给定的树 A: 3 / \ 4 5 / \ 1 2给定的树 B： 123 4 /1 返回 true，因为 B 与 A 的一个子树拥有相同的结构和节点值。 示例 1： 12输入：A = [1,2,3], B = [3,1]输出：false 示例 2： 12输入：A = [3,4,5,1,2], B = [4,1]输出：true 限制： 10 &lt;= 节点个数 &lt;= 10000 1234567891011121314151617181920212223242526/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public boolean isSubStructure(TreeNode A, TreeNode B) &#123; if(B==null||A==null) return false; return judge(A,B)||isSubStructure(A.left,B)||isSubStructure(A.right,B); &#125; public boolean judge(TreeNode A,TreeNode B) &#123; if(B==null) return true; if(A==null) return false; if(A.val!=B.val) return false; return judge(A.left,B.left)&amp;&amp;judge(A.right,B.right); &#125;&#125;]]></content>
       <categories>
         <category>二叉树</category>
       </categories>
@@ -712,8 +712,8 @@
         <category>List</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>List</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -746,9 +746,9 @@
         <category>Map</category>
       </categories>
       <tags>
-        <tag>List</tag>
         <tag>Map</tag>
         <tag>排序</tag>
+        <tag>List</tag>
       </tags>
   </entry>
   <entry>
@@ -794,8 +794,8 @@
         <category>BFS</category>
       </categories>
       <tags>
-        <tag>LeetCode春季赛</tag>
         <tag>BFS</tag>
+        <tag>LeetCode春季赛</tag>
       </tags>
   </entry>
   <entry>
@@ -862,8 +862,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>二分查找</tag>
         <tag>dp</tag>
+        <tag>二分查找</tag>
       </tags>
   </entry>
   <entry>
@@ -978,9 +978,9 @@
         <category>贪心</category>
       </categories>
       <tags>
+        <tag>LeetCode周赛</tag>
         <tag>贪心</tag>
         <tag>优先队列</tag>
-        <tag>LeetCode周赛</tag>
       </tags>
   </entry>
   <entry>
