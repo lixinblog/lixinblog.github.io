@@ -820,8 +820,8 @@
         <category>BFS</category>
       </categories>
       <tags>
-        <tag>LeetCode春季赛</tag>
         <tag>BFS</tag>
+        <tag>LeetCode春季赛</tag>
       </tags>
   </entry>
   <entry>
@@ -888,8 +888,8 @@
         <category>dp</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>二分查找</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -2047,7 +2047,7 @@
   <entry>
     <title><![CDATA[二叉搜索树与双向链表]]></title>
     <url>%2F2020%2F02%2F07%2F%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%2F</url>
-    <content type="text"><![CDATA[题目描述题目链接 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。 思路用中序遍历的思想，再把修改相应的指针 12345678910111213141516171819202122232425262728293031323334353637383940414243444546import java.util.Stack;/**public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;*/public class Solution &#123; public TreeNode Convert(TreeNode pRootOfTree) &#123; Stack &lt;TreeNode&gt; stack =new Stack &lt;TreeNode&gt; (); TreeNode p=pRootOfTree; TreeNode head=null;//新的双向链表的头节点 TreeNode pre=null;//新的双向链表的尾节点 boolean flag=true;//用来建立链表的首节点 while(stack.isEmpty()==false||p!=null) &#123; while(p!=null) &#123; stack.push(p); p=p.left; &#125; p=stack.pop(); if(flag==true) &#123; head=p; pre=p; flag=false; &#125; else &#123; pre.right=p; p.left=pre; pre=p; &#125; p=p.right; &#125; return head; &#125;&#125; 二叉树的中序遍历二叉搜索树的中序遍历是有序的，代码如下 12345678inorder(root)&#123; if(root==null) return; inorder(root.left); System.out.println(root.val); inorder(root.right);&#125; 解题思路中序遍历二叉搜索树(需要两个指针，root表示当前遍历的指针，pre指针当前遍历节点的前指针) 1.终止条件：当节点为空时，直接返回 2.递归左子树inorder(root.left) 3.构建链表： ​ I.当root为空时，表示正在访问链表的第一个节点，让head=root ​ II.当root不为空时，保存这两个节点的关系，pre.right=root,root.left=pre,pre=root,让pre指向root 4.递归遍历右子树 1234567891011121314151617181920212223242526272829303132333435363738394041424344/*// Definition for a Node.class Node &#123; public int val; public Node left; public Node right; public Node() &#123;&#125; public Node(int _val) &#123; val = _val; &#125; public Node(int _val,Node _left,Node _right) &#123; val = _val; left = _left; right = _right; &#125;&#125;;*/class Solution &#123; Node head=null,pre=null; public Node treeToDoublyList(Node root) &#123; if(root==null) return null; inorder(root); head.left=pre; pre.right=head; return head; &#125; public void inorder(Node root) &#123; if(root==null) return; inorder(root.left); if(pre!=null) pre.right=root; else head=root; root.left=pre; pre=root; inorder(root.right); &#125;&#125;]]></content>
+    <content type="text"><![CDATA[题目描述题目链接 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。 思路用中序遍历的思想，再把修改相应的指针 12345678910111213141516171819202122232425262728293031323334353637383940414243444546import java.util.Stack;/**public class TreeNode &#123; int val = 0; TreeNode left = null; TreeNode right = null; public TreeNode(int val) &#123; this.val = val; &#125;&#125;*/public class Solution &#123; public TreeNode Convert(TreeNode pRootOfTree) &#123; Stack &lt;TreeNode&gt; stack =new Stack &lt;TreeNode&gt; (); TreeNode p=pRootOfTree; TreeNode head=null;//新的双向链表的头节点 TreeNode pre=null;//新的双向链表的尾节点 boolean flag=true;//用来建立链表的首节点 while(stack.isEmpty()==false||p!=null) &#123; while(p!=null) &#123; stack.push(p); p=p.left; &#125; p=stack.pop(); if(flag==true) &#123; head=p; pre=p; flag=false; &#125; else &#123; pre.right=p; p.left=pre; pre=p; &#125; p=p.right; &#125; return head; &#125;&#125; 二叉树的中序遍历二叉搜索树的中序遍历是有序的，详细解答代码如下 12345678inorder(root)&#123; if(root==null) return; inorder(root.left); System.out.println(root.val); inorder(root.right);&#125; 解题思路中序遍历二叉搜索树(需要两个指针，root表示当前遍历的指针，pre指针当前遍历节点的前指针) 1.终止条件：当节点为空时，直接返回 2.递归左子树inorder(root.left) 3.构建链表： ​ I.当root为空时，表示正在访问链表的第一个节点，让head=root ​ II.当root不为空时，保存这两个节点的关系，pre.right=root,root.left=pre,pre=root,让pre指向root 4.递归遍历右子树 1234567891011121314151617181920212223242526272829303132333435363738394041424344/*// Definition for a Node.class Node &#123; public int val; public Node left; public Node right; public Node() &#123;&#125; public Node(int _val) &#123; val = _val; &#125; public Node(int _val,Node _left,Node _right) &#123; val = _val; left = _left; right = _right; &#125;&#125;;*/class Solution &#123; Node head=null,pre=null; public Node treeToDoublyList(Node root) &#123; if(root==null) return null; inorder(root); head.left=pre; pre.right=head; return head; &#125; public void inorder(Node root) &#123; if(root==null) return; inorder(root.left); if(pre!=null) pre.right=root; else head=root; root.left=pre; pre=root; inorder(root.right); &#125;&#125;]]></content>
       <categories>
         <category>二叉树</category>
       </categories>
