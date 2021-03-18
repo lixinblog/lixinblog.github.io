@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="题目描述数字以0123456789101112131415…的格式序列化到一个字符序列中。在这个序列中，第5位（从下标0开始计数）是5，第13位是1，第19位是4，等等。 请写一个函数，求任意第n位对应的数字。 示例 1： 12输入：n = 3输出：3  示例 2： 12输入：n = 11输出：0  限制：  0 &amp;lt;= n &amp;lt; 2^31  解题思路digit是这种类型的数字有多少位，例">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-09-02T02:12:27.067Z">
+<meta property="og:updated_time" content="2020-09-03T06:26:29.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指Offer44-数字序列中某一位的数字">
 <meta name="twitter:description" content="题目描述数字以0123456789101112131415…的格式序列化到一个字符序列中。在这个序列中，第5位（从下标0开始计数）是5，第13位是1，第19位是4，等等。 请写一个函数，求任意第n位对应的数字。 示例 1： 12输入：n = 3输出：3  示例 2： 12输入：n = 11输出：0  限制：  0 &amp;lt;= n &amp;lt; 2^31  解题思路digit是这种类型的数字有多少位，例">
@@ -304,7 +304,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lixin">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="https://github.com/lixinblog/testupload/blob/master/dog.jpg?raw=true">
+      <meta itemprop="image" content="https://github.com/lixinblog/testupload/blob/master/1581518862564.jpeg?raw=true">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -387,7 +387,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  383
+                  385
                 </span>
               
 
@@ -436,7 +436,7 @@
 <ul>
 <li><code>0 &lt;= n &lt; 2^31</code></li>
 </ul>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>digit是这种类型的数字有多少位，例如10<del>99，有2位，start是指这种数字开始时的数字，例如10</del>99，start=10，cout是指这个范围的数字总共有多少位，例如10~99,一共有90*2=180位。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>digit是这种类型的数字有多少位，例如<code>10~99</code>，有2位，start是指这种数字开始时的数字，例如<code>10~99</code>，start=10，cout是指这个范围的数字总共有多少位，例如<code>10~99</code>,一共有<code>90*2=180</code>位。</p>
 <p>第一步，先确定在哪个范围的第几个数字，例如n=15，一位数一共有9个，那么15是从10开始的第6个数。（n=n-9=6)</p>
 <p>第二步，再确定n是哪个数字，例如n=5对应的数字为5，计算公式为：start+(n-1)/digit,例如n=15,通过第一步后n=6,通过计算公式得出的结果为:10+2=12，确定的数字为12</p>
 <p>第三步，再确定是数字12的哪一位，计算公式为:(n-1)%digit</p>
@@ -613,7 +613,7 @@ var jiathis_config={
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://github.com/lixinblog/testupload/blob/master/dog.jpg?raw=true" alt="lixin">
+              <img class="site-author-image" itemprop="image" src="https://github.com/lixinblog/testupload/blob/master/1581518862564.jpeg?raw=true" alt="lixin">
             
               <p class="site-author-name" itemprop="name">lixin</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -626,7 +626,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">218</span>
+                  <span class="site-state-item-count">219</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -717,7 +717,7 @@ var jiathis_config={
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
